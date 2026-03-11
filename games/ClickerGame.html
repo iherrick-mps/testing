@@ -5,241 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Clicker Game</title>
     <style>
-        /* Level 1 & Optional Customization: Layout and Game Container */
         body {
-            font-family: 'Consolas', 'Courier New', monospace; [cite: 309, 342]
-            background-color: #f0f0f0; /* Default light gray background */ [cite: 309]
-            background-size: cover; [cite: 309]
-            background-attachment: fixed; [cite: 309]
-            display: flex; [cite: 309]
-            justify-content: center; [cite: 309]
-            color: black; [cite: 309]
+            font-family: 'Consolas', 'Courier New', monospace;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            color: black;
         }
-
         .game-container {
-            background-color: rgba(255, 255, 255, 0.9); /* 90% solid white "glass" box */ [cite: 309]
-            padding: 30px; [cite: 309]
-            border-radius: 20px; [cite: 309]
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); [cite: 309]
-            max-width: 600px; [cite: 309]
-            width: 100%; [cite: 309]
-            margin-top: 50px; [cite: 309]
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            margin-top: 50px;
+            text-align: center;
         }
-
         #click-button {
-            font-family: 'Consolas', 'Courier New', monospace; [cite: 350]
-            font-size: 24px; [cite: 351]
-            padding: 30px 60px; [cite: 352]
-            margin: 20px 0; [cite: 353]
-            cursor: pointer; [cite: 354]
-            background-color: white; [cite: 355]
-            border: 2px solid black; [cite: 357]
-            transition: background-color 0.3s ease, color 0.3s ease; [cite: 309]
+            font-family: inherit;
+            font-size: 24px;
+            padding: 30px 60px;
+            margin: 20px 0;
+            cursor: pointer;
+            background-color: white;
+            border: 2px solid black;
+            transition: 0.3s;
         }
-
+        #click-button:hover {
+            background-color: black;
+            color: white;
+        }
         .upgrade {
-            font-family: 'Consolas', 'Courier New', monospace; [cite: 364]
-            font-size: 16px; [cite: 365]
-            padding: 15px; [cite: 366]
-            margin: 10px 0; [cite: 367]
-            cursor: pointer; [cite: 368]
-            background-color: white; [cite: 369]
-            border: 2px solid black; [cite: 371]
-            display: block; [cite: 372]
-            width: 100%; [cite: 373]
-            text-align: left; [cite: 374]
-            transition: background-color 0.3s ease, color 0.3s ease; [cite: 309]
+            font-family: inherit;
+            font-size: 16px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            background-color: white;
+            border: 2px solid black;
+            display: block;
+            width: 100%;
+            text-align: left;
         }
-
-        .upgrade:hover, #click-button:hover {
-            background-color: black; [cite: 360, 377]
-            color: white; [cite: 361, 378]
-        }
-
         .upgrade:disabled {
-            cursor: not-allowed; [cite: 381]
-            opacity: 0.5; [cite: 382]
-        }
-
-        /* Level 2: Sparkle Effects CSS */
-        .sparkle {
-            position: fixed; [cite: 94]
-            width: 10px; [cite: 94]
-            height: 10px; [cite: 94]
-            border-radius: 50%; [cite: 94]
-            pointer-events: none; [cite: 94]
-            animation: sparkle-fall 1s ease-out forwards; [cite: 94]
-        }
-
-        @keyframes sparkle-fall {
-            0% {
-                transform: translate(0, 0) scale(1); [cite: 119]
-                opacity: 1; [cite: 119]
-            }
-            100% {
-                transform: translate(var(--randomX, 0), 100px) scale(0); [cite: 119]
-                opacity: 0; [cite: 119]
-            }
+            opacity: 0.5;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
 
-<div class="game-container"> [cite: 310]
-    <h1>CLICKER GAME</h1> [cite: 390]
+<div class="game-container">
+    <h1>CLICKER GAME</h1>
+    <h2>Points: <span id="points">0</span></h2>
+    <h2>Points Per Click: <span id="click-value">1</span></h2>
 
-    <h2>Points: <span id="points">0</span></h2> [cite: 391]
-    <h2>Points Per Click: <span id="click-value">1</span></h2> [cite: 392]
+    <button id="click-button">CLICK ME</button>
 
-    <button id="click-button">CLICK ME</button> [cite: 393]
-
-    <h2>UPGRADES</h2> [cite: 394]
-
+    <hr>
+    <h3>UPGRADES</h3>
     <button class="upgrade" id="double-upgrade">
-        Double Click Value - Cost: <span id="double-cost">10</span> [cite: 396]
+        Double Click Value - Cost: <span id="double-cost">10</span>
     </button>
 
     <button class="upgrade" id="auto-upgrade">
-        Auto-Clicker (+<span id="auto-value">1</span>/sec) - Cost: <span id="auto-cost">50</span> - Owned: <span id="auto-owned">0</span> [cite: 29]
+        Auto-Clicker (+<span id="auto-value">1</span>/sec) - Cost: <span id="auto-cost">50</span> - Owned: <span id="auto-owned">0</span>
     </button>
 </div>
 
 <script>
-    // --- STEP 1: VARIABLES ---
-    let points = 0; [cite: 400]
-    let clickValue = 1; [cite: 401]
-    let doubleCost = 10; [cite: 402]
-    
-    // Level 1: New Auto-Clicker Variables
-    let autoClickerCost = 50; [cite: 20]
-    let autoClickerOwned = 0; [cite: 20]
-    let autoClickerValue = 1; [cite: 20]
+    let points = 0;
+    let clickValue = 1;
+    let doubleCost = 10;
+    let autoClickerCost = 50;
+    let autoClickerOwned = 0;
 
-    // --- STEP 2: GET ELEMENTS ---
-    const pointsDisplay = document.getElementById('points'); [cite: 404]
-    const clickValueDisplay = document.getElementById('click-value'); [cite: 405]
-    const clickButton = document.getElementById('click-button'); [cite: 406]
-    const doubleUpgrade = document.getElementById('double-upgrade'); [cite: 407]
-    const doubleCostDisplay = document.getElementById('double-cost'); [cite: 408]
-    
-    // Level 1: Auto-Clicker Elements
-    const autoUpgrade = document.getElementById('auto-upgrade'); [cite: 34]
-    const autoCostDisplay = document.getElementById('auto-cost'); [cite: 34]
-    const autoOwnedDisplay = document.getElementById('auto-owned'); [cite: 34]
-    const autoValueDisplay = document.getElementById('auto-value'); [cite: 34]
+    const pointsDisplay = document.getElementById('points');
+    const clickValueDisplay = document.getElementById('click-value');
+    const doubleCostDisplay = document.getElementById('double-cost');
+    const autoCostDisplay = document.getElementById('auto-cost');
+    const autoOwnedDisplay = document.getElementById('auto-owned');
 
-    // --- STEP 3: FUNCTIONS ---
-
-    // Level 2: Click Button Function with Sparkles
-    clickButton.addEventListener('click', function(event) { [cite: 103]
-        points = points + clickValue; [cite: 103]
-        updateDisplay(); [cite: 103]
-        createSparkles(event); [cite: 103]
+    document.getElementById('click-button').addEventListener('click', () => {
+        points += clickValue;
+        updateDisplay();
     });
 
-    // Level 3: Linear Double Upgrade Function
-    doubleUpgrade.addEventListener('click', function() { [cite: 209]
-        if (points >= doubleCost) { [cite: 209]
-            points = points - doubleCost; [cite: 209]
-            clickValue = clickValue + 2;  // Linear Logic [cite: 209]
-            doubleCost = Math.floor(doubleCost * 1.5); [cite: 209]
-            updateDisplay(); [cite: 39]
+    document.getElementById('double-upgrade').addEventListener('click', () => {
+        if (points >= doubleCost) {
+            points -= doubleCost;
+            clickValue *= 2;
+            doubleCost *= 3;
+            updateDisplay();
         }
     });
 
-    // Level 3: Linear Auto-Clicker Function
-    autoUpgrade.addEventListener('click', function() { [cite: 216]
-        if (points >= autoClickerCost) { [cite: 216]
-            points = points - autoClickerCost; [cite: 216]
-            autoClickerOwned = autoClickerOwned + 1; [cite: 216]
-            autoClickerValue = autoClickerOwned * 2; // Scaling Linear Strength [cite: 216]
-            autoClickerCost = autoClickerCost + 50;  // Linear Cost Increase [cite: 258]
-            updateDisplay(); [cite: 39]
+    document.getElementById('auto-upgrade').addEventListener('click', () => {
+        if (points >= autoClickerCost) {
+            points -= autoClickerCost;
+            autoClickerOwned++;
+            autoClickerCost = Math.floor(autoClickerCost * 1.5);
+            updateDisplay();
         }
     });
 
-    // Level 2 & Optional: Create Sparkles Function
-    function createSparkles(event, customColor) { [cite: 323]
-        // If a customColor is provided (from auto-clicker), use it. [cite: 323]
-        const colors = customColor ? [customColor] : ['#4169E1', '#9370DB', '#FFD700']; [cite: 323]
-        const sparkleCount = 8; [cite: 109]
-        
-        for (let i = 0; i < sparkleCount; i++) { [cite: 109]
-            const sparkle = document.createElement('div'); [cite: 109]
-            sparkle.className = 'sparkle'; [cite: 109]
-            
-            const randomColor = colors[Math.floor(Math.random() * colors.length)]; [cite: 109]
-            sparkle.style.backgroundColor = randomColor; [cite: 109]
-            
-            sparkle.style.left = event.pageX + 'px'; [cite: 109]
-            sparkle.style.top = event.pageY + 'px'; [cite: 109]
-            
-            const randomX = (Math.random() - 0.5) * 100; [cite: 109]
-            sparkle.style.setProperty('--randomX', randomX + 'px'); [cite: 109]
-            
-            document.body.appendChild(sparkle); [cite: 109]
-            
-            setTimeout(function() { [cite: 109]
-                sparkle.remove(); [cite: 109]
-            }, 1000); [cite: 109]
+    setInterval(() => {
+        if (autoClickerOwned > 0) {
+            points += autoClickerOwned;
+            updateDisplay();
         }
+    }, 1000);
+
+    function updateDisplay() {
+        pointsDisplay.textContent = points;
+        clickValueDisplay.textContent = clickValue;
+        doubleCostDisplay.textContent = doubleCost;
+        autoCostDisplay.textContent = autoClickerCost;
+        autoOwnedDisplay.textContent = autoClickerOwned;
+
+        document.getElementById('double-upgrade').disabled = (points < doubleCost);
+        document.getElementById('auto-upgrade').disabled = (points < autoClickerCost);
     }
-
-    // Step 4: Update Display Function
-    function updateDisplay() { [cite: 424]
-        pointsDisplay.textContent = points; [cite: 425]
-        clickValueDisplay.textContent = clickValue; [cite: 426]
-        doubleCostDisplay.textContent = doubleCost; [cite: 427]
-        
-        // Auto-Clicker Display [cite: 48]
-        autoCostDisplay.textContent = autoClickerCost; [cite: 48]
-        autoOwnedDisplay.textContent = autoClickerOwned; [cite: 48]
-        autoValueDisplay.textContent = autoClickerValue; [cite: 48]
-
-        // Optional: Dynamic Button Colors based on score [cite: 316]
-        if (points < 100) {
-            clickButton.style.backgroundColor = "white"; [cite: 316]
-            clickButton.style.color = "black";
-        } else if (points < 500) {
-            clickButton.style.backgroundColor = "#FFD700"; // Gold [cite: 316]
-        } else if (points < 1000) {
-            clickButton.style.backgroundColor = "#FF8C00"; // Dark Orange [cite: 316]
-            clickButton.style.color = "white"; [cite: 316]
-        } else {
-            clickButton.style.backgroundColor = "#8B0000"; // Dark Red [cite: 316]
-        }
-
-        // Disable upgrade buttons if not enough points [cite: 48, 429]
-        doubleUpgrade.disabled = (points < doubleCost); [cite: 48]
-        autoUpgrade.disabled = (points < autoClickerCost); [cite: 48]
-    }
-
-    // --- STEP 5: AUTOMATION ---
-    // Level 1 & Optional: Auto-clicker timer with Rainbow Sparkles
-    setInterval(function() { [cite: 327]
-        if (autoClickerOwned > 0) { [cite: 327]
-            points = points + (autoClickerOwned * autoClickerValue); [cite: 327]
-            updateDisplay(); [cite: 327]
-
-            // Rainbow Math for Sparkles [cite: 327]
-            const hue = (points % 500) / 500 * 300; 
-            let rainbowColor = `hsl(${hue}, 100%, 50%)`; [cite: 327]
-            if (points === 0) rainbowColor = "black"; [cite: 327]
-
-            const rect = autoUpgrade.getBoundingClientRect(); [cite: 327]
-            const autoLocation = {
-                pageX: rect.left + (rect.width / 2), [cite: 327]
-                pageY: rect.top + (rect.height / 2) [cite: 327]
-            };
-
-            for (let i = 0; i < (1 + autoClickerOwned); i++) { [cite: 327]
-                createSparkles(autoLocation, rainbowColor); [cite: 327]
-            }
-        }
-    }, 1000); [cite: 327]
-
-    // Initialize display on load
-    updateDisplay(); [cite: 436]
 </script>
 
 </body>
