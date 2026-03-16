@@ -366,9 +366,39 @@ function showResults() {
 
   res.innerHTML = `
     <h1>your results</h1>
-    <p class="sub" style="margin-bottom:1.5rem">
+    <p class="sub" style="margin-bottom:1.2rem">
       here's what your answers suggest — use these as starting points to explore, not final answers
     </p>
+
+    <!-- Share buttons -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1rem">
+      <button onclick="exportImage('download')" style="flex:1;min-width:160px;padding:12px 18px;background:#534AB7;color:#fff;border:none;border-radius:10px;font-size:14px;font-family:inherit;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">
+        ⬇ download results
+      </button>
+      <button onclick="exportImage('copy')" style="flex:1;min-width:160px;padding:12px 18px;background:#f0eefc;color:#534AB7;border:1px solid #c9c3f5;border-radius:10px;font-size:14px;font-family:inherit;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">
+        📋 copy results
+      </button>
+    </div>
+
+    <!-- Email capture (hidden — remove display:none to enable) -->
+    <div id="email-card" style="display:none;background:#f7f6ff;border:1px solid #e0dcfb;border-radius:12px;padding:1.2rem 1.4rem;margin-bottom:1rem">
+      <div style="font-size:15px;font-weight:600;color:#2d2b55;margin-bottom:4px">📬 get your results in your inbox</div>
+      <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:1rem">
+        We'll email you your personality type, profile chart, and top career matches so you can revisit them later.
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input id="email-input" type="email" placeholder="your@email.com"
+          style="flex:1;min-width:180px;padding:8px 12px;border:1px solid #ccc;border-radius:8px;font-size:14px;font-family:inherit;outline:none"
+          onkeydown="if(event.key==='Enter') sendResults()" />
+        <button onclick="sendResults()"
+          style="padding:8px 18px;background:#534AB7;color:#fff;border:none;border-radius:8px;font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap">
+          send results →
+        </button>
+      </div>
+      <div id="email-status" style="font-size:12px;margin-top:8px;min-height:16px"></div>
+    </div>
+
+    <div class="divider"></div>
 
     <div class="mbti-box">
       <div class="mbti-type">${mbti}</div>
@@ -408,39 +438,6 @@ function showResults() {
     }).join('')}
 
     <div class="divider"></div>
-
-    <!-- Share buttons -->
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1.2rem">
-      <button onclick="exportImage('download')" style="flex:1;min-width:160px;padding:12px 18px;background:#534AB7;color:#fff;border:none;border-radius:10px;font-size:14px;font-family:inherit;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">
-        ⬇ download results
-      </button>
-      <button onclick="exportImage('copy')" style="flex:1;min-width:160px;padding:12px 18px;background:#f0eefc;color:#534AB7;border:1px solid #c9c3f5;border-radius:10px;font-size:14px;font-family:inherit;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">
-        📋 copy results
-      </button>
-    </div>
-
-    <!-- Email capture -->
-    <div id="email-card" style="background:#f7f6ff;border:1px solid #e0dcfb;border-radius:12px;padding:1.2rem 1.4rem;margin-bottom:1.5rem">
-      <div style="font-size:15px;font-weight:600;color:#2d2b55;margin-bottom:4px">📬 get your results in your inbox</div>
-      <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:1rem">
-        We'll email you your personality type, profile chart, and top career matches so you can revisit them later.
-      </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <input
-          id="email-input"
-          type="email"
-          placeholder="your@email.com"
-          style="flex:1;min-width:180px;padding:8px 12px;border:1px solid #ccc;border-radius:8px;font-size:14px;font-family:inherit;outline:none"
-          onkeydown="if(event.key==='Enter') sendResults()"
-        />
-        <button
-          onclick="sendResults()"
-          style="padding:8px 18px;background:#534AB7;color:#fff;border:none;border-radius:8px;font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap"
-        >send results →</button>
-      </div>
-      <div id="email-status" style="font-size:12px;margin-top:8px;min-height:16px"></div>
-    </div>
-
     <button class="btn" onclick="restart()">&#8592; start over</button>
   `;
 
