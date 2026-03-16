@@ -322,6 +322,14 @@ function barChart(s) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+//  RESULTS STATE — kept in module scope so sendResults() can read it
+// ─────────────────────────────────────────────────────────────────────────────
+let _lastS         = null;
+let _lastMbti      = null;
+let _lastRanked    = null;
+let _lastGlobalBest = null;
+
+// ─────────────────────────────────────────────────────────────────────────────
 //  RESULTS PAGE
 // ─────────────────────────────────────────────────────────────────────────────
 function showResults() {
@@ -333,6 +341,12 @@ function showResults() {
 
   // Global best score — used as the denominator for ALL % match values
   const globalBest = ranked[0].score;
+
+  // Store for sendResults()
+  _lastS          = s;
+  _lastMbti       = mbti;
+  _lastRanked     = ranked;
+  _lastGlobalBest = globalBest;
 
   // Group jobs by field, keeping each field sorted by score desc
   const byField = {};
@@ -371,44 +385,335 @@ function showResults() {
 
     <div class="divider"></div>
     <p style="font-size:13px;font-weight:400;color:var(--color-text-secondary);margin-bottom:1rem;font-style:italic">
-      your career matches across all ${sortedFields.length} fields — sorted by best fit
+      your top 30 career matches out of ${JOBS.length} — sorted by best fit
     </p>
 
-    ${sortedFields.map(([fieldName, { fclass, jobs: fieldJobs }]) => {
-      const fieldTopPct = Math.round((fieldJobs[0].score / globalBest) * 100);
+    ${ranked.slice(0, 30).map((j, i) => {
+      const pct = Math.round((j.score / globalBest) * 100);
+      const rankLabel = i === 0 ? '#1 — best match' : `#${i + 1}`;
       return `
-      <div style="margin-bottom:2rem">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.6rem">
-          <span class="job-field ${fclass}" style="font-size:13px">${fieldName}</span>
-          <span style="font-size:12px;color:var(--color-text-tertiary);font-style:italic">
-            best match in field: ${fieldTopPct}%
-          </span>
+      <div class="result-card" style="margin-bottom:0.6rem">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px">
+          <div class="job-rank">${rankLabel}</div>
+          <div style="font-size:13px;font-weight:500;color:#534AB7;font-family:Georgia,serif">${pct}% match</div>
         </div>
-        ${fieldJobs.map((j, i) => {
-          const pct = Math.round((j.score / globalBest) * 100);
-          const rankLabel = i === 0 ? 'top pick' : `#${i + 1} in field`;
-          return `
-          <div class="result-card" style="margin-bottom:0.6rem">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px">
-              <div class="job-rank">${rankLabel}</div>
-              <div style="font-size:13px;font-weight:500;color:#534AB7;font-family:Georgia,serif">${pct}% match</div>
-            </div>
-            <div class="job-title">${j.title}</div>
-            <div style="height:4px;background:#f0eefc;border-radius:2px;margin:6px 0 10px;overflow:hidden">
-              <div style="height:100%;width:${pct}%;background:#534AB7;border-radius:2px"></div>
-            </div>
-            <div class="job-desc">${j.desc}</div>
-            <div class="job-why">Why this fits you: ${whyJob(j, s, mbti)}</div>
-          </div>`;
-        }).join('')}
+        <div class="job-title">${j.title}</div>
+        <span class="job-field ${j.fclass}">${j.field}</span>
+        <div style="height:4px;background:#f0eefc;border-radius:2px;margin:6px 0 10px;overflow:hidden">
+          <div style="height:100%;width:${pct}%;background:#534AB7;border-radius:2px"></div>
+        </div>
+        <div class="job-desc">${j.desc}</div>
+        <div class="job-why">Why this fits you: ${whyJob(j, s, mbti)}</div>
       </div>`;
     }).join('')}
 
     <div class="divider"></div>
+
+    <!-- Share buttons -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1.2rem">
+      <button onclick="exportImage('download')" style="flex:1;min-width:160px;padding:12px 18px;background:#534AB7;color:#fff;border:none;border-radius:10px;font-size:14px;font-family:inherit;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">
+        ⬇ download results
+      </button>
+      <button onclick="exportImage('copy')" style="flex:1;min-width:160px;padding:12px 18px;background:#f0eefc;color:#534AB7;border:1px solid #c9c3f5;border-radius:10px;font-size:14px;font-family:inherit;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">
+        📋 copy results
+      </button>
+    </div>
+
+    <!-- Email capture -->
+    <div id="email-card" style="background:#f7f6ff;border:1px solid #e0dcfb;border-radius:12px;padding:1.2rem 1.4rem;margin-bottom:1.5rem">
+      <div style="font-size:15px;font-weight:600;color:#2d2b55;margin-bottom:4px">📬 get your results in your inbox</div>
+      <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:1rem">
+        We'll email you your personality type, profile chart, and top career matches so you can revisit them later.
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input
+          id="email-input"
+          type="email"
+          placeholder="your@email.com"
+          style="flex:1;min-width:180px;padding:8px 12px;border:1px solid #ccc;border-radius:8px;font-size:14px;font-family:inherit;outline:none"
+          onkeydown="if(event.key==='Enter') sendResults()"
+        />
+        <button
+          onclick="sendResults()"
+          style="padding:8px 18px;background:#534AB7;color:#fff;border:none;border-radius:8px;font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap"
+        >send results →</button>
+      </div>
+      <div id="email-status" style="font-size:12px;margin-top:8px;min-height:16px"></div>
+    </div>
+
     <button class="btn" onclick="restart()">&#8592; start over</button>
   `;
 
+  logResults(mbti, answers, ranked, globalBest);
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  ANALYTICS — fire-and-forget POST to Google Sheets webhook
+//
+//  Replace PASTE_YOUR_WEBHOOK_URL_HERE with your deployed Apps Script URL.
+// ─────────────────────────────────────────────────────────────────────────────
+const WEBHOOK_URL = 'PASTE_YOUR_WEBHOOK_URL_HERE';
+
+function buildPayload(mbti, answers, ranked, globalBest, email) {
+  const BAR_ORDER = ['outdoors','hands','school','risk','creative','impact','money'];
+  const ENDPOINT_LABELS = {
+    outdoors: ['indoors / office',      'outdoors / field'],
+    hands:    ['abstract / desk work',  'physical / hands-on'],
+    school:   ['skip school, start now','long academic path'],
+    risk:     ['stable & proven',       'cutting-edge & high-stakes'],
+    creative: ['execute proven methods','invent & create'],
+    impact:   ['not a priority',        'making a difference'],
+    money:    ['not a priority',        'maximize earnings'],
+  };
+  function normUnsigned(val, max)   { return Math.max(0, Math.min(100, Math.round((val || 0) / max * 100))); }
+  function normSigned(val, range)   { return Math.max(0, Math.min(100, Math.round(((val || 0) + range) / (range * 2) * 100))); }
+
+  const s = _lastS;
+  const profile = BAR_ORDER.map(key => {
+    const f = FIELDS[key];
+    if (!f || !f.bar_label) return null;
+    const pct = f.signed
+      ? normSigned(s[key], f.bar_range || 20)
+      : normUnsigned(s[key], f.bar_max || 20);
+    const [leftLabel, rightLabel] = ENDPOINT_LABELS[key] || ['', ''];
+    return { label: f.bar_label, pct, leftLabel, rightLabel, color: f.color };
+  }).filter(Boolean);
+
+  return {
+    timestamp: Date.now(),
+    email:     email || null,
+    mbti,
+    mbtiName:  MBTI_NAMES[mbti] || '',
+    profile,
+    answers: answers.map((chosen, qi) => {
+      if (chosen === null) return null;
+      return QUESTIONS[qi].responses[chosen].text;
+    }),
+    results: ranked.slice(0, 10).map(j => ({
+      title:  j.title,
+      field:  j.field || '',
+      pct:    Math.round((j.score / globalBest) * 100),
+      desc:   j.desc  || '',
+      why:    whyJob(j, s, mbti),
+    })),
+  };
+}
+
+function logResults(mbti, answers, ranked, globalBest) {
+  if (!WEBHOOK_URL || WEBHOOK_URL.includes('PASTE_YOUR')) return;
+  fetch(WEBHOOK_URL, {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify(buildPayload(mbti, answers, ranked, globalBest, null)),
+  }).catch(() => {});
+}
+
+async function sendResults() {
+  const input  = document.getElementById('email-input');
+  const status = document.getElementById('email-status');
+  const email  = input.value.trim();
+
+  if (!email || !email.includes('@')) {
+    status.style.color = '#c0392b';
+    status.textContent = 'please enter a valid email address.';
+    return;
+  }
+  if (!WEBHOOK_URL || WEBHOOK_URL.includes('PASTE_YOUR')) {
+    status.style.color = '#c0392b';
+    status.textContent = 'webhook URL not configured yet.';
+    return;
+  }
+
+  status.style.color = '#888';
+  status.textContent = 'sending…';
+  input.disabled = true;
+
+  try {
+    const payload = buildPayload(_lastMbti, answers, _lastRanked, _lastGlobalBest, email);
+    payload.sendEmail = true; // tells Apps Script to send the email
+    const res  = await fetch(WEBHOOK_URL, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload),
+    });
+    const json = await res.json();
+    if (json.status === 'ok') {
+      status.style.color = '#27ae60';
+      status.textContent = '✓ results sent! check your inbox.';
+      document.getElementById('email-card').style.border = '1px solid #a8e6c0';
+    } else {
+      throw new Error(json.message || 'unknown error');
+    }
+  } catch (err) {
+    status.style.color = '#c0392b';
+    status.textContent = `something went wrong: ${err.message}`;
+    input.disabled = false;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  TOAST
+// ─────────────────────────────────────────────────────────────────────────────
+function showToast(msg, isError = false) {
+  const existing = document.getElementById('cc-toast');
+  if (existing) existing.remove();
+  const t = document.createElement('div');
+  t.id = 'cc-toast';
+  t.textContent = msg;
+  Object.assign(t.style, {
+    position:'fixed', bottom:'28px', left:'50%',
+    transform:'translateX(-50%) translateY(20px)',
+    background: isError ? '#c0392b' : '#2d2b55',
+    color:'#fff', padding:'12px 22px', borderRadius:'10px',
+    fontSize:'14px', fontFamily:'Georgia, serif',
+    boxShadow:'0 4px 20px rgba(0,0,0,0.18)',
+    opacity:'0', transition:'opacity 0.25s ease, transform 0.25s ease',
+    zIndex:'9999', whiteSpace:'nowrap',
+  });
+  document.body.appendChild(t);
+  requestAnimationFrame(() => {
+    t.style.opacity   = '1';
+    t.style.transform = 'translateX(-50%) translateY(0)';
+  });
+  setTimeout(() => {
+    t.style.opacity   = '0';
+    t.style.transform = 'translateX(-50%) translateY(10px)';
+    setTimeout(() => t.remove(), 300);
+  }, 2800);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  IMAGE EXPORT — canvas drawing of MBTI card, bar chart, top 3 careers
+// ─────────────────────────────────────────────────────────────────────────────
+function roundRect(ctx, x, y, w, h, r) {
+  if (typeof r === 'number') r = {tl:r,tr:r,br:r,bl:r};
+  ctx.beginPath();
+  ctx.moveTo(x+(r.tl||0),y);
+  ctx.lineTo(x+w-(r.tr||0),y);
+  ctx.quadraticCurveTo(x+w,y,x+w,y+(r.tr||0));
+  ctx.lineTo(x+w,y+h-(r.br||0));
+  ctx.quadraticCurveTo(x+w,y+h,x+w-(r.br||0),y+h);
+  ctx.lineTo(x+(r.bl||0),y+h);
+  ctx.quadraticCurveTo(x,y+h,x,y+h-(r.bl||0));
+  ctx.lineTo(x,y+(r.tl||0));
+  ctx.quadraticCurveTo(x,y,x+(r.tl||0),y);
+  ctx.closePath();
+}
+
+async function exportImage(mode) {
+  const mbti       = _lastMbti;
+  const s          = _lastS;
+  const ranked     = _lastRanked;
+  const globalBest = _lastGlobalBest;
+  if (!mbti || !ranked) { showToast('no results to export yet', true); return; }
+
+  const BAR_ORDER = ['outdoors','hands','school','risk','creative','impact','money'];
+  const ENDPOINT_LABELS = {
+    outdoors: ['indoors / office',       'outdoors / field'],
+    hands:    ['abstract / desk work',   'physical / hands-on'],
+    school:   ['skip school, start now', 'long academic path'],
+    risk:     ['stable & proven',        'cutting-edge & high-stakes'],
+    creative: ['execute proven methods', 'invent & create'],
+    impact:   ['not a priority',         'making a difference'],
+    money:    ['not a priority',         'maximize earnings'],
+  };
+  function normU(v,max)   { return Math.max(0,Math.min(1,(v||0)/max)); }
+  function normS(v,range) { return Math.max(0,Math.min(1,((v||0)+range)/(range*2))); }
+
+  const W=800, PAD=40, barH=36, barGap=10;
+  const numBars = BAR_ORDER.filter(k=>FIELDS[k]&&FIELDS[k].bar_label).length;
+  const careerH = 108;
+  const H = 60 + 104 + 24 + numBars*(barH+barGap) + 24 + 3*careerH + 40;
+
+  const canvas  = document.createElement('canvas');
+  canvas.width  = W*2; canvas.height = H*2;
+  const ctx     = canvas.getContext('2d');
+  ctx.scale(2,2);
+
+  // BG
+  ctx.fillStyle='#f4f3ff'; ctx.fillRect(0,0,W,H);
+
+  // Header
+  ctx.fillStyle='#534AB7'; ctx.fillRect(0,0,W,56);
+  ctx.fillStyle='#fff'; ctx.font='bold 20px Georgia,serif'; ctx.fillText('career compass',PAD,35);
+  ctx.font='12px Georgia,serif'; ctx.fillStyle='rgba(255,255,255,0.65)'; ctx.fillText('your results',PAD,50);
+
+  let y=72;
+
+  // MBTI card
+  ctx.fillStyle='#fff'; roundRect(ctx,PAD,y,W-PAD*2,88,12); ctx.fill();
+  ctx.fillStyle='#f0eefc'; roundRect(ctx,PAD+12,y+12,64,64,10); ctx.fill();
+  ctx.fillStyle='#534AB7'; ctx.font='bold 26px Georgia,serif'; ctx.textAlign='center';
+  ctx.fillText(mbti,PAD+44,y+52); ctx.textAlign='left';
+  ctx.fillStyle='#999'; ctx.font='11px Georgia,serif'; ctx.fillText('personality type',PAD+88,y+34);
+  ctx.fillStyle='#2d2b55'; ctx.font='bold 16px Georgia,serif'; ctx.fillText(MBTI_NAMES[mbti]||'',PAD+88,y+56);
+  y+=88+20;
+
+  // Bar section label
+  ctx.fillStyle='#aaa'; ctx.font='10px Georgia,serif'; ctx.fillText('WHAT MATTERS TO YOU',PAD,y); y+=14;
+
+  // Bars
+  BAR_ORDER.forEach(key=>{
+    const f=FIELDS[key]; if(!f||!f.bar_label) return;
+    const pct=f.signed?normS(s[key],f.bar_range||20):normU(s[key],f.bar_max||20);
+    const [lbl,rbl]=ENDPOINT_LABELS[key]||['',''];
+    const tw=W-PAD*2;
+    ctx.fillStyle='#555'; ctx.font='bold 10px Georgia,serif'; ctx.fillText(f.bar_label.toUpperCase(),PAD,y+10);
+    ctx.fillStyle='#e8e5fa'; roundRect(ctx,PAD,y+14,tw,10,5); ctx.fill();
+    if(f.signed){ctx.fillStyle='rgba(0,0,0,0.12)'; ctx.fillRect(PAD+tw/2,y+14,1,10);}
+    ctx.fillStyle=f.color||'#534AB7'; roundRect(ctx,PAD,y+14,tw*pct,10,5); ctx.fill();
+    ctx.fillStyle='#aaa'; ctx.font='9px Georgia,serif';
+    ctx.textAlign='left';  ctx.fillText(lbl,PAD,y+36);
+    ctx.textAlign='right'; ctx.fillText(rbl,W-PAD,y+36);
+    ctx.textAlign='center'; ctx.fillStyle=f.color||'#534AB7'; ctx.font='bold 10px Georgia,serif';
+    ctx.fillText(Math.round(pct*100)+'%',W/2,y+36); ctx.textAlign='left';
+    y+=barH+barGap;
+  });
+
+  y+=8;
+
+  // Careers section label
+  ctx.fillStyle='#aaa'; ctx.font='10px Georgia,serif'; ctx.fillText('TOP 3 CAREER MATCHES',PAD,y); y+=14;
+
+  // Top 3
+  ranked.slice(0,3).forEach((j,i)=>{
+    const pct=Math.round((j.score/globalBest)*100);
+    ctx.fillStyle='#fff'; roundRect(ctx,PAD,y,W-PAD*2,careerH-6,10); ctx.fill();
+    ctx.fillStyle='#999'; ctx.font='10px Georgia,serif'; ctx.fillText(i===0?'#1 — best match':`#${i+1}`,PAD+12,y+18);
+    ctx.fillStyle='#534AB7'; ctx.font='bold 11px Georgia,serif'; ctx.textAlign='right';
+    ctx.fillText(pct+'% match',W-PAD-12,y+18); ctx.textAlign='left';
+    ctx.fillStyle='#2d2b55'; ctx.font='bold 15px Georgia,serif'; ctx.fillText(j.title,PAD+12,y+36);
+    ctx.fillStyle='#7c6fe0'; ctx.font='10px Georgia,serif'; ctx.fillText(j.field||'',PAD+12,y+52);
+    const bw=W-PAD*2-24;
+    ctx.fillStyle='#f0eefc'; roundRect(ctx,PAD+12,y+58,bw,5,3); ctx.fill();
+    ctx.fillStyle='#534AB7'; roundRect(ctx,PAD+12,y+58,bw*(pct/100),5,3); ctx.fill();
+    const desc=(j.desc||'').length>95?j.desc.slice(0,92)+'…':(j.desc||'');
+    ctx.fillStyle='#777'; ctx.font='10px Georgia,serif'; ctx.fillText(desc,PAD+12,y+80);
+    y+=careerH;
+  });
+
+  // Footer
+  ctx.fillStyle='#bbb'; ctx.font='italic 10px Georgia,serif'; ctx.textAlign='center';
+  ctx.fillText('use these as starting points to explore, not final answers.',W/2,y+14);
+
+  // ── Export ──
+  if(mode==='download'){
+    const a=document.createElement('a');
+    a.href=canvas.toDataURL('image/jpeg',0.92);
+    a.download=`career-compass-${mbti}.jpg`;
+    a.click();
+    showToast('✓ image downloaded!');
+  } else {
+    try {
+      canvas.toBlob(async blob=>{
+        await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);
+        showToast('✓ image copied to clipboard!');
+      },'image/png');
+    } catch(err) {
+      showToast('clipboard copy failed — try downloading instead', true);
+    }
+  }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
