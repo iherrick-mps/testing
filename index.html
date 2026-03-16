@@ -1,58 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Game Collection</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #eef2f3;
-            color: #333;
-        }
-        .container {
-            text-align: center;
-            padding: 40px;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            width: 300px;
-        }
-        h1 { margin-bottom: 20px; font-size: 1.5rem; color: #2c3e50; }
-        ul { list-style: none; padding: 0; }
-        li { margin: 15px 0; }
-        
-        /* Making the links look like buttons */
-        .game-link {
-            text-decoration: none;
-            color: white;
-            background-color: #007bff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: block;
-            transition: background 0.3s;
-        }
-        .game-link:hover {
-            background-color: #0056b3;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Compass — Personality & Career Test</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div id="app">
 
-<div class="container">
-    <h1>Tools</h1>
-    <ul>
-        <li><a class="game-link" href="games/ClickerGame.html">Clicker Game</a></li>
-        <li><a class="game-link" href="career_personality_test.html">Career Personality Test</a></li>
-        <li><a class="game-link" href="career_test/index.html">Career Personality Test 2</a></li>
-        
-        </ul>
+  <div class="header">
+    <h1>career compass</h1>
+    <!-- Subtitle is populated by JS once data loads so job count is always accurate -->
+    <p class="sub" id="header-sub">loading…</p>
+  </div>
+
+  <!-- Loading state -->
+  <div id="loading" style="padding:2rem 0;color:var(--color-text-tertiary);font-style:italic;font-size:14px">
+    loading data…
+  </div>
+
+  <!-- Quiz -->
+  <div id="quiz-section" style="display:none">
+    <div class="progress-bar"><div class="progress-fill" id="prog" style="width:0%"></div></div>
+    <div id="q-container"></div>
+    <div class="nav">
+      <button class="btn" id="back-btn" onclick="goBack()" disabled>&#8592; back</button>
+      <button class="btn primary" id="next-btn" onclick="goNext()" disabled>next &#8594;</button>
+      <span class="q-counter-text" id="q-counter">1 / ?</span>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div id="results"></div>
+
 </div>
 
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+//  DATA — loaded from JSON files at startup
+// ─────────────────────────────────────────────────────────────────────────────
+let QUESTIONS = [];
+let JOBS      = [];
+let FIELDS    = {};   // keyed by field.key for fast lookup
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  QUIZ STATE
+// ─────────────────────────────────────────────────────────────────────────────
+let current = 0;
+let answers = [];
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  MBTI TYPE NAMES
+// ─────────────────────────────────────────────────────────────────────────────
+const MBTI_NAMES = {
+  INTJ:"The Architect",  INTP:"The Logician",   ENTJ:"The Commander", ENTP:"The Debater",
+  INFJ:"The Advocate",   INFP:"The Mediator",   ENFJ:"The Protagonist",ENFP:"The Campaigner",
+  ISTJ:"The Inspector",  ISFJ:"The Protector",  ESTJ:"The Executive", ESFJ:"The Consul",
+  ISTP:"The Virtuoso",   ISFP:"The Adventurer", ESTP:"The Entrepreneur",ESFP:"The Entertainer"
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  STARTUP — fetch all data files in parallel
+// ─────────────────────────────────────────────────────────────────────────────
+async function init() {
+  try {
+    const [qData, cData, fData] = await Promise.all([
+      fetch('questions.json').then(r => r.json()),
+      fetch('careers.json').then(r => r.json()),
+      fetch('fields.json').then(r => r.json()),
+    ]);
+
+    QUESTIONS = qData;
+    JOBS      = cData;
+    fData.forEach(f => { FIELDS[f.key] = f; });
+
+    answers = new Array(QUESTIONS.length).fill(null);
+
+    // Update header subtitle with live counts
+    document.getElementById('header-sub').textContent =
+      `${QUESTIONS.length} questions · ${JOBS.length} possible career matches · discover your personality type + top 10 paths`;
+
+    document.getElementById('loading').style.display     = 'none';
+    document.getElementById('quiz-section').style.display = 'block';
+
+    render();
+  } catch (err) {
+    document.getElementById('loading').textContent =
+      `Failed to load data: ${err.message}. Make sure all JSON files are in the same folder as index.html.`;
+    console.error(err);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  RENDER — draw the current question
+// ─────────────────────────────────────────────────────────────────────────────
+function render() {
+  const q   = QUESTIONS[current];
+  const pct = Math.round(((current + 1) / QUESTIONS.length) * 100);
+
+  document.getElementById('prog').style.width = pct + '%';
+  document.getElementById('q-counter').textContent = `${current + 1} / ${QUESTIONS.length}`;
+
+  document.getElementById('q-container').innerHTML = `
+    <span class="section-badge ${q.badge}">${q.label}</span>
+    <div class="q-num">question ${current + 1}</div>
+    <div class="q-text">${q.question}</div>
+    <div class="options">
+      ${q.responses.map((r, i) => `
+        <button class="opt${answers[current] === i ? ' selected' : ''}" onclick="pick(${i})">
+          ${r.text}
+        </button>`).join('')}
+    </div>
+  `;
+
+  document.getElementById('back-btn').disabled = current === 0;
+  document.getElementById('next-btn').disabled = answers[current] === null;
+  document.getElementById('next-btn').textContent =
+    current === QUESTIONS.length - 1 ? 'see my results →' : 'next →';
+}
+
+function pick(i) {
+  answers[current] = i;
+  render();
+}
+
+function goNext() {
+  if (answers[current] === null) return;
+  if (current === QUESTIONS.length - 1) { showResults(); return; }
+  current++;
+  render();
+}
+
+function goBack() {
+  if (current === 0) return;
+  current--;
+  render();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  SCORING — accumulate dimension scores from all answered questions
+// ─────────────────────────────────────────────────────────────────────────────
+function calcScores() {
+  // Zero-initialise every known field key
+  const s = {};
+  Object.keys(FIELDS).forEach(k => { s[k] = 0; });
+  // Also add any keys that might appear in question weights but not in fields.json
+  QUESTIONS.forEach(q => {
+    q.responses.forEach(r => {
+      Object.keys(r.weights).forEach(k => { if (!(k in s)) s[k] = 0; });
+    });
+  });
+
+  QUESTIONS.forEach((q, qi) => {
+    const chosen = answers[qi];
+    if (chosen === null) return;
+    const weights = q.responses[chosen].weights;
+    Object.entries(weights).forEach(([k, v]) => { s[k] = (s[k] || 0) + v; });
+  });
+  return s;
+}
+
+function getMBTI(s) {
+  return (s.E >= s.I ? 'E' : 'I') +
+         (s.S >= s.N ? 'S' : 'N') +
+         (s.T >= s.F ? 'T' : 'F') +
+         (s.J >= s.P ? 'J' : 'P');
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  JOB SCORING — compute match score for a single job
+//
+//  Scoring architecture (driven by fields.json):
+//    hard  dims  — large penalties for mismatch (lifestyle dealbreakers)
+//    soft  dims  — smaller penalties, scaled by weight
+//    mbti  dims  — bonus points for matching MBTI letter
+//    tag   dims  — small interest-tag boost
+//    school      — signed hard dim, handled separately because it can go negative
+// ─────────────────────────────────────────────────────────────────────────────
+function scoreJob(job, s, mbti) {
+  let score = 0;
+
+  function norm(val)       { return Math.min((val || 0) / 4, 5); }
+  function normSchool(val) { return Math.max(-5, Math.min(5, (val || 0) / 4)); }
+
+  // Soft dims
+  const softKeys = Object.values(FIELDS).filter(f => f.type === 'soft');
+  softKeys.forEach(f => {
+    const uv   = norm(s[f.key]);
+    const diff = Math.abs(uv - (job[f.key] || 0));
+    score += Math.max(-2 * f.weight, (4 - diff * 1.2) * f.weight);
+  });
+
+  // Hard dims (excluding school, which is signed)
+  const hardKeys = Object.values(FIELDS).filter(f => f.type === 'hard' && f.key !== 'school');
+  hardKeys.forEach(f => {
+    const uv   = norm(s[f.key]);
+    const diff = uv - (job[f.key] || 0);
+    score += Math.max(-6, (4 - Math.abs(diff) * f.weight));
+  });
+
+  // School — signed hard dim
+  {
+    const uv   = normSchool(s.school);
+    const jv   = job.school || 0;
+    const diff = Math.abs(uv - jv);
+    const w    = (FIELDS.school || { weight: 3.0 }).weight;
+    score += Math.max(-12, (4 - diff * 0.8) * w);
+  }
+
+  // MBTI bonus
+  const mbtiKeys = Object.values(FIELDS).filter(f => f.type === 'mbti');
+  mbtiKeys.forEach(f => {
+    if (mbti.includes(f.key)) score += (job[f.key] || 0) * f.weight;
+  });
+
+  // Interest tag boosts — capped so a single dominant tag can't flood results with one field
+  const tagKeys = Object.values(FIELDS).filter(f => f.type === 'tag' && f.weight > 0);
+  let tagBoostTotal = 0;
+  tagKeys.forEach(f => {
+    if ((job.tags || []).includes(f.key)) {
+      tagBoostTotal += Math.min((s[f.key] || 0) * f.weight, 4);
+    }
+  });
+  score += Math.min(tagBoostTotal, 8); // total tag contribution capped at 8 pts
+
+  return score;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  WHY THIS JOB — generates 1–3 plain-English reasons for a match
+// ─────────────────────────────────────────────────────────────────────────────
+function whyJob(job, s, mbti) {
+  const reasons = [];
+  if (s.money   >= 10 && job.money   >= 4) reasons.push("strong earning potential aligns with your priority on pay");
+  if (s.impact  >= 8  && job.impact  >= 3) reasons.push("meaningful positive impact matches what you said matters to you");
+  if (s.harm_ok <= 2  && job.harm_ok <= 1) reasons.push("low ethical concerns match your values");
+  if (s.harm_ok >= 8  && job.harm_ok >= 3) reasons.push("you indicated comfort with ethically complex work, which this field involves");
+  if (s.outdoors >= 8 && job.outdoors >= 3) reasons.push("physical and outdoor work matches your preference");
+  if (s.outdoors <= 2 && job.outdoors <= 1) reasons.push("minimal outdoor/field requirements suit your preference for controlled environments");
+  if (s.hours   >= 8  && job.hours   >= 3) reasons.push("you're comfortable with demanding hours, which is common in this role");
+  if (s.hands   >= 8  && job.hands   >= 3) reasons.push("strong hands-on, physical component matches your working style");
+  if (s.hands   <= 2  && job.hands   <= 1) reasons.push("abstract, non-physical work suits your style");
+  if (s.creative >= 8 && job.creative >= 4) reasons.push("high need for novelty and original thinking matches this role's creative demands");
+  if (s.creative <= 2 && job.creative <= 1) reasons.push("you prefer executing proven methods — this role rewards exactly that");
+  if (s.cool    >= 6  && job.cool    >= 4) reasons.push("this is a job that genuinely impresses people — matches your preference for cool work");
+  if (s.risk    >= 8  && job.risk    >= 3) reasons.push("you want cutting-edge, high-stakes work — this field delivers exactly that");
+  if (s.risk    <= -4 && job.risk    <= -2) reasons.push("you want a stable, proven field — this role has decades of established practice");
+  if (s.school  >= 8  && (job.school || 0) >= 3) reasons.push("you're open to advanced study — this field rewards deep academic specialization");
+  if (s.school  <= -6 && (job.school || 0) <= -2) reasons.push("you want to get to work fast without years of school — this role fits that path");
+  if (s.team    <= 2  && job.team    <= 1) reasons.push("largely independent work suits your preference for solo work");
+  if (mbti.includes('N') && job.N >= 2) reasons.push("your MBTI intuitive type aligns with the big-picture thinking this role requires");
+  if (mbti.includes('S') && job.S >= 2) reasons.push("your MBTI sensing type aligns with this role's focus on practical, concrete details");
+  if (mbti.includes('T') && job.T >= 2) reasons.push("your MBTI thinking type suits this technically rigorous field");
+  if (mbti.includes('I') && job.I >= 1) reasons.push("your introverted MBTI type fits the independent, focused work style this role rewards");
+  if (mbti.includes('E') && job.E >= 1) reasons.push("your extroverted MBTI type fits the team-heavy, client-facing nature of this role");
+  if (s.eng  >= 4 && (job.tags || []).includes('eng'))      reasons.push("your interest in engineering content lines up with this field");
+  if (s.cs   >= 4 && (job.tags || []).includes('cs'))       reasons.push("your interest in computers and coding points here");
+  if (s.trade >= 4 && (job.tags || []).includes('trade'))   reasons.push("your hands-on, trades-oriented interest is a strong fit");
+  if (s.elec >= 4 && (job.tags || []).includes('elec'))     reasons.push("your interest in electronics and circuits matches this role");
+  if (s.aero >= 4 && (job.tags || []).includes('aero'))     reasons.push("you showed strong interest in aerospace");
+  if (s.embedded >= 4 && (job.tags || []).includes('embedded')) reasons.push("you expressed interest in low-level / embedded programming");
+  if (reasons.length === 0) reasons.push("overall profile similarity across lifestyle and interest dimensions");
+  return reasons.slice(0, 3).join("; ") + ".";
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  BAR CHART — render the student's profile as horizontal bars
+//
+//  Which bars to show and how is driven by fields.json (bar_label, color, etc.)
+//  Only fields with a bar_label are shown. Signed fields get a centre-line.
+// ─────────────────────────────────────────────────────────────────────────────
+function barChart(s) {
+  // Ordered list of field keys to display in the chart
+  const BAR_ORDER = ['outdoors','hands','school','risk','creative','impact','money'];
+
+  function normUnsigned(val, max)  { return Math.max(0, Math.min(100, Math.round((val || 0) / max * 100))); }
+  function normSigned(val, range)  { return Math.max(0, Math.min(100, Math.round(((val || 0) + range) / (range * 2) * 100))); }
+
+  const rows = BAR_ORDER.map(key => {
+    const f = FIELDS[key];
+    if (!f || !f.bar_label) return '';
+    const pct = f.signed
+      ? normSigned(s[key], f.bar_range || 20)
+      : normUnsigned(s[key], f.bar_max || 20);
+    const midline = f.signed
+      ? `<div style="position:absolute;left:50%;top:0;width:1px;height:100%;background:rgba(0,0,0,0.15)"></div>`
+      : '';
+    return `
+      <div>
+        <div class="bar-row">
+          <span class="bar-label">${f.bar_label}</span>
+          <div class="bar-track" style="position:relative">
+            ${midline}
+            <div class="bar-fill" style="width:${pct}%;background:${f.color}"></div>
+          </div>
+          <span class="bar-pct">${pct}%</span>
+        </div>
+        <div style="font-size:10px;color:#aaa;font-style:italic;text-align:center;margin-top:1px;padding-left:120px">
+          ${f.display_range || ''}
+        </div>
+      </div>`;
+  }).join('');
+
+  return `<div class="bar-chart">${rows}</div>`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  RESULTS PAGE
+// ─────────────────────────────────────────────────────────────────────────────
+function showResults() {
+  const s      = calcScores();
+  const mbti   = getMBTI(s);
+  const ranked = JOBS
+    .map(j => ({ ...j, score: scoreJob(j, s, mbti) }))
+    .sort((a, b) => b.score - a.score);
+
+  // Global best score — used as the denominator for ALL % match values
+  const globalBest = ranked[0].score;
+
+  // Group jobs by field, keeping each field sorted by score desc
+  const byField = {};
+  ranked.forEach(j => {
+    const key = j.field || 'Other';
+    if (!byField[key]) byField[key] = { fclass: j.fclass, jobs: [] };
+    byField[key].jobs.push(j);
+  });
+
+  // Sort fields by their top job's score (highest-match field first)
+  const sortedFields = Object.entries(byField)
+    .sort((a, b) => b[1].jobs[0].score - a[1].jobs[0].score);
+
+  document.getElementById('quiz-section').style.display = 'none';
+  const res = document.getElementById('results');
+  res.style.display = 'block';
+
+  res.innerHTML = `
+    <h1>your results</h1>
+    <p class="sub" style="margin-bottom:1.5rem">
+      here's what your answers suggest — use these as starting points to explore, not final answers
+    </p>
+
+    <div class="mbti-box">
+      <div class="mbti-type">${mbti}</div>
+      <div>
+        <div class="mbti-label">your personality type</div>
+        <div class="mbti-name">${MBTI_NAMES[mbti] || ''}</div>
+      </div>
+    </div>
+
+    <p style="font-size:12px;font-style:italic;color:var(--color-text-tertiary);margin-bottom:0.8rem">
+      what matters to you
+    </p>
+    ${barChart(s)}
+
+    <div class="divider"></div>
+    <p style="font-size:13px;font-weight:400;color:var(--color-text-secondary);margin-bottom:1rem;font-style:italic">
+      your career matches across all ${sortedFields.length} fields — sorted by best fit
+    </p>
+
+    ${sortedFields.map(([fieldName, { fclass, jobs: fieldJobs }]) => {
+      const fieldTopPct = Math.round((fieldJobs[0].score / globalBest) * 100);
+      return `
+      <div style="margin-bottom:2rem">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.6rem">
+          <span class="job-field ${fclass}" style="font-size:13px">${fieldName}</span>
+          <span style="font-size:12px;color:var(--color-text-tertiary);font-style:italic">
+            best match in field: ${fieldTopPct}%
+          </span>
+        </div>
+        ${fieldJobs.map((j, i) => {
+          const pct = Math.round((j.score / globalBest) * 100);
+          const rankLabel = i === 0 ? 'top pick' : `#${i + 1} in field`;
+          return `
+          <div class="result-card" style="margin-bottom:0.6rem">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px">
+              <div class="job-rank">${rankLabel}</div>
+              <div style="font-size:13px;font-weight:500;color:#534AB7;font-family:Georgia,serif">${pct}% match</div>
+            </div>
+            <div class="job-title">${j.title}</div>
+            <div style="height:4px;background:#f0eefc;border-radius:2px;margin:6px 0 10px;overflow:hidden">
+              <div style="height:100%;width:${pct}%;background:#534AB7;border-radius:2px"></div>
+            </div>
+            <div class="job-desc">${j.desc}</div>
+            <div class="job-why">Why this fits you: ${whyJob(j, s, mbti)}</div>
+          </div>`;
+        }).join('')}
+      </div>`;
+    }).join('')}
+
+    <div class="divider"></div>
+    <button class="btn" onclick="restart()">&#8592; start over</button>
+  `;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  RESTART
+// ─────────────────────────────────────────────────────────────────────────────
+function restart() {
+  current = 0;
+  answers = new Array(QUESTIONS.length).fill(null);
+  document.getElementById('quiz-section').style.display = 'block';
+  document.getElementById('results').style.display = 'none';
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  GO
+// ─────────────────────────────────────────────────────────────────────────────
+init();
+</script>
 </body>
 </html>
