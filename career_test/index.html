@@ -650,7 +650,7 @@ async function exportImage(mode) {
 
   const H = 56          // header
            + 16         // gap
-           + 100        // mbti card
+           + 96         // mbti card
            + 20         // gap
            + 14         // bar section label
            + numBars*(barH+barGap)
@@ -682,36 +682,52 @@ async function exportImage(mode) {
   let y = 72;
 
   // ── MBTI card — full-width, horizontal layout ──
-  ctx.fillStyle='#fff'; roundRect(ctx,PAD,y,W-PAD*2,100,14); ctx.fill();
+  const CARD_X = PAD, CARD_W = W - PAD*2, CARD_H = 96;
+  ctx.fillStyle='#fff'; roundRect(ctx,CARD_X,y,CARD_W,CARD_H,14); ctx.fill();
 
   // Left accent bar
-  ctx.fillStyle='#534AB7'; roundRect(ctx,PAD,y,6,100,{tl:14,bl:14,tr:0,br:0}); ctx.fill();
+  ctx.fillStyle='#534AB7'; roundRect(ctx,CARD_X,y,6,CARD_H,{tl:14,bl:14,tr:0,br:0}); ctx.fill();
 
-  // MBTI letters — large, left side
-  ctx.fillStyle='#534AB7';
-  ctx.font='bold 42px Georgia,serif'; ctx.textAlign='left';
-  ctx.fillText(mbti, PAD+24, y+66);
+  // Measure MBTI letters at chosen size, then position divider after them
+  ctx.font='bold 38px Georgia,serif';
+  const mbtiTextW = ctx.measureText(mbti).width;
+  const MBTI_X    = CARD_X + 22;
+  const DIVIDER_X = MBTI_X + mbtiTextW + 20;
+
+  // MBTI letters
+  ctx.fillStyle='#534AB7'; ctx.textAlign='left';
+  ctx.fillText(mbti, MBTI_X, y + 62);
 
   // Vertical divider
-  ctx.fillStyle='#e8e5fa';
-  ctx.fillRect(PAD+110, y+16, 1, 68);
+  ctx.fillStyle='#e0dcfb'; ctx.fillRect(DIVIDER_X, y+14, 1, CARD_H-28);
 
-  // Right side: label + name stacked
-  ctx.fillStyle='#aaa';
-  ctx.font='10px Georgia,serif'; ctx.textAlign='left';
-  ctx.fillText('PERSONALITY TYPE', PAD+124, y+38);
-  ctx.fillStyle='#2d2b55';
-  ctx.font='bold 20px Georgia,serif';
-  ctx.fillText(MBTI_NAMES[mbti]||'', PAD+124, y+66);
+  // Right side content — label, name, pill
+  const RIGHT_X = DIVIDER_X + 20;
+  const RIGHT_W = CARD_X + CARD_W - RIGHT_X - 12;
 
-  // Small "your results" tag top-right
-  ctx.fillStyle='#f0eefc';
-  roundRect(ctx, W-PAD-90, y+16, 78, 20, 6); ctx.fill();
-  ctx.fillStyle='#7c6fe0'; ctx.font='bold 9px Georgia,serif'; ctx.textAlign='center';
-  ctx.fillText('CAREER COMPASS', W-PAD-51, y+30);
+  // "PERSONALITY TYPE" micro-label
+  ctx.fillStyle='#aaa'; ctx.font='9px Georgia,serif'; ctx.textAlign='left';
+  ctx.fillText('PERSONALITY TYPE', RIGHT_X, y+30);
+
+  // Personality name — scale font down if it would overflow
+  const mbtiName = MBTI_NAMES[mbti]||'';
+  let nameSize = 19;
+  ctx.font=`bold ${nameSize}px Georgia,serif`;
+  while(ctx.measureText(mbtiName).width > RIGHT_W - 4 && nameSize > 11) {
+    nameSize--;
+    ctx.font=`bold ${nameSize}px Georgia,serif`;
+  }
+  ctx.fillStyle='#2d2b55'; ctx.fillText(mbtiName, RIGHT_X, y+58);
+
+  // Small pill badge bottom-right of card
+  const PILL_W=86, PILL_H=18;
+  const PILL_X=CARD_X+CARD_W-PILL_W-10, PILL_Y=y+CARD_H-PILL_H-10;
+  ctx.fillStyle='#f0eefc'; roundRect(ctx,PILL_X,PILL_Y,PILL_W,PILL_H,5); ctx.fill();
+  ctx.fillStyle='#7c6fe0'; ctx.font='bold 8px Georgia,serif'; ctx.textAlign='center';
+  ctx.fillText('CAREER COMPASS', PILL_X+PILL_W/2, PILL_Y+12);
   ctx.textAlign='left';
 
-  y += 100+20;
+  y += CARD_H + 20;
 
   // ── Bar section label ──
   ctx.fillStyle='#aaa'; ctx.font='10px Georgia,serif';
