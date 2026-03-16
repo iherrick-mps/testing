@@ -8,27 +8,19 @@
     "responses": [
       {
         "text": "Recharge at home alone, maybe tinkering on a project",
-        "weights": {
-          "E": -2
-        }
+        "weights": { "I": 2 }
       },
       {
         "text": "Catch up with a few close friends",
-        "weights": {
-          "E": -1
-        }
+        "weights": { "I": 1 }
       },
       {
         "text": "Go out and meet new people or join a group event",
-        "weights": {
-          "E": 2
-        }
+        "weights": { "E": 2 }
       },
       {
-        "text": "A mix \u2014 some solo time, then hanging out later",
-        "weights": {
-          "E": 1
-        }
+        "text": "A mix — some solo time, then hanging out later",
+        "weights": { "E": 1 }
       }
     ]
   },
@@ -41,28 +33,19 @@
     "responses": [
       {
         "text": "Focus on the facts and step-by-step details",
-        "weights": {
-          "S": 2
-        }
+        "weights": { "S": 2 }
       },
       {
         "text": "Look for patterns and think about the bigger picture",
-        "weights": {
-          "N": 2
-        }
+        "weights": { "N": 2 }
       },
       {
         "text": "Start with what feels right, then check the logic",
-        "weights": {
-          "F": 1,
-          "N": 1
-        }
+        "weights": { "F": 1, "N": 1 }
       },
       {
         "text": "Jump between approaches and see what sticks",
-        "weights": {
-          "P": 1
-        }
+        "weights": { "P": 1 }
       }
     ]
   },
@@ -75,27 +58,19 @@
     "responses": [
       {
         "text": "I analyze the pros and cons logically",
-        "weights": {
-          "T": 2
-        }
+        "weights": { "T": 2 }
       },
       {
         "text": "I go with my gut or what feels fair to people",
-        "weights": {
-          "F": 2
-        }
+        "weights": { "F": 2 }
       },
       {
         "text": "I make a plan and commit to it",
-        "weights": {
-          "J": 2
-        }
+        "weights": { "J": 2 }
       },
       {
         "text": "I keep options open until I have to decide",
-        "weights": {
-          "P": 2
-        }
+        "weights": { "P": 2 }
       }
     ]
   },
@@ -108,29 +83,19 @@
     "responses": [
       {
         "text": "Have a clear plan with defined steps",
-        "weights": {
-          "J": 2,
-          "S": 1
-        }
+        "weights": { "J": 2, "S": 1 }
       },
       {
         "text": "Dive in and figure it out along the way",
-        "weights": {
-          "P": 2
-        }
+        "weights": { "P": 2 }
       },
       {
         "text": "Understand how it fits the bigger picture first",
-        "weights": {
-          "N": 2
-        }
+        "weights": { "N": 2 }
       },
       {
         "text": "Focus on the practical tools and resources needed",
-        "weights": {
-          "S": 2,
-          "J": 1
-        }
+        "weights": { "S": 2, "J": 1 }
       }
     ]
   },
@@ -142,28 +107,20 @@
     "question": "After a long day working with people, you feel:",
     "responses": [
       {
-        "text": "Energized \u2014 I love being around people",
-        "weights": {
-          "E": 2
-        }
+        "text": "Energized — I love being around people",
+        "weights": { "E": 2 }
       },
       {
-        "text": "Drained \u2014 I need quiet time to recover",
-        "weights": {
-          "I": 2
-        }
+        "text": "Drained — I need quiet time to recover",
+        "weights": { "I": 2 }
       },
       {
         "text": "Depends on the people, but usually okay",
-        "weights": {
-          "E": 1
-        }
+        "weights": { "E": 1 }
       },
       {
         "text": "About the same as when I started",
-        "weights": {
-          "I": 1
-        }
+        "weights": { "I": 1 }
       }
     ]
   },
@@ -175,28 +132,20 @@
     "question": "When it comes to salary, how honest are you being with yourself?",
     "responses": [
       {
-        "text": "Money is my top priority \u2014 I want to earn as much as possible",
-        "weights": {
-          "money": 4
-        }
+        "text": "Money is my top priority — I want to earn as much as possible",
+        "weights": { "money": 4 }
       },
       {
         "text": "Money matters a lot, but it's not everything",
-        "weights": {
-          "money": 3
-        }
+        "weights": { "money": 3 }
       },
       {
         "text": "I want to be comfortable, but I'd take less pay for work I love",
-        "weights": {
-          "money": 1
-        }
+        "weights": { "money": 1 }
       },
       {
         "text": "I honestly don't care much about money",
-        "weights": {
-          "money": 0
-        }
+        "weights": { "money": 0 }
       }
     ]
   },
@@ -205,31 +154,23 @@
     "section": "lifestyle",
     "badge": "badge-lifestyle",
     "label": "lifestyle",
-    "question": "Some jobs \u2014 like defense, oil, or finance \u2014 pay very well but may indirectly cause harm. How do you feel about that?",
+    "question": "Some jobs — like defense, oil, or finance — pay very well but may indirectly cause harm. How do you feel about that?",
     "responses": [
       {
-        "text": "That doesn't bother me \u2014 it's part of how the world works",
-        "weights": {
-          "harm_ok": 4
-        }
+        "text": "That doesn't bother me — it's part of how the world works",
+        "weights": { "harm_ok": 4 }
       },
       {
         "text": "I could do it if the pay is exceptional",
-        "weights": {
-          "harm_ok": 3
-        }
+        "weights": { "harm_ok": 3 }
       },
       {
         "text": "I'd feel uncomfortable and would rather avoid it",
-        "weights": {
-          "harm_ok": 1
-        }
+        "weights": { "harm_ok": 1 }
       },
       {
-        "text": "No way \u2014 I'd rather earn less doing something I believe in",
-        "weights": {
-          "harm_ok": 0
-        }
+        "text": "No way — I'd rather earn less doing something I believe in",
+        "weights": { "harm_ok": 0 }
       }
     ]
   },
@@ -241,28 +182,20 @@
     "question": "Making a concrete, positive impact on the world through your work is:",
     "responses": [
       {
-        "text": "Essential \u2014 it's the whole point",
-        "weights": {
-          "impact": 4
-        }
+        "text": "Essential — it's the whole point",
+        "weights": { "impact": 4 }
       },
       {
         "text": "Very important to me",
-        "weights": {
-          "impact": 3
-        }
+        "weights": { "impact": 3 }
       },
       {
         "text": "Nice to have, but not a dealbreaker",
-        "weights": {
-          "impact": 1
-        }
+        "weights": { "impact": 1 }
       },
       {
         "text": "Honestly not that high on my list",
-        "weights": {
-          "impact": 0
-        }
+        "weights": { "impact": 0 }
       }
     ]
   },
@@ -274,32 +207,20 @@
     "question": "Imagine two paths: Path A pays $120k but you sit at a desk all day. Path B pays $65k but you're out in the world working with your hands. Which do you lean toward?",
     "responses": [
       {
-        "text": "Path A \u2014 the money is worth it",
-        "weights": {
-          "money": 3,
-          "outdoors": -1
-        }
+        "text": "Path A — the money is worth it",
+        "weights": { "money": 3, "outdoors": -1, "hands": -1 }
       },
       {
         "text": "Leaning A, but I'd want some variety",
-        "weights": {
-          "money": 2,
-          "outdoors": 1
-        }
+        "weights": { "money": 2, "outdoors": 1 }
       },
       {
         "text": "Leaning B, even with less pay",
-        "weights": {
-          "outdoors": 2,
-          "money": 1
-        }
+        "weights": { "outdoors": 2, "hands": 1, "money": 1 }
       },
       {
-        "text": "Path B \u2014 I'd go crazy sitting at a desk",
-        "weights": {
-          "outdoors": 3,
-          "money": -1
-        }
+        "text": "Path B — I'd go crazy sitting at a desk",
+        "weights": { "outdoors": 3, "hands": 2, "money": -1 }
       }
     ]
   },
@@ -311,28 +232,20 @@
     "question": "How do you feel about working long or irregular hours?",
     "responses": [
       {
-        "text": "Totally fine \u2014 I'll work whatever it takes",
-        "weights": {
-          "hours": 4
-        }
+        "text": "Totally fine — I'll work whatever it takes",
+        "weights": { "hours": 4 }
       },
       {
         "text": "Okay sometimes, but I want a real life outside work",
-        "weights": {
-          "hours": 2
-        }
+        "weights": { "hours": 2 }
       },
       {
         "text": "I prefer stable, predictable hours",
-        "weights": {
-          "hours": 1
-        }
+        "weights": { "hours": 1 }
       },
       {
         "text": "Long hours are a dealbreaker for me",
-        "weights": {
-          "hours": 0
-        }
+        "weights": { "hours": 0 }
       }
     ]
   },
@@ -345,31 +258,19 @@
     "responses": [
       {
         "text": "Outdoors or on a job site, doing physical work",
-        "weights": {
-          "outdoors": 4,
-          "hands": 3
-        }
+        "weights": { "outdoors": 4, "hands": 3 }
       },
       {
-        "text": "In a workshop or lab \u2014 hands-on but controlled",
-        "weights": {
-          "hands": 4,
-          "outdoors": 1
-        }
+        "text": "In a workshop or lab — hands-on but controlled",
+        "weights": { "hands": 4, "outdoors": 1 }
       },
       {
         "text": "Office-based, focusing on analysis or design",
-        "weights": {
-          "hands": 0,
-          "outdoors": 0
-        }
+        "weights": { "hands": 0, "outdoors": 0 }
       },
       {
-        "text": "Flexible \u2014 some of each works for me",
-        "weights": {
-          "hands": 2,
-          "outdoors": 2
-        }
+        "text": "Flexible — some of each works for me",
+        "weights": { "hands": 2, "outdoors": 2 }
       }
     ]
   },
@@ -378,35 +279,23 @@
     "section": "lifestyle",
     "badge": "badge-lifestyle",
     "label": "lifestyle",
-    "question": "Working alone vs. working with a team \u2014 what's your honest preference?",
+    "question": "Working alone vs. working with a team — what's your honest preference?",
     "responses": [
       {
         "text": "I do my best work completely solo",
-        "weights": {
-          "team": 0,
-          "I": 2
-        }
+        "weights": { "team": 0, "I": 2 }
       },
       {
         "text": "I prefer mostly solo with occasional collaboration",
-        "weights": {
-          "team": 1,
-          "I": 1
-        }
+        "weights": { "team": 1, "I": 1 }
       },
       {
         "text": "I like being part of a team but having my own tasks",
-        "weights": {
-          "team": 2,
-          "E": 1
-        }
+        "weights": { "team": 2, "E": 1 }
       },
       {
         "text": "The more collaboration the better",
-        "weights": {
-          "team": 3,
-          "E": 2
-        }
+        "weights": { "team": 3, "E": 2 }
       }
     ]
   },
@@ -415,34 +304,23 @@
     "section": "lifestyle",
     "badge": "badge-lifestyle",
     "label": "lifestyle",
-    "question": "Some jobs mean being away from home \u2014 on oil rigs, military deployments, or remote construction sites \u2014 for weeks or months. How do you feel about that?",
+    "question": "Some jobs mean being away from home — on oil rigs, military deployments, or remote construction sites — for weeks or months. How do you feel about that?",
     "responses": [
       {
         "text": "That actually sounds exciting to me",
-        "weights": {
-          "travel": 4,
-          "outdoors": 2,
-          "hours": 2
-        }
+        "weights": { "outdoors": 2, "hours": 2, "risk": 1 }
       },
       {
         "text": "I could handle it if the pay is worth it",
-        "weights": {
-          "travel": 3,
-          "money": 1
-        }
+        "weights": { "hours": 2, "money": 1 }
       },
       {
         "text": "I'd do it short-term but not long-term",
-        "weights": {
-          "travel": 1
-        }
+        "weights": { "hours": 1 }
       },
       {
         "text": "That's not something I'm willing to do",
-        "weights": {
-          "travel": 0
-        }
+        "weights": { "outdoors": -1, "hours": -1 }
       }
     ]
   },
@@ -454,31 +332,20 @@
     "question": "How important is job security and predictability to you?",
     "responses": [
       {
-        "text": "Very important \u2014 I want stable, consistent work",
-        "weights": {
-          "J": 2,
-          "risk": -1
-        }
+        "text": "Very important — I want stable, consistent work",
+        "weights": { "J": 2, "risk": -3 }
       },
       {
         "text": "Somewhat important, but I'd take some risk for more reward",
-        "weights": {
-          "J": 1
-        }
+        "weights": { "J": 1, "risk": -1 }
       },
       {
         "text": "I'm comfortable with uncertainty if the upside is high",
-        "weights": {
-          "P": 1,
-          "risk": 1
-        }
+        "weights": { "P": 1, "risk": 1 }
       },
       {
         "text": "I actually prefer environments that change a lot",
-        "weights": {
-          "P": 2,
-          "risk": 2
-        }
+        "weights": { "P": 2, "risk": 2 }
       }
     ]
   },
@@ -491,30 +358,19 @@
     "responses": [
       {
         "text": "The technical skill or precision involved",
-        "weights": {
-          "T": 1,
-          "S": 1
-        }
+        "weights": { "T": 1, "S": 1, "creative": -1 }
       },
       {
         "text": "The positive impact it has on people or the planet",
-        "weights": {
-          "impact": 2,
-          "F": 1
-        }
+        "weights": { "impact": 2, "F": 1 }
       },
       {
         "text": "How well it pays or how competitive the field is",
-        "weights": {
-          "money": 1
-        }
+        "weights": { "money": 2 }
       },
       {
         "text": "The creativity or originality of what I build",
-        "weights": {
-          "creative": 2,
-          "N": 1
-        }
+        "weights": { "creative": 2, "N": 1 }
       }
     ]
   },
@@ -526,28 +382,20 @@
     "question": "How much schooling are you realistically willing to do after high school?",
     "responses": [
       {
-        "text": "None or minimal \u2014 I want to start working as soon as possible",
-        "weights": {
-          "school": -4
-        }
+        "text": "None or minimal — I want to start working as soon as possible",
+        "weights": { "school": -4 }
       },
       {
-        "text": "A trade program or certificate (1\u20132 years)",
-        "weights": {
-          "school": -2
-        }
+        "text": "A trade program or certificate (1–2 years)",
+        "weights": { "school": -2 }
       },
       {
         "text": "A bachelor's degree (4 years)",
-        "weights": {
-          "school": 2
-        }
+        "weights": { "school": 2 }
       },
       {
-        "text": "As much as it takes \u2014 I'm willing to go to grad school or beyond",
-        "weights": {
-          "school": 4
-        }
+        "text": "As much as it takes — I'm willing to go to grad school or beyond",
+        "weights": { "school": 4 }
       }
     ]
   },
@@ -559,31 +407,20 @@
     "question": "You're choosing between two jobs you'd be equally good at. Job A requires a master's degree; Job B requires a 6-month trade certification. Which feels more right for you?",
     "responses": [
       {
-        "text": "Job A \u2014 I enjoy deep academic study and specialized knowledge",
-        "weights": {
-          "school": 4,
-          "N": 1
-        }
+        "text": "Job A — I enjoy deep academic study and specialized knowledge",
+        "weights": { "school": 4, "N": 1 }
       },
       {
-        "text": "Job A \u2014 the advanced degree opens more doors and I'm willing to put in the time",
-        "weights": {
-          "school": 2
-        }
+        "text": "Job A — the advanced degree opens more doors and I'm willing to put in the time",
+        "weights": { "school": 2 }
       },
       {
-        "text": "Job B \u2014 I'd rather get certified and get to work",
-        "weights": {
-          "school": -2
-        }
+        "text": "Job B — I'd rather get certified and get to work",
+        "weights": { "school": -2 }
       },
       {
-        "text": "Job B \u2014 hands-on training fits how I learn best",
-        "weights": {
-          "school": -3,
-          "hands": 1,
-          "S": 1
-        }
+        "text": "Job B — hands-on training fits how I learn best",
+        "weights": { "school": -3, "hands": 1, "S": 1 }
       }
     ]
   },
@@ -592,35 +429,23 @@
     "section": "lifestyle",
     "badge": "badge-lifestyle",
     "label": "lifestyle",
-    "question": "How do you feel about the idea of spending years in a classroom studying theory before you can actually do the job?",
+    "question": "How important is it to you that your job lets you set your own pace and schedule, rather than being told when and where to show up?",
     "responses": [
       {
-        "text": "I love it \u2014 deep theoretical understanding is what I'm after",
-        "weights": {
-          "school": 4,
-          "N": 1
-        }
+        "text": "Very important — I want maximum flexibility and autonomy",
+        "weights": { "hours": 0, "P": 2, "team": 0 }
       },
       {
-        "text": "It's worth it \u2014 I'll get through it to reach the career I want",
-        "weights": {
-          "school": 2
-        }
+        "text": "Important — I'd like some flexibility even if the job is structured",
+        "weights": { "hours": 1, "P": 1 }
       },
       {
-        "text": "It would be really hard for me \u2014 I prefer learning by doing",
-        "weights": {
-          "school": -1,
-          "hands": 1
-        }
+        "text": "I'm fine with set hours as long as the work itself is engaging",
+        "weights": { "hours": 2, "J": 1 }
       },
       {
-        "text": "I'd never do that \u2014 I want to learn on the job, not in school",
-        "weights": {
-          "school": -3,
-          "hands": 2,
-          "S": 1
-        }
+        "text": "Structure is good — I like knowing exactly when I'm on and off",
+        "weights": { "hours": 3, "J": 2 }
       }
     ]
   },
@@ -633,31 +458,19 @@
     "responses": [
       {
         "text": "Designing and building physical machines or structures",
-        "weights": {
-          "hands": 2,
-          "eng": 2
-        }
+        "weights": { "hands": 2, "eng": 2 }
       },
       {
         "text": "Writing code and building software systems",
-        "weights": {
-          "cs": 2
-        }
+        "weights": { "cs": 2 }
       },
       {
         "text": "Installing, maintaining, or repairing equipment in the field",
-        "weights": {
-          "hands": 2,
-          "trade": 2
-        }
+        "weights": { "hands": 2, "trade": 2 }
       },
       {
         "text": "Understanding how and why materials behave the way they do",
-        "weights": {
-          "S": 1,
-          "eng": 1,
-          "mat": 1
-        }
+        "weights": { "S": 1, "eng": 1, "mat": 1 }
       }
     ]
   },
@@ -669,35 +482,20 @@
     "question": "Imagine you're in a robotics class and the robot isn't working. What role do you naturally take?",
     "responses": [
       {
-        "text": "Debug the code \u2014 I want to find the logic error",
-        "weights": {
-          "cs": 2,
-          "T": 1
-        }
+        "text": "Debug the code — I want to find the logic error",
+        "weights": { "cs": 2, "T": 1 }
       },
       {
-        "text": "Inspect the physical components \u2014 something must be loose or broken",
-        "weights": {
-          "hands": 2,
-          "S": 1,
-          "trade": 1
-        }
+        "text": "Inspect the physical components — something must be loose or broken",
+        "weights": { "hands": 2, "S": 1, "trade": 1 }
       },
       {
         "text": "Try both and figure out which layer the problem is in",
-        "weights": {
-          "T": 1,
-          "S": 1,
-          "eng": 1
-        }
+        "weights": { "T": 1, "S": 1, "eng": 1 }
       },
       {
         "text": "Suggest a new approach and redesign the system",
-        "weights": {
-          "N": 2,
-          "creative": 1,
-          "eng": 1
-        }
+        "weights": { "N": 2, "creative": 1, "eng": 1 }
       }
     ]
   },
@@ -709,34 +507,20 @@
     "question": "Which field sounds most exciting to you?",
     "responses": [
       {
-        "text": "Aerospace \u2014 rockets, satellites, aircraft",
-        "weights": {
-          "aero": 3,
-          "eng": 2,
-          "risk": 2
-        }
+        "text": "Aerospace — rockets, satellites, aircraft",
+        "weights": { "aero": 3, "eng": 2, "risk": 2 }
       },
       {
-        "text": "Skilled trades \u2014 welding, woodworking, construction",
-        "weights": {
-          "trade": 3,
-          "hands": 2,
-          "risk": -1
-        }
+        "text": "Skilled trades — welding, woodworking, construction",
+        "weights": { "trade": 3, "hands": 2, "risk": -1 }
       },
       {
-        "text": "Software & computers \u2014 apps, AI, systems programming",
-        "weights": {
-          "cs": 3,
-          "risk": 1
-        }
+        "text": "Software & computers — apps, AI, systems programming",
+        "weights": { "cs": 3, "risk": 1 }
       },
       {
-        "text": "Electronics \u2014 circuits, microcontrollers, embedded devices",
-        "weights": {
-          "elec": 3,
-          "hands": 1
-        }
+        "text": "Electronics — circuits, microcontrollers, embedded devices",
+        "weights": { "elec": 3, "hands": 1 }
       }
     ]
   },
@@ -749,33 +533,19 @@
     "responses": [
       {
         "text": "A bridge, building, or vehicle that thousands of people use",
-        "weights": {
-          "eng": 2,
-          "impact": 1,
-          "hands": 1
-        }
+        "weights": { "eng": 2, "impact": 1, "hands": 1 }
       },
       {
         "text": "An app or platform used by millions of people",
-        "weights": {
-          "cs": 2,
-          "impact": 1
-        }
+        "weights": { "cs": 2, "impact": 1 }
       },
       {
         "text": "A custom piece of furniture or metalwork structure you made by hand",
-        "weights": {
-          "trade": 2,
-          "hands": 3,
-          "creative": 1
-        }
+        "weights": { "trade": 2, "hands": 3, "creative": 1 }
       },
       {
         "text": "An electronic device or circuit board powering something important",
-        "weights": {
-          "elec": 2,
-          "hands": 1
-        }
+        "weights": { "elec": 2, "hands": 1 }
       }
     ]
   },
@@ -788,32 +558,19 @@
     "responses": [
       {
         "text": "An aerospace engineer working on rockets or planes",
-        "weights": {
-          "aero": 3,
-          "eng": 2,
-          "risk": 2
-        }
+        "weights": { "aero": 3, "eng": 2, "risk": 2 }
       },
       {
         "text": "A welder or electrician on a large construction site",
-        "weights": {
-          "trade": 3,
-          "hands": 3,
-          "elec": 1
-        }
+        "weights": { "trade": 3, "hands": 3, "elec": 1 }
       },
       {
         "text": "A software engineer at a major tech company",
-        "weights": {
-          "cs": 3
-        }
+        "weights": { "cs": 3 }
       },
       {
         "text": "A circuit design engineer working on new electronics",
-        "weights": {
-          "elec": 3,
-          "eng": 1
-        }
+        "weights": { "elec": 3, "eng": 1 }
       }
     ]
   },
@@ -825,34 +582,20 @@
     "question": "Which subject in school sounds most interesting to you, honestly?",
     "responses": [
       {
-        "text": "Math and physics \u2014 understanding how the universe works",
-        "weights": {
-          "eng": 2,
-          "N": 1,
-          "school": 2
-        }
+        "text": "Math and physics — understanding how the universe works",
+        "weights": { "eng": 2, "N": 1, "school": 2 }
       },
       {
-        "text": "Shop class \u2014 building and fixing things with your hands",
-        "weights": {
-          "trade": 3,
-          "hands": 3,
-          "school": -2
-        }
+        "text": "Shop class — building and fixing things with your hands",
+        "weights": { "trade": 3, "hands": 3, "school": -2 }
       },
       {
-        "text": "Computer science \u2014 coding, algorithms, and logic",
-        "weights": {
-          "cs": 3,
-          "school": 1
-        }
+        "text": "Computer science — coding, algorithms, and logic",
+        "weights": { "cs": 3, "school": 1 }
       },
       {
-        "text": "Electronics and circuits \u2014 how devices actually work",
-        "weights": {
-          "elec": 3,
-          "school": 1
-        }
+        "text": "Electronics and circuits — how devices actually work",
+        "weights": { "elec": 3, "school": 1 }
       }
     ]
   },
@@ -865,35 +608,19 @@
     "responses": [
       {
         "text": "Structural engineering and physics",
-        "weights": {
-          "eng": 3,
-          "S": 1,
-          "school": 2
-        }
+        "weights": { "eng": 3, "S": 1, "school": 2 }
       },
       {
         "text": "Computer science and algorithms",
-        "weights": {
-          "cs": 3,
-          "N": 1,
-          "school": 1
-        }
+        "weights": { "cs": 3, "N": 1, "school": 1 }
       },
       {
         "text": "Electrical circuits and signal processing",
-        "weights": {
-          "elec": 3,
-          "T": 1,
-          "school": 1
-        }
+        "weights": { "elec": 3, "T": 1, "school": 1 }
       },
       {
         "text": "Wood/metal shop and fabrication techniques",
-        "weights": {
-          "trade": 3,
-          "hands": 2,
-          "school": -1
-        }
+        "weights": { "trade": 3, "hands": 2, "school": -1 }
       }
     ]
   },
@@ -905,36 +632,20 @@
     "question": "What sounds most exciting about working in the tech or engineering world?",
     "responses": [
       {
-        "text": "Pushing what's physically possible \u2014 extreme engineering",
-        "weights": {
-          "eng": 2,
-          "aero": 1,
-          "risk": 2
-        }
+        "text": "Pushing what's physically possible — extreme engineering",
+        "weights": { "eng": 2, "aero": 1, "risk": 2 }
       },
       {
-        "text": "The cutting edge \u2014 AI, crypto, drone swarms, laser weapons",
-        "weights": {
-          "cs": 2,
-          "risk": 4,
-          "N": 2
-        }
+        "text": "The cutting edge — AI, crypto, drone swarms, laser weapons",
+        "weights": { "cs": 2, "risk": 4, "N": 2 }
       },
       {
-        "text": "The craft and mastery \u2014 becoming truly excellent at a skilled trade",
-        "weights": {
-          "trade": 3,
-          "S": 2,
-          "hands": 2,
-          "risk": -2
-        }
+        "text": "The craft and mastery — becoming truly excellent at a skilled trade",
+        "weights": { "trade": 3, "S": 2, "hands": 2, "risk": -2 }
       },
       {
-        "text": "The logic and elegance \u2014 writing clean, efficient code",
-        "weights": {
-          "cs": 2,
-          "T": 2
-        }
+        "text": "The logic and elegance — writing clean, efficient code",
+        "weights": { "cs": 2, "T": 2 }
       }
     ]
   },
@@ -943,36 +654,23 @@
     "section": "content",
     "badge": "badge-content",
     "label": "interest",
-    "question": "How do you feel about working with dangerous materials or in physically risky environments \u2014 heights, high voltage, heavy machinery?",
+    "question": "How do you feel about working with dangerous materials or in physically risky environments — heights, high voltage, heavy machinery?",
     "responses": [
       {
-        "text": "Doesn't bother me \u2014 it's part of the job",
-        "weights": {
-          "harm_ok": 2,
-          "outdoors": 1,
-          "risk": 1
-        }
+        "text": "Doesn't bother me — it's part of the job",
+        "weights": { "harm_ok": 2, "outdoors": 1, "risk": 1 }
       },
       {
         "text": "A little nervous but I'd adapt",
-        "weights": {
-          "outdoors": 1
-        }
+        "weights": { "outdoors": 1 }
       },
       {
         "text": "I'd prefer to stay away from physical risk",
-        "weights": {
-          "outdoors": -1,
-          "risk": -2
-        }
+        "weights": { "outdoors": -1, "hands": -1, "risk": -2 }
       },
       {
         "text": "That kind of environment actually appeals to me",
-        "weights": {
-          "outdoors": 3,
-          "harm_ok": 3,
-          "risk": 3
-        }
+        "weights": { "outdoors": 3, "harm_ok": 3, "risk": 3, "hands": 1 }
       }
     ]
   },
@@ -984,34 +682,20 @@
     "question": "When you imagine your ideal workday, which sounds more satisfying?",
     "responses": [
       {
-        "text": "Solving a problem nobody has solved before \u2014 inventing something new",
-        "weights": {
-          "creative": 4,
-          "N": 2,
-          "risk": 1
-        }
+        "text": "Solving a problem nobody has solved before — inventing something new",
+        "weights": { "creative": 4, "N": 2, "risk": 1 }
       },
       {
         "text": "Executing a well-defined task with skill and precision",
-        "weights": {
-          "creative": 0,
-          "S": 2
-        }
+        "weights": { "creative": 0, "S": 2 }
       },
       {
-        "text": "A mix \u2014 mostly proven methods, but with room to improve",
-        "weights": {
-          "creative": 2
-        }
+        "text": "A mix — mostly proven methods, but with room to improve",
+        "weights": { "creative": 2 }
       },
       {
         "text": "Following established steps to get a reliable, repeatable result",
-        "weights": {
-          "creative": -1,
-          "S": 2,
-          "J": 1,
-          "risk": -1
-        }
+        "weights": { "creative": -1, "S": 2, "J": 1, "risk": -1 }
       }
     ]
   },
@@ -1023,35 +707,20 @@
     "question": "Which type of problem do you find most satisfying to solve?",
     "responses": [
       {
-        "text": "An optimization problem \u2014 make the system faster, cheaper, or more efficient",
-        "weights": {
-          "T": 2,
-          "S": 1,
-          "eng": 1
-        }
+        "text": "An optimization problem — make the system faster, cheaper, or more efficient",
+        "weights": { "T": 2, "S": 1, "eng": 1 }
       },
       {
-        "text": "A human problem \u2014 help people communicate, connect, or thrive",
-        "weights": {
-          "F": 1,
-          "impact": 1,
-          "cs": 1
-        }
+        "text": "A human problem — help people communicate, connect, or thrive",
+        "weights": { "F": 1, "impact": 1, "cs": 1 }
       },
       {
-        "text": "A physical problem \u2014 fix or build something tangible",
-        "weights": {
-          "hands": 2,
-          "trade": 2
-        }
+        "text": "A physical problem — fix or build something tangible",
+        "weights": { "hands": 2, "trade": 2 }
       },
       {
-        "text": "A design problem \u2014 make something both beautiful and functional",
-        "weights": {
-          "creative": 2,
-          "N": 1,
-          "eng": 1
-        }
+        "text": "A design problem — make something both beautiful and functional",
+        "weights": { "creative": 2, "N": 1, "eng": 1 }
       }
     ]
   },
@@ -1060,33 +729,23 @@
     "section": "content",
     "badge": "badge-content",
     "label": "interest",
-    "question": "The idea of working outdoors \u2014 on job sites, oil fields, or in the elements \u2014 sounds:",
+    "question": "The idea of working outdoors — on job sites, oil fields, or in the elements — sounds:",
     "responses": [
       {
-        "text": "Awesome \u2014 I'd love being out of an office",
-        "weights": {
-          "outdoors": 4,
-          "risk": 1
-        }
+        "text": "Awesome — I'd love being out of an office",
+        "weights": { "outdoors": 4, "hands": 1, "risk": 1 }
       },
       {
         "text": "Okay, as long as I'm doing meaningful work",
-        "weights": {
-          "outdoors": 2
-        }
+        "weights": { "outdoors": 2, "hands": 1 }
       },
       {
         "text": "Tolerable if necessary",
-        "weights": {
-          "outdoors": 1
-        }
+        "weights": { "outdoors": 1 }
       },
       {
         "text": "Like something I'd actively try to avoid",
-        "weights": {
-          "outdoors": -1,
-          "risk": -1
-        }
+        "weights": { "outdoors": -1, "risk": -1 }
       }
     ]
   },
@@ -1095,36 +754,23 @@
     "section": "content",
     "badge": "badge-content",
     "label": "interest",
-    "question": "Low-level, embedded, or systems programming \u2014 writing code close to hardware like operating systems or firmware \u2014 sounds:",
+    "question": "Low-level, embedded, or systems programming — writing code close to hardware like operating systems or firmware — sounds:",
     "responses": [
       {
-        "text": "Fascinating \u2014 I love the idea of being close to the metal",
-        "weights": {
-          "embedded": 3,
-          "elec": 1,
-          "cs": 2,
-          "T": 1
-        }
+        "text": "Fascinating — I love the idea of being close to the metal",
+        "weights": { "embedded": 3, "elec": 1, "cs": 2, "T": 1 }
       },
       {
         "text": "Interesting, but I'd rather do higher-level apps or web",
-        "weights": {
-          "cs": 2
-        }
+        "weights": { "cs": 2 }
       },
       {
-        "text": "Confusing to me \u2014 I'd rather work with physical hardware",
-        "weights": {
-          "hands": 2,
-          "trade": 1,
-          "elec": 1
-        }
+        "text": "Confusing to me — I'd rather work with physical hardware",
+        "weights": { "hands": 2, "trade": 1, "elec": 1 }
       },
       {
         "text": "Not really my thing at all",
-        "weights": {
-          "elec": -1
-        }
+        "weights": { "elec": -1 }
       }
     ]
   },
@@ -1136,34 +782,20 @@
     "question": "Which best describes the type of legacy you'd want your work to leave?",
     "responses": [
       {
-        "text": "I built something that lasted \u2014 a structure, a machine, a system",
-        "weights": {
-          "eng": 2,
-          "S": 1,
-          "J": 1
-        }
+        "text": "I built something that lasted — a structure, a machine, a system",
+        "weights": { "eng": 2, "S": 1, "J": 1 }
       },
       {
         "text": "I helped make the world cleaner, safer, or more just",
-        "weights": {
-          "impact": 3,
-          "F": 1
-        }
+        "weights": { "impact": 3, "F": 1 }
       },
       {
         "text": "I made something people love using every day",
-        "weights": {
-          "creative": 2,
-          "cs": 1
-        }
+        "weights": { "creative": 2, "cs": 1 }
       },
       {
         "text": "I mastered a craft and passed it on",
-        "weights": {
-          "trade": 2,
-          "S": 1,
-          "school": -1
-        }
+        "weights": { "trade": 2, "S": 1, "school": -1 }
       }
     ]
   },
@@ -1176,35 +808,19 @@
     "responses": [
       {
         "text": "I'm most energized when I'm building or fixing physical things",
-        "weights": {
-          "hands": 3,
-          "trade": 2,
-          "S": 2
-        }
+        "weights": { "hands": 3, "trade": 2, "S": 2 }
       },
       {
         "text": "I like the idea of designing systems and solving abstract problems",
-        "weights": {
-          "T": 2,
-          "N": 1,
-          "eng": 1
-        }
+        "weights": { "T": 2, "N": 1, "eng": 1 }
       },
       {
         "text": "I want to understand how something works at the deepest level possible",
-        "weights": {
-          "T": 2,
-          "N": 2,
-          "cs": 1,
-          "school": 2
-        }
+        "weights": { "T": 2, "N": 2, "cs": 1, "school": 2 }
       },
       {
-        "text": "I care most about who my work helps \u2014 people or planet",
-        "weights": {
-          "impact": 3,
-          "F": 2
-        }
+        "text": "I care most about who my work helps — people or planet",
+        "weights": { "impact": 3, "F": 2 }
       }
     ]
   },
@@ -1213,36 +829,23 @@
     "section": "content",
     "badge": "badge-content",
     "label": "interest",
-    "question": "How important is it to you that your job involves coming up with genuinely new ideas \u2014 designs, methods, or solutions that haven't been done before?",
+    "question": "How important is it to you that your job involves coming up with genuinely new ideas — designs, methods, or solutions that haven't been done before?",
     "responses": [
       {
-        "text": "Essential \u2014 I want to invent and create, not just execute",
-        "weights": {
-          "creative": 4,
-          "N": 2,
-          "risk": 1
-        }
+        "text": "Essential — I want to invent and create, not just execute",
+        "weights": { "creative": 4, "N": 2, "risk": 1 }
       },
       {
-        "text": "Pretty important \u2014 I want real creative input, even if not every day",
-        "weights": {
-          "creative": 3,
-          "N": 1
-        }
+        "text": "Pretty important — I want real creative input, even if not every day",
+        "weights": { "creative": 3, "N": 1 }
       },
       {
-        "text": "Somewhat \u2014 I like occasional novelty but don't need it constantly",
-        "weights": {
-          "creative": 1
-        }
+        "text": "Somewhat — I like occasional novelty but don't need it constantly",
+        "weights": { "creative": 1 }
       },
       {
-        "text": "Not important \u2014 I'd rather master a proven craft than reinvent things",
-        "weights": {
-          "creative": -1,
-          "S": 2,
-          "risk": -1
-        }
+        "text": "Not important — I'd rather master a proven craft than reinvent things",
+        "weights": { "creative": -1, "S": 2, "risk": -1 }
       }
     ]
   },
@@ -1254,28 +857,20 @@
     "question": "How important is it to you that strangers find your job impressive or exciting?",
     "responses": [
       {
-        "text": "Very important \u2014 I want people to think my job is cool",
-        "weights": {
-          "cool": 4
-        }
+        "text": "Very important — I want people to think my job is cool",
+        "weights": { "cool": 4 }
       },
       {
-        "text": "Somewhat \u2014 it'd be nice but it's not a requirement",
-        "weights": {
-          "cool": 2
-        }
+        "text": "Somewhat — it'd be nice but it's not a requirement",
+        "weights": { "cool": 2 }
       },
       {
-        "text": "Not really \u2014 I care more about what the work actually is",
-        "weights": {
-          "cool": 1
-        }
+        "text": "Not really — I care more about what the work actually is",
+        "weights": { "cool": 1 }
       },
       {
-        "text": "Totally unimportant \u2014 I don't care what anyone thinks",
-        "weights": {
-          "cool": 0
-        }
+        "text": "Totally unimportant — I don't care what anyone thinks",
+        "weights": { "cool": 0 }
       }
     ]
   },
@@ -1288,32 +883,19 @@
     "responses": [
       {
         "text": "I work on laser weapons systems for the military",
-        "weights": {
-          "cool": 4,
-          "harm_ok": 2,
-          "risk": 3
-        }
+        "weights": { "cool": 4, "harm_ok": 2, "risk": 3, "elec": 1, "eng": 1 }
       },
       {
-        "text": "I'm a plumber \u2014 best job security in the world",
-        "weights": {
-          "cool": 0,
-          "risk": -2
-        }
+        "text": "I'm a plumber — best job security in the world",
+        "weights": { "cool": 0, "risk": -2, "trade": 2, "hands": 1, "school": -1 }
       },
       {
         "text": "I'm a software engineer at a tech company",
-        "weights": {
-          "cool": 2,
-          "risk": 1
-        }
+        "weights": { "cool": 2, "risk": 1, "cs": 1 }
       },
       {
         "text": "I do building inspections and code compliance",
-        "weights": {
-          "cool": 1,
-          "risk": -1
-        }
+        "weights": { "cool": 1, "risk": -1, "eng": 1 }
       }
     ]
   },
@@ -1325,33 +907,20 @@
     "question": "How do you feel about a career field that changes so fast you'd need to keep learning new things every year just to stay relevant?",
     "responses": [
       {
-        "text": "That's exciting \u2014 I love being on the frontier of what's new",
-        "weights": {
-          "risk": 4,
-          "N": 2,
-          "P": 1
-        }
+        "text": "That's exciting — I love being on the frontier of what's new",
+        "weights": { "risk": 4, "N": 2, "P": 1 }
       },
       {
-        "text": "That's fine \u2014 I enjoy learning as fields evolve",
-        "weights": {
-          "risk": 2
-        }
+        "text": "That's fine — I enjoy learning as fields evolve",
+        "weights": { "risk": 2 }
       },
       {
-        "text": "That sounds exhausting \u2014 I'd rather master one thing deeply",
-        "weights": {
-          "risk": 0,
-          "S": 1
-        }
+        "text": "That sounds exhausting — I'd rather master one thing deeply",
+        "weights": { "risk": 0, "S": 1 }
       },
       {
-        "text": "That's a dealbreaker \u2014 I want skills that stay valuable for decades",
-        "weights": {
-          "risk": -3,
-          "S": 2,
-          "J": 2
-        }
+        "text": "That's a dealbreaker — I want skills that stay valuable for decades",
+        "weights": { "risk": -4, "S": 2, "J": 2 }
       }
     ]
   },
@@ -1364,37 +933,19 @@
     "responses": [
       {
         "text": "Reverse-engineering a piece of military hardware no one has cracked before",
-        "weights": {
-          "risk": 4,
-          "cs": 1,
-          "harm_ok": 2,
-          "eng": 1
-        }
+        "weights": { "risk": 4, "cs": 1, "harm_ok": 2, "eng": 1 }
       },
       {
         "text": "Perfectly rebuilding a classic car engine from scratch",
-        "weights": {
-          "trade": 3,
-          "hands": 4,
-          "S": 2,
-          "risk": -1
-        }
+        "weights": { "trade": 3, "hands": 4, "S": 2, "risk": -1 }
       },
       {
         "text": "Optimizing a machine learning model to set a new benchmark",
-        "weights": {
-          "cs": 3,
-          "risk": 3,
-          "N": 2
-        }
+        "weights": { "cs": 3, "risk": 3, "N": 2 }
       },
       {
         "text": "Designing a building that becomes a city landmark",
-        "weights": {
-          "eng": 2,
-          "creative": 4,
-          "risk": 0
-        }
+        "weights": { "eng": 2, "creative": 4, "risk": 0 }
       }
     ]
   },
@@ -1406,32 +957,20 @@
     "question": "Realistically, how much do you enjoy sitting down and reading a textbook or studying complex theory?",
     "responses": [
       {
-        "text": "I genuinely love it \u2014 deep theoretical knowledge is what I'm after",
-        "weights": {
-          "school": 4,
-          "N": 2,
-          "T": 1
-        }
+        "text": "I genuinely love it — deep theoretical knowledge is what I'm after",
+        "weights": { "school": 4, "N": 2, "T": 1 }
       },
       {
-        "text": "I can handle it \u2014 I'll do the studying to reach the career I want",
-        "weights": {
-          "school": 2
-        }
+        "text": "I can handle it — I'll do the studying to reach the career I want",
+        "weights": { "school": 2 }
       },
       {
         "text": "It's not my favorite, but I can push through",
-        "weights": {
-          "school": -1
-        }
+        "weights": { "school": -1 }
       },
       {
-        "text": "I strongly dislike it \u2014 I learn by doing, not by reading",
-        "weights": {
-          "school": -3,
-          "S": 2,
-          "hands": 1
-        }
+        "text": "I strongly dislike it — I learn by doing, not by reading",
+        "weights": { "school": -3, "S": 2, "hands": 1 }
       }
     ]
   },
@@ -1444,36 +983,19 @@
     "responses": [
       {
         "text": "A PhD in a cutting-edge research field like quantum computing or materials science",
-        "weights": {
-          "school": 5,
-          "N": 3,
-          "risk": 2,
-          "cs": 1,
-          "eng": 1
-        }
+        "weights": { "school": 5, "N": 3, "risk": 2, "cs": 1, "eng": 1 }
       },
       {
         "text": "A four-year engineering degree followed by a real-world industry job",
-        "weights": {
-          "school": 2,
-          "eng": 2
-        }
+        "weights": { "school": 2, "eng": 2 }
       },
       {
         "text": "A two-year trade program that gets you working fast and earning quickly",
-        "weights": {
-          "school": -2,
-          "trade": 2,
-          "hands": 2
-        }
+        "weights": { "school": -2, "trade": 2, "hands": 2 }
       },
       {
-        "text": "Self-taught and freelance \u2014 no formal credentials at all",
-        "weights": {
-          "school": -3,
-          "creative": 2,
-          "P": 2
-        }
+        "text": "Self-taught and freelance — no formal credentials at all",
+        "weights": { "school": -3, "creative": 2, "P": 2 }
       }
     ]
   },
@@ -1485,35 +1007,20 @@
     "question": "Which part of building a robot sounds most appealing to you?",
     "responses": [
       {
-        "text": "Programming its AI \u2014 making it think and decide on its own",
-        "weights": {
-          "cs": 3,
-          "N": 2,
-          "risk": 2
-        }
+        "text": "Programming its AI — making it think and decide on its own",
+        "weights": { "cs": 3, "N": 2, "risk": 2 }
       },
       {
-        "text": "Wiring the electronics \u2014 connecting sensors, motors, and control boards",
-        "weights": {
-          "elec": 3,
-          "hands": 2
-        }
+        "text": "Wiring the electronics — connecting sensors, motors, and control boards",
+        "weights": { "elec": 3, "hands": 2 }
       },
       {
         "text": "Machining and assembling the physical frame and mechanical parts",
-        "weights": {
-          "trade": 2,
-          "hands": 3,
-          "S": 2
-        }
+        "weights": { "trade": 2, "hands": 3, "S": 2 }
       },
       {
         "text": "Designing the whole system architecture from concept to prototype",
-        "weights": {
-          "eng": 3,
-          "N": 2,
-          "creative": 2
-        }
+        "weights": { "eng": 3, "N": 2, "creative": 2 }
       }
     ]
   },
@@ -1522,36 +1029,23 @@
     "section": "content",
     "badge": "badge-content",
     "label": "interest",
-    "question": "How do you feel about the idea that your work might directly affect whether people live or die \u2014 like designing aircraft safety systems or medical devices?",
+    "question": "How do you feel about the idea that your work might directly affect whether people live or die — like designing aircraft safety systems or medical devices?",
     "responses": [
       {
         "text": "That sense of responsibility is exactly what I want",
-        "weights": {
-          "impact": 3,
-          "harm_ok": 1,
-          "risk": 2,
-          "J": 1
-        }
+        "weights": { "impact": 3, "risk": 2, "J": 1 }
       },
       {
-        "text": "It's serious but I'm up for it \u2014 high stakes motivate me",
-        "weights": {
-          "impact": 2,
-          "risk": 1
-        }
+        "text": "It's serious but I'm up for it — high stakes motivate me",
+        "weights": { "impact": 2, "risk": 1 }
       },
       {
         "text": "I'd rather work on things where the consequences are lower",
-        "weights": {
-          "risk": -1
-        }
+        "weights": { "risk": -1 }
       },
       {
         "text": "That level of pressure would be too stressful for me",
-        "weights": {
-          "risk": -2,
-          "harm_ok": -1
-        }
+        "weights": { "risk": -2 }
       }
     ]
   },
@@ -1563,34 +1057,20 @@
     "question": "Which describes how you feel about working in a field that has been around for 100 years versus one that barely exists yet?",
     "responses": [
       {
-        "text": "I'd rather be in a proven field \u2014 mastery and stability matter more than novelty",
-        "weights": {
-          "risk": -3,
-          "S": 2,
-          "J": 2
-        }
+        "text": "I'd rather be in a proven field — mastery and stability matter more than novelty",
+        "weights": { "risk": -4, "S": 2, "J": 2 }
       },
       {
         "text": "I like fields that are mature but still evolving at a comfortable pace",
-        "weights": {
-          "risk": -1
-        }
+        "weights": { "risk": -2 }
       },
       {
-        "text": "I want to be in a field that didn't exist 5 years ago \u2014 frontier or bust",
-        "weights": {
-          "risk": 3,
-          "N": 2
-        }
+        "text": "I want to be in a field that didn't exist 5 years ago — frontier or bust",
+        "weights": { "risk": 3, "N": 2 }
       },
       {
-        "text": "I actively want to create the field myself \u2014 pure research or startup territory",
-        "weights": {
-          "risk": 4,
-          "N": 3,
-          "creative": 2,
-          "school": 2
-        }
+        "text": "I actively want to create the field myself — pure research or startup territory",
+        "weights": { "risk": 4, "N": 3, "creative": 2, "school": 2 }
       }
     ]
   },
@@ -1599,38 +1079,323 @@
     "section": "content",
     "badge": "badge-content",
     "label": "interest",
-    "question": "Finally \u2014 if you could only pick ONE of these words to describe your ideal career, which would it be?",
+    "question": "Finally — if you could only pick ONE of these words to describe your ideal career, which would it be?",
     "responses": [
       {
         "text": "Builder",
-        "weights": {
-          "hands": 2,
-          "trade": 2,
-          "S": 1
-        }
+        "weights": { "hands": 2, "trade": 2, "S": 1 }
       },
       {
         "text": "Solver",
-        "weights": {
-          "T": 2,
-          "cs": 1,
-          "eng": 1
-        }
+        "weights": { "T": 2, "cs": 1, "eng": 1 }
       },
       {
         "text": "Creator",
-        "weights": {
-          "creative": 3,
-          "N": 2
-        }
+        "weights": { "creative": 3, "N": 2 }
       },
       {
         "text": "Protector",
-        "weights": {
-          "impact": 3,
-          "F": 2,
-          "harm_ok": -1
-        }
+        "weights": { "impact": 3, "F": 2 }
+      }
+    ]
+  },
+  {
+    "id": "q45",
+    "section": "lifestyle",
+    "badge": "badge-lifestyle",
+    "label": "lifestyle",
+    "question": "How do you feel about jobs that require constant coordination with other people — regular meetings, shared deliverables, depending on teammates to do your job?",
+    "responses": [
+      {
+        "text": "That's ideal — I thrive when I'm tightly connected to a team",
+        "weights": { "team": 4, "E": 2 }
+      },
+      {
+        "text": "I like collaboration but also need focused solo time",
+        "weights": { "team": 2, "E": 1 }
+      },
+      {
+        "text": "I'd rather check in occasionally and mostly work independently",
+        "weights": { "team": 1, "I": 1 }
+      },
+      {
+        "text": "I strongly prefer to own my work solo — meetings slow me down",
+        "weights": { "team": 0, "I": 2 }
+      }
+    ]
+  },
+  {
+    "id": "q46",
+    "section": "lifestyle",
+    "badge": "badge-lifestyle",
+    "label": "lifestyle",
+    "question": "A friend calls at 9 PM on a Tuesday saying their company's server is down and needs your help immediately. What's your gut reaction?",
+    "responses": [
+      {
+        "text": "That's fine — if work needs me, I show up",
+        "weights": { "hours": 4, "team": 2 }
+      },
+      {
+        "text": "I'd help this once, but I'd need it to be the exception, not the rule",
+        "weights": { "hours": 2 }
+      },
+      {
+        "text": "I'd feel guilty saying no, but I really value my off time",
+        "weights": { "hours": 1 }
+      },
+      {
+        "text": "Hard no — evenings are mine. I'd point them to someone else",
+        "weights": { "hours": 0 }
+      }
+    ]
+  },
+  {
+    "id": "q47",
+    "section": "lifestyle",
+    "badge": "badge-lifestyle",
+    "label": "lifestyle",
+    "question": "Some high-paying careers — surgery, investment banking, early-stage startups — routinely demand 60-80 hour weeks for years. How do you feel about that trade-off?",
+    "responses": [
+      {
+        "text": "Worth it — I'll outwork everyone else to get where I want to go",
+        "weights": { "hours": 4, "money": 2, "risk": 1 }
+      },
+      {
+        "text": "I could handle it for a few years if the payoff is real",
+        "weights": { "hours": 3, "money": 1 }
+      },
+      {
+        "text": "I want to work hard but not at the expense of everything else",
+        "weights": { "hours": 2 }
+      },
+      {
+        "text": "That sounds like a nightmare — I'm not trading my life for a paycheck",
+        "weights": { "hours": 0, "money": -1 }
+      }
+    ]
+  },
+  {
+    "id": "q48",
+    "section": "lifestyle",
+    "badge": "badge-lifestyle",
+    "label": "lifestyle",
+    "question": "How do you feel about a job where your success depends heavily on other people doing their part well?",
+    "responses": [
+      {
+        "text": "I love it — shared ownership and shared wins are motivating",
+        "weights": { "team": 4, "E": 1 }
+      },
+      {
+        "text": "That's fine — I'm used to working within a team structure",
+        "weights": { "team": 2 }
+      },
+      {
+        "text": "I prefer to control my own output — dependencies are a risk",
+        "weights": { "team": 1, "I": 1 }
+      },
+      {
+        "text": "I'd find that stressful — I want to succeed or fail on my own merits",
+        "weights": { "team": 0, "I": 2 }
+      }
+    ]
+  },
+  {
+    "id": "q49",
+    "section": "lifestyle",
+    "badge": "badge-lifestyle",
+    "label": "lifestyle",
+    "question": "Some careers in defense, oil & gas, or weapons manufacturing offer exceptional pay and job stability, but their end use causes harm or controversy. How comfortable are you with that?",
+    "responses": [
+      {
+        "text": "Completely comfortable — I separate my work from its downstream use",
+        "weights": { "harm_ok": 4 }
+      },
+      {
+        "text": "Mostly fine — I'd need to believe in some aspect of the mission",
+        "weights": { "harm_ok": 3 }
+      },
+      {
+        "text": "Uneasy — I'd only do it if I had no better option",
+        "weights": { "harm_ok": 1 }
+      },
+      {
+        "text": "Not for me — I couldn't separate myself from those outcomes",
+        "weights": { "harm_ok": 0 }
+      }
+    ]
+  },
+  {
+    "id": "q50",
+    "section": "lifestyle",
+    "badge": "badge-lifestyle",
+    "label": "lifestyle",
+    "question": "Would you rather work in a role where you're measured by your individual output, or one where the team's collective result is what matters?",
+    "responses": [
+      {
+        "text": "Individual — I want my contribution to be clearly mine",
+        "weights": { "team": 0, "I": 1 }
+      },
+      {
+        "text": "Mostly individual, with some team accountability",
+        "weights": { "team": 1 }
+      },
+      {
+        "text": "Mostly team — I like shared goals even if roles are clear",
+        "weights": { "team": 2 }
+      },
+      {
+        "text": "Full team — we win or lose together and I prefer it that way",
+        "weights": { "team": 3, "E": 1 }
+      }
+    ]
+  },
+  {
+    "id": "q51",
+    "section": "lifestyle",
+    "badge": "badge-lifestyle",
+    "label": "lifestyle",
+    "question": "Imagine your perfect Friday at work. Which sounds best?",
+    "responses": [
+      {
+        "text": "Deep focus on a hard problem — headphones in, no interruptions",
+        "weights": { "I": 2, "team": 0, "hours": 2 }
+      },
+      {
+        "text": "A productive team sprint — problem-solving together toward a deadline",
+        "weights": { "team": 3, "E": 1, "hours": 2 }
+      },
+      {
+        "text": "Wrapping up a satisfying week and leaving at a reasonable hour",
+        "weights": { "hours": 1, "J": 1 }
+      },
+      {
+        "text": "Something completely different than what I did Monday — variety keeps me sharp",
+        "weights": { "P": 2, "creative": 1 }
+      }
+    ]
+  },
+  {
+    "id": "q52",
+    "section": "lifestyle",
+    "badge": "badge-lifestyle",
+    "label": "lifestyle",
+    "question": "When you picture your career in 15 years, how important is it that other people — strangers, people at parties, your extended family — think your job sounds impressive?",
+    "responses": [
+      {
+        "text": "Very — I want a title or field that commands respect and turns heads",
+        "weights": { "cool": 4, "money": 1 }
+      },
+      {
+        "text": "Somewhat — I'd like people to think it's interesting, not just decent",
+        "weights": { "cool": 3 }
+      },
+      {
+        "text": "A little — it's nice but it genuinely doesn't drive my decisions",
+        "weights": { "cool": 1 }
+      },
+      {
+        "text": "Not at all — I choose work that satisfies me regardless of how it sounds",
+        "weights": { "cool": 0 }
+      }
+    ]
+  },
+  {
+    "id": "q53",
+    "section": "lifestyle",
+    "badge": "badge-lifestyle",
+    "label": "lifestyle",
+    "question": "Two careers pay identically. Career A is glamorous and well-known — people always react with \"wow, that's so cool.\" Career B is obscure but technically fascinating — most people don't understand what you do. Which appeals more?",
+    "responses": [
+      {
+        "text": "Career A — the social recognition matters to me",
+        "weights": { "cool": 4 }
+      },
+      {
+        "text": "Leaning A — I'd enjoy the recognition, even if it's not everything",
+        "weights": { "cool": 2 }
+      },
+      {
+        "text": "Leaning B — the work itself is more important than how it looks",
+        "weights": { "cool": 1 }
+      },
+      {
+        "text": "Career B — I'd actually find it satisfying that most people don't get it",
+        "weights": { "cool": 0, "I": 1 }
+      }
+    ]
+  },
+  {
+    "id": "q54",
+    "section": "content",
+    "badge": "badge-content",
+    "label": "interest",
+    "question": "How do you feel about a career that is genuinely unglamorous — the work is essential, the pay is solid, but nobody at a dinner party will ever think it's exciting?",
+    "responses": [
+      {
+        "text": "Fine by me — prestige means nothing if the work is good",
+        "weights": { "cool": 0 }
+      },
+      {
+        "text": "Acceptable — I'd rather have great work than a flashy title",
+        "weights": { "cool": 1 }
+      },
+      {
+        "text": "I'd want at least some level of recognition for what I do",
+        "weights": { "cool": 2 }
+      },
+      {
+        "text": "Hard pass — I need a career I can be visibly proud of",
+        "weights": { "cool": 4 }
+      }
+    ]
+  },
+  {
+    "id": "q55",
+    "section": "content",
+    "badge": "badge-content",
+    "label": "interest",
+    "question": "A stable, predictable career — same location, same hours, well-understood work — vs. a volatile one where every year looks different. Which fits you better?",
+    "responses": [
+      {
+        "text": "Stable, definitely — I want to build a life around predictable income and hours",
+        "weights": { "risk": -3, "J": 2, "hours": 3 }
+      },
+      {
+        "text": "Mostly stable — some variety is fine but I don't want chaos",
+        "weights": { "risk": -2, "J": 1 }
+      },
+      {
+        "text": "Leaning volatile — I'd get bored doing the same thing year after year",
+        "weights": { "risk": 2, "P": 1 }
+      },
+      {
+        "text": "Volatile all the way — unpredictability keeps me sharp",
+        "weights": { "risk": 3, "P": 2 }
+      }
+    ]
+  },
+  {
+    "id": "q56",
+    "section": "content",
+    "badge": "badge-content",
+    "label": "interest",
+    "question": "How do you feel about careers where physical safety is genuinely never a concern — no machinery, no heights, no field work, just clean office or remote work?",
+    "responses": [
+      {
+        "text": "That's ideal — I want my biggest physical risk to be a bad chair",
+        "weights": { "risk": -3, "outdoors": -1, "hands": -1 }
+      },
+      {
+        "text": "Preferred — I don't seek out physical risk",
+        "weights": { "risk": -1, "outdoors": -1 }
+      },
+      {
+        "text": "Neutral — physical risk doesn't factor into my career thinking",
+        "weights": {}
+      },
+      {
+        "text": "That sounds a bit boring — I like the idea of working somewhere with real stakes",
+        "weights": { "risk": 2, "outdoors": 1 }
       }
     ]
   }
