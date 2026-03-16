@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Compass — Personality & Career Test</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --color-bg:#ffffff;
+  --color-bg-secondary:#f5f4f0;
+  --color-text-primary:#1a1a1a;
+  --color-text-secondary:#6b6b6b;
+  --color-text-tertiary:#9a9a9a;
+  --color-border-light:rgba(0,0,0,0.1);
+  --color-border-med:rgba(0,0,0,0.18);
+  --color-accent:#534AB7;
+  --color-accent-dark:#3C3489;
+  --color-accent-bg:#EEEDFE;
+  --color-accent-text:#26215C;
+  --radius-md:8px;
+  --radius-lg:12px;
+}
+body{
+  font-family:'Georgia', serif;
+  background:#f9f8f4;
+  color:var(--color-text-primary);
+  min-height:100vh;
+  padding:2rem 1rem 4rem;
+}
+#app{max-width:700px;margin:0 auto}
+.header{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:0.5px solid var(--color-border-light)}
+h1{
+  font-size:28px;
+  font-weight:400;
+  font-style:italic;
+  color:var(--color-text-primary);
+  margin-bottom:6px;
+  letter-spacing:-0.02em;
+}
+.sub{font-size:14px;color:var(--color-text-secondary);font-family:'Georgia',serif;font-style:normal}
+.progress-bar{height:3px;background:var(--color-border-light);border-radius:4px;margin-bottom:1.8rem;overflow:hidden}
+.progress-fill{height:100%;background:var(--color-accent);border-radius:4px;transition:width 0.4s ease}
+.section-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-family:'Georgia',serif;font-style:normal}
+.badge-mbti{background:#EEEDFE;color:#3C3489}
+.badge-lifestyle{background:#E1F5EE;color:#085041}
+.badge-content{background:#FAEEDA;color:#633806}
+.q-num{font-size:11px;color:var(--color-text-tertiary);margin-bottom:5px;font-family:'Georgia',serif;letter-spacing:0.08em;font-style:normal}
+.q-text{font-size:18px;font-weight:400;color:var(--color-text-primary);margin-bottom:1.4rem;line-height:1.55;font-style:italic}
+.options{display:flex;flex-direction:column;gap:8px;margin-bottom:1.8rem}
+.opt{
+  padding:13px 18px;
+  border:0.5px solid var(--color-border-light);
+  border-radius:var(--radius-md);
+  cursor:pointer;
+  font-size:14px;
+  color:var(--color-text-primary);
+  background:#fff;
+  transition:border-color 0.15s,background 0.15s;
+  text-align:left;
+  line-height:1.5;
+  font-family:'Georgia',serif;
+}
+.opt:hover{border-color:var(--color-border-med);background:#fafaf7}
+.opt.selected{border-color:var(--color-accent);background:var(--color-accent-bg);color:var(--color-accent-text)}
+.nav{display:flex;gap:10px;align-items:center}
+.btn{
+  padding:10px 22px;
+  border-radius:var(--radius-md);
+  border:0.5px solid var(--color-border-med);
+  background:#fff;
+  color:var(--color-text-primary);
+  font-size:14px;
+  cursor:pointer;
+  font-family:'Georgia',serif;
+  font-style:italic;
+}
+.btn:hover{background:var(--color-bg-secondary)}
+.btn.primary{background:var(--color-accent);border-color:var(--color-accent);color:#fff;font-style:normal;font-weight:700;letter-spacing:0.02em}
+.btn.primary:hover{background:var(--color-accent-dark)}
+.btn:disabled{opacity:0.35;cursor:not-allowed}
+#results{display:none}
+.result-card{
+  background:#fff;
+  border:0.5px solid var(--color-border-light);
+  border-radius:var(--radius-lg);
+  padding:1.4rem 1.5rem;
+  margin-bottom:12px;
+}
+.job-rank{font-size:11px;font-weight:700;color:var(--color-text-tertiary);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;font-family:'Georgia',serif}
+.job-title{font-size:20px;font-weight:400;font-style:italic;color:var(--color-text-primary);margin-bottom:6px}
+.job-field{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 9px;border-radius:10px;display:inline-block;margin-bottom:10px}
+.field-eng{background:#E6F1FB;color:#0C447C}
+.field-trade{background:#FAEEDA;color:#633806}
+.field-cs{background:#EAF3DE;color:#27500A}
+.field-elec{background:#EEEDFE;color:#3C3489}
+.job-why{font-size:13px;color:var(--color-text-secondary);line-height:1.7;font-family:'Georgia',serif}
+.mbti-box{
+  background:#fff;
+  border:0.5px solid var(--color-border-light);
+  border-radius:var(--radius-lg);
+  padding:1.2rem 1.5rem;
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  gap:1.5rem;
+}
+.mbti-type{font-size:42px;font-weight:400;font-style:italic;color:var(--color-accent);letter-spacing:0.06em}
+.mbti-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-tertiary);margin-bottom:2px}
+.mbti-name{font-size:16px;font-style:italic;color:var(--color-text-secondary)}
+.divider{height:0.5px;background:var(--color-border-light);margin:1.5rem 0}
+.score-row{margin-bottom:1.2rem}
+.bar-chart{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem}
+.bar-row{display:grid;grid-template-columns:110px 1fr 48px;align-items:center;gap:10px}
+.bar-label{font-size:12px;color:var(--color-text-secondary);font-family:'Georgia',serif;font-style:italic;text-align:right}
+.bar-track{height:14px;background:var(--color-bg-secondary);border-radius:7px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:7px;transition:width 0.6s ease}
+.bar-pct{font-size:12px;color:var(--color-text-tertiary);font-family:'Georgia',serif;font-style:italic;min-width:36px}
+.bar-center-line{position:absolute;left:50%;top:0;width:1px;height:100%;background:rgba(0,0,0,0.12)}
+.job-desc{font-size:13px;color:var(--color-text-secondary);line-height:1.6;font-family:'Georgia',serif;font-style:italic;margin-bottom:8px;border-left:2px solid var(--color-border-light);padding-left:10px}
+.q-counter-text{font-size:13px;color:var(--color-text-tertiary);margin-left:auto;font-family:'Georgia',serif;font-style:italic}
+.section-intro{font-size:12px;color:var(--color-text-tertiary);font-style:italic;margin-bottom:1rem;padding:8px 12px;border-left:2px solid var(--color-border-light);line-height:1.5}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="header">
+    <h1>career compass</h1>
+    <p class="sub">36 questions &middot; discover your personality type + top 10 career paths in engineering, trades, computer science &amp; electronics</p>
+  </div>
+
+  <div id="quiz-section">
+    <div class="progress-bar"><div class="progress-fill" id="prog" style="width:3%"></div></div>
+    <div id="q-container"></div>
+    <div class="nav">
+      <button class="btn" id="back-btn" onclick="goBack()" disabled>&#8592; back</button>
+      <button class="btn primary" id="next-btn" onclick="goNext()" disabled>next</button>
+      <span class="q-counter-text" id="q-counter">1 / 36</span>
+    </div>
+  </div>
+
+  <div id="results"></div>
+</div>
+
+<script>
+const questions=[
+{section:"mbti",badge:"badge-mbti",label:"personality",q:"You've got a free Saturday with no plans. What sounds most appealing?",opts:["Recharge at home alone, maybe tinkering on a project","Catch up with a few close friends","Go out and meet new people or join a group event","A mix — some solo time, then hanging out later"],scores:[{E:-2},{E:-1},{E:2},{E:1}]},
+{section:"mbti",badge:"badge-mbti",label:"personality",q:"When solving a problem, you tend to:",opts:["Focus on the facts and step-by-step details","Look for patterns and think about the bigger picture","Start with what feels right, then check the logic","Jump between approaches and see what sticks"],scores:[{S:2},{N:2},{F:1,N:1},{P:1}]},
+{section:"mbti",badge:"badge-mbti",label:"personality",q:"Which describes how you make decisions?",opts:["I analyze the pros and cons logically","I go with my gut or what feels fair to people","I make a plan and commit to it","I keep options open until I have to decide"],scores:[{T:2},{F:2},{J:2},{P:2}]},
+{section:"mbti",badge:"badge-mbti",label:"personality",q:"When starting a new project, you prefer to:",opts:["Have a clear plan with defined steps","Dive in and figure it out along the way","Understand how it fits the bigger picture first","Focus on the practical tools and resources needed"],scores:[{J:2,S:1},{P:2},{N:2},{S:2,J:1}]},
+{section:"mbti",badge:"badge-mbti",label:"personality",q:"After a long day working with people, you feel:",opts:["Energized — I love being around people","Drained — I need quiet time to recover","Depends on the people, but usually okay","About the same as when I started"],scores:[{E:2},{I:2},{E:1},{I:1}]},
+{section:"lifestyle",badge:"badge-lifestyle",label:"lifestyle",q:"When it comes to salary, how honest are you being with yourself?",opts:["Money is my top priority — I want to earn as much as possible","Money matters a lot, but it's not everything","I want to be comfortable, but I'd take less pay for work I love","I honestly don't care much about money"],scores:[{money:4},{money:3},{money:1},{money:0}]},
+{section:"lifestyle",badge:"badge-lifestyle",label:"lifestyle",q:"Some jobs — like defense, oil, or finance — pay very well but may indirectly cause harm (to the environment, to people, etc). How do you feel about that?",opts:["That doesn't bother me — it's part of how the world works","I could do it if the pay is exceptional","I'd feel uncomfortable and would rather avoid it","No way — I'd rather earn less doing something I believe in"],scores:[{harm_ok:4},{harm_ok:3},{harm_ok:1},{harm_ok:0}]},
+{section:"lifestyle",badge:"badge-lifestyle",label:"lifestyle",q:"Making a concrete, positive impact on the world through your work is:",opts:["Essential — it's the whole point","Very important to me","Nice to have, but not a dealbreaker","Honestly not that high on my list"],scores:[{impact:4},{impact:3},{impact:1},{impact:0}]},
+{section:"lifestyle",badge:"badge-lifestyle",label:"lifestyle",q:"Imagine two paths: Path A pays $120k but you sit at a desk all day. Path B pays $65k but you're out in the world, working with your hands or helping people directly. Which do you lean toward?",opts:["Path A — the money is worth it","Leaning A, but I'd want some variety","Leaning B, even with less pay","Path B — I'd go crazy sitting at a desk"],scores:[{money:3,outdoors:-1},{money:2,outdoors:1},{outdoors:2,money:1},{outdoors:3,money:-1}]},
+{section:"lifestyle",badge:"badge-lifestyle",label:"lifestyle",q:"How do you feel about working long or irregular hours?",opts:["Totally fine — I'll work whatever it takes","Okay sometimes, but I want a real life outside work","I prefer stable, predictable hours","Long hours are a dealbreaker for me"],scores:[{hours:4},{hours:2},{hours:1},{hours:0}]},
+{section:"lifestyle",badge:"badge-lifestyle",label:"lifestyle",q:"What kind of work environment sounds most like you?",opts:["Outdoors or on a job site, doing physical work","In a workshop or lab — hands-on but controlled","Office-based, focusing on analysis or design","Flexible — some of each works for me"],scores:[{outdoors:4,hands:3},{hands:4,outdoors:1},{hands:0,outdoors:0},{hands:2,outdoors:2}]},
+{section:"lifestyle",badge:"badge-lifestyle",label:"lifestyle",q:"Working alone vs. working with a team — what's your honest preference?",opts:["I do my best work completely solo","I prefer mostly solo with occasional collaboration","I like being part of a team but having my own tasks","The more collaboration the better"],scores:[{team:0,I:2},{team:1,I:1},{team:2,E:1},{team:3,E:2}]},
+{section:"lifestyle",badge:"badge-lifestyle",label:"lifestyle",q:"Some jobs mean being away from home — on oil rigs, military deployments, or remote construction sites — sometimes for weeks or months. How do you feel about that?",opts:["That actually sounds exciting to me","I could handle it if the pay is worth it","I'd do it short-term but not long-term","That's not something I'm willing to do"],scores:[{travel:4,outdoors:2,hours:2},{travel:3,money:1},{travel:1},{travel:0}]},
+{section:"lifestyle",badge:"badge-lifestyle",label:"lifestyle",q:"How important is job security and predictability to you?",opts:["Very important — I want stable, consistent work","Somewhat important, but I'd take some risk for more reward","I'm comfortable with uncertainty if the upside is high","I actually prefer environments that change a lot"],scores:[{J:2},{J:1},{P:1},{P:2}]},
+{section:"lifestyle",badge:"badge-lifestyle",label:"lifestyle",q:"What would make you proudest when describing your job to someone?",opts:["The technical skill or precision involved","The positive impact it has on people or the planet","How well it pays or how competitive the field is","The creativity or originality of what I build"],scores:[{T:1,S:1},{impact:2,F:1},{money:1},{creative:2,N:1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"Which of these sounds most interesting to you?",opts:["Designing and building physical machines or structures","Writing code and building software systems","Installing, maintaining, or repairing equipment in the field","Understanding how and why materials behave the way they do"],scores:[{hands:2,eng:2},{cs:2},{hands:2,trade:2},{S:1,eng:1,mat:1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"Imagine you're in a robotics class and the robot isn't working. What role do you naturally take?",opts:["Debug the code — I want to find the logic error","Inspect the physical components — something must be loose or broken","Try both and figure out which layer the problem is in","Suggest a new approach and redesign the system"],scores:[{cs:2,T:1},{hands:2,S:1},{T:1,S:1},{N:2,creative:1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"Which field sounds most exciting to you?",opts:["Aerospace — rockets, satellites, aircraft","Skilled trades — welding, woodworking, construction","Software & computers — apps, AI, systems programming","Electronics — circuits, microcontrollers, embedded devices"],scores:[{aero:3,eng:2},{trade:3,hands:2},{cs:3},{elec:3,hands:1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"You have to pick a college-level subject to study for a year. You pick:",opts:["Structural engineering and physics","Computer science and algorithms","Electrical circuits and signal processing","Wood/metal shop and fabrication techniques"],scores:[{eng:2,S:1},{cs:2,N:1},{elec:2,T:1},{trade:2,hands:2}]},
+{section:"content",badge:"badge-content",label:"interest",q:"Which end product would you be most proud to say you helped build?",opts:["A bridge, building, or vehicle that thousands of people use","An app or platform used by millions of people","A custom piece of furniture, metalwork, or structure you made by hand","An electronic device or circuit board powering something important"],scores:[{eng:2,impact:1},{cs:2,impact:1},{trade:2,hands:2,creative:1},{elec:2,hands:1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"How do you feel about working with dangerous materials or in physically risky environments (heights, high voltage, heavy machinery)?",opts:["Doesn't bother me — it's part of the job","A little nervous but I'd adapt","I'd prefer to stay away from physical risk","That kind of environment genuinely appeals to me"],scores:[{harm_ok:2,outdoors:1},{outdoors:1},{outdoors:-1},{outdoors:3,harm_ok:3}]},
+{section:"content",badge:"badge-content",label:"interest",q:"When you imagine your ideal workday, which sounds more satisfying?",opts:["Solving a problem nobody has solved before — inventing something new","Executing a well-defined task with skill and precision","A mix — mostly proven methods, but with room to improve them","Following established steps to get a reliable, repeatable result"],scores:[{creative:4,N:2},{creative:0,S:2},{creative:2},{creative:-1,S:2,J:1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"Which type of problem do you find most satisfying to solve?",opts:["An optimization problem — make the system faster, cheaper, or more efficient","A human problem — help people communicate, connect, or thrive","A physical problem — fix or build something tangible","A design problem — make something both beautiful and functional"],scores:[{T:2,S:1,eng:1},{F:1,impact:1,cs:1},{hands:2,trade:1},{creative:2,N:1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"What sounds most exciting about working in the tech/engineering world?",opts:["Pushing what's physically possible — extreme engineering","The business side — building products people actually buy and use","The craft and mastery — becoming truly excellent at a skilled trade","The logic and elegance — writing clean, efficient code"],scores:[{aero:2,eng:2,N:1},{cs:1,money:1,E:1},{trade:3,S:2,hands:2},{cs:2,T:2}]},
+{section:"content",badge:"badge-content",label:"interest",q:"If you could shadow a professional for a week, who would you choose?",opts:["An aerospace engineer working on rockets or planes","An electrician or HVAC tech doing installations","A software engineer at a major tech company","A structural engineer on a large construction project"],scores:[{aero:3,eng:2},{elec:2,trade:2,hands:2},{cs:3},{eng:2,S:1,outdoors:1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"The idea of working outdoors — on job sites, oil fields, or in the elements — sounds:",opts:["Awesome — I'd love being out of an office","Okay, as long as I'm doing meaningful work","Tolerable if necessary","Like something I'd actively try to avoid"],scores:[{outdoors:4},{outdoors:2},{outdoors:1},{outdoors:-1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"Which best describes the type of legacy you'd want your work to leave?",opts:["I built something that lasted — a structure, a machine, a system","I helped make the world cleaner, safer, or more just","I made something people love using every day","I mastered a craft and passed it on"],scores:[{eng:1,S:1,J:1},{impact:3,F:1},{creative:2,cs:1},{trade:2,S:1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"Low-level, embedded, or systems programming (writing code close to hardware — operating systems, microcontrollers, firmware) sounds:",opts:["Fascinating — I love the idea of being close to the metal","Interesting, but I'd rather do higher-level apps or web","Confusing to me — I'd rather work with physical hardware","Not really my thing"],scores:[{embedded:3,elec:1,cs:1,T:1},{cs:2},{hands:2,elec:1},{elec:-1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"How important is it to you that strangers find your job impressive or exciting when you tell them about it?",opts:["Very important — I want people to think my job is cool","Somewhat important — it'd be nice but not a requirement","Not really — I care more about what the work actually is","Totally unimportant — I don't care what anyone thinks about my job"],scores:[{cool:4},{cool:2},{cool:1},{cool:0}]},
+{section:"content",badge:"badge-content",label:"interest",q:"Which job title sounds most appealing to tell someone at a party?",opts:["Directed Energy Weapons Specialist","Plumber","Software Engineer","Building Inspector"],scores:[{cool:4,harm_ok:2},{cool:0},{cool:2},{cool:1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"When it comes to the technology you work with, what matters more to you?",opts:["I want to be on the absolute cutting edge — using tools that didn't exist 2 years ago","I like modern technology but don't need to be first","I prefer well-established technology that's proven and reliable","I'd rather use time-tested methods and not have to constantly relearn everything"],scores:[{edge:4,N:1},{edge:2},{edge:0,S:1},{edge:-2,S:2,J:1}]},
+{section:"content",badge:"badge-content",label:"interest",q:"How do you feel about a field that changes so fast you'd need to keep learning new things every year just to stay relevant?",opts:["That's exciting — I love being on the frontier","That's fine — I enjoy learning as fields evolve","That sounds exhausting — I'd rather master one thing deeply","That's a dealbreaker — I want skills that stay valuable for decades"],scores:[{edge:4,N:2,P:1},{edge:2},{edge:0,S:1},{edge:-2,S:2,J:2}]},
+{section:"content",badge:"badge-content",label:"interest",q:"Which statement describes you best?",opts:["I'm most energized when I'm building or fixing physical things","I like the idea of designing systems and solving abstract problems","I want to understand how something works at the deepest level possible","I care most about who my work helps — people or planet"],scores:[{hands:3,trade:2,S:2},{T:2,N:1,eng:1},{T:2,N:2,cs:1},{impact:3,F:2}]},
+{section:"content",badge:"badge-content",label:"interest",q:"How important is it to you that your job involves coming up with genuinely new ideas — designs, methods, or solutions that haven't been done before?",opts:["Essential — I want to invent and create, not just execute","Pretty important — I want real creative input, even if not every day","Somewhat — I like occasional novelty but don't need it constantly","Not important at all — I'd rather master a proven craft than reinvent things"],scores:[{creative:4,N:2},{creative:3,N:1},{creative:1},{creative:-1,S:2}]},
+{section:"content",badge:"badge-content",label:"interest",q:"Finally — if you could only pick ONE of these words to describe your ideal career, which would it be?",opts:["Builder","Solver","Creator","Protector"],scores:[{hands:2,trade:2,S:1},{T:2,cs:1,eng:1},{creative:3,N:2},{impact:3,F:2,harm_ok:-1}]}
+];
+
+const JOBS=[
+{id:"aerospace_eng",title:"Aerospace Engineer",field:"Engineering",fclass:"field-eng",desc:"You design planes, rockets, and satellites — figuring out how to make machines fly fast, high, and safely through the sky or even into space.",money:4,impact:2,harm_ok:2,outdoors:1,hours:3,hands:1,team:2,creative:3,cool:4,edge:2,I:0,E:0,S:1,N:2,T:2,F:0,J:2,P:1,tags:["eng","aero"]},
+{id:"mechanical_eng",title:"Mechanical Engineer",field:"Engineering",fclass:"field-eng",desc:"You design and build the physical parts of machines — engines, gears, pumps — making sure they work efficiently and don't break down.",money:3,impact:2,harm_ok:2,outdoors:1,hours:2,hands:3,team:2,creative:2,cool:2,edge:1,I:0,E:0,S:2,N:1,T:2,F:0,J:2,P:0,tags:["eng"]},
+{id:"nuclear_eng",title:"Nuclear Engineer",field:"Engineering",fclass:"field-eng",desc:"You work with nuclear reactions to generate energy or design medical equipment, following very strict safety rules because the stakes are extremely high.",money:5,impact:2,harm_ok:4,outdoors:1,hours:3,hands:1,team:1,creative:1,cool:4,edge:1,I:1,E:0,S:2,N:2,T:3,F:0,J:2,P:0,tags:["eng"]},
+{id:"automotive_eng",title:"Automotive Engineer",field:"Engineering",fclass:"field-eng",desc:"You design and improve cars — from the engine and brakes to the software that makes them run — making vehicles safer, faster, and more efficient.",money:3,impact:2,harm_ok:2,outdoors:1,hours:2,hands:3,team:2,creative:2,cool:2,edge:2,I:0,E:0,S:3,N:1,T:2,F:0,J:2,P:1,tags:["eng"]},
+{id:"materials_eng",title:"Materials Scientist",field:"Engineering",fclass:"field-eng",desc:"You study and invent new materials — like stronger metals, lighter plastics, or heat-resistant ceramics — that other engineers use to build better products.",money:3,impact:2,harm_ok:2,outdoors:0,hours:2,hands:2,team:1,creative:2,cool:2,edge:3,I:2,E:0,S:2,N:2,T:3,F:0,J:2,P:1,tags:["eng","mat"]},
+{id:"petroleum_eng",title:"Petroleum Engineer",field:"Engineering",fclass:"field-eng",desc:"You design the equipment and methods used to pull oil and gas out of the ground, often working on rigs in remote locations for weeks at a time.",money:5,impact:0,harm_ok:4,outdoors:4,hours:4,hands:3,team:2,creative:1,cool:2,edge:0,I:0,E:1,S:2,N:1,T:2,F:0,J:2,P:1,tags:["eng","travel"]},
+{id:"military_eng",title:"Military / Defense Engineer",field:"Engineering",fclass:"field-eng",desc:"You design weapons, vehicles, and systems for the military — like armor, radar, or drones — knowing your work will be used in real-world conflicts.",money:4,impact:1,harm_ok:4,outdoors:2,hours:3,hands:2,team:3,creative:2,cool:4,edge:3,I:0,E:0,S:2,N:2,T:3,F:0,J:3,P:0,tags:["eng"]},
+{id:"civil_eng",title:"Civil / Structural Engineer",field:"Engineering",fclass:"field-eng",desc:"You design bridges, roads, dams, and buildings — making sure the structures people rely on every day are safe and built to last.",money:3,impact:3,harm_ok:1,outdoors:3,hours:2,hands:2,team:2,creative:2,cool:1,edge:1,I:0,E:0,S:2,N:1,T:2,F:1,J:2,P:1,tags:["eng"]},
+{id:"biomedical_eng",title:"Biomedical Engineer",field:"Engineering",fclass:"field-eng",desc:"You design medical devices — like prosthetic limbs, MRI machines, or pacemakers — that help doctors treat patients and save lives.",money:3,impact:5,harm_ok:0,outdoors:0,hours:2,hands:2,team:2,creative:3,cool:3,edge:3,I:1,E:0,S:1,N:3,T:2,F:2,J:2,P:1,tags:["eng"]},
+{id:"env_eng",title:"Environmental Engineer",field:"Engineering",fclass:"field-eng",desc:"You design systems that clean up pollution, treat drinking water, and protect ecosystems — making sure human activity doesn't permanently damage the planet.",money:2,impact:5,harm_ok:0,outdoors:3,hours:2,hands:2,team:2,creative:2,cool:1,edge:2,I:0,E:1,S:2,N:2,T:2,F:2,J:2,P:1,tags:["eng"]},
+{id:"chem_eng",title:"Chemical Engineer",field:"Engineering",fclass:"field-eng",desc:"You design the large industrial processes that turn raw chemicals into useful products — like fuel, medicine, or food — on a massive scale.",money:4,impact:2,harm_ok:3,outdoors:1,hours:3,hands:2,team:2,creative:2,cool:1,edge:1,I:1,E:0,S:2,N:2,T:3,F:0,J:2,P:1,tags:["eng"]},
+{id:"toy_designer",title:"Toy / Consumer Product Designer",field:"Engineering",fclass:"field-eng",desc:"You invent and design the toys, gadgets, and everyday products that end up on store shelves — blending creativity with engineering to make things people love.",money:2,impact:1,harm_ok:0,outdoors:0,hours:2,hands:3,team:3,creative:5,cool:2,edge:2,I:0,E:2,S:2,N:2,T:1,F:2,J:1,P:2,tags:["eng","creative"]},
+{id:"industrial_designer",title:"Industrial Designer",field:"Engineering",fclass:"field-eng",desc:"You design how manufactured products look and feel — chairs, phones, appliances — making sure they're both beautiful and actually comfortable to use.",money:3,impact:2,harm_ok:1,outdoors:0,hours:2,hands:3,team:2,creative:5,cool:2,edge:2,I:1,E:0,S:2,N:2,T:1,F:1,J:1,P:2,tags:["eng","creative"]},
+{id:"robotics_eng",title:"Robotics Engineer",field:"Engineering",fclass:"field-eng",desc:"You build robots — programming their movements, designing their bodies, and connecting their sensors — for use in factories, hospitals, or even on Mars.",money:4,impact:3,harm_ok:2,outdoors:1,hours:3,hands:3,team:2,creative:4,cool:4,edge:4,I:1,E:0,S:1,N:3,T:3,F:0,J:2,P:2,tags:["eng","cs","elec"]},
+{id:"manufacturing_eng",title:"Manufacturing Engineer",field:"Engineering",fclass:"field-eng",desc:"You design the factory floor — figuring out the fastest, safest, and cheapest way to build products at large scale using machines and assembly lines.",money:3,impact:2,harm_ok:2,outdoors:1,hours:2,hands:3,team:3,creative:1,cool:0,edge:1,I:0,E:1,S:3,N:0,T:2,F:0,J:3,P:0,tags:["eng"]},
+{id:"architect",title:"Architect",field:"Engineering",fclass:"field-eng",desc:"You design buildings — homes, schools, skyscrapers — deciding how they look, how space is used inside, and making sure they're safe and beautiful.",money:3,impact:3,harm_ok:0,outdoors:1,hours:3,hands:2,team:2,creative:5,cool:3,edge:2,I:1,E:0,S:1,N:3,T:1,F:2,J:2,P:1,tags:["eng","creative"]},
+{id:"urban_planner",title:"Urban Planner",field:"Engineering",fclass:"field-eng",desc:"You design entire cities and neighborhoods — deciding where parks, roads, and buildings should go to make communities livable, fair, and efficient.",money:2,impact:4,harm_ok:0,outdoors:2,hours:2,hands:0,team:3,creative:2,cool:1,edge:1,I:0,E:2,S:1,N:3,T:1,F:3,J:2,P:1,tags:["eng"]},
+{id:"drone_eng",title:"Drone / UAV Engineer",field:"Engineering",fclass:"field-eng",desc:"You design and build unmanned flying vehicles — from delivery drones to military surveillance aircraft — combining aeronautics, electronics, and software.",money:3,impact:2,harm_ok:3,outdoors:3,hours:2,hands:3,team:2,creative:3,cool:4,edge:4,I:1,E:0,S:1,N:3,T:2,F:0,J:2,P:2,tags:["eng","aero","elec"]},
+{id:"field_service_eng",title:"Field Service Engineer",field:"Engineering",fclass:"field-eng",desc:"You travel to customer locations to install, maintain, and repair complex equipment — like industrial machines or medical devices — wherever they're needed.",money:3,impact:2,harm_ok:1,outdoors:3,hours:3,hands:3,team:3,creative:1,cool:1,edge:1,I:0,E:2,S:2,N:1,T:2,F:1,J:2,P:1,tags:["eng","travel"]},
+{id:"acoustic_eng",title:"Acoustic Engineer",field:"Engineering",fclass:"field-eng",desc:"You control how sound behaves — designing concert halls so music sounds perfect, or making submarines quieter so they can't be detected by sonar.",money:3,impact:2,harm_ok:0,outdoors:0,hours:2,hands:1,team:1,creative:3,cool:2,edge:2,I:2,E:0,S:1,N:3,T:3,F:1,J:2,P:1,tags:["eng"]},
+{id:"welder",title:"Welder",field:"Trade",fclass:"field-trade",desc:"You use extreme heat to fuse metal pieces together, building everything from skyscraper frames to ship hulls — it's skilled physical work that pays well.",money:3,impact:1,harm_ok:2,outdoors:3,hours:2,hands:5,team:1,creative:1,cool:1,edge:0,I:1,E:0,S:3,N:0,T:1,F:0,J:2,P:1,tags:["trade"]},
+{id:"carpenter",title:"Carpenter / Woodworker",field:"Trade",fclass:"field-trade",desc:"You cut, shape, and build things from wood — from house frames and cabinets to custom furniture — using both hand tools and power tools.",money:2,impact:1,harm_ok:0,outdoors:2,hours:2,hands:5,team:1,creative:3,cool:1,edge:0,I:1,E:0,S:3,N:1,T:1,F:1,J:2,P:1,tags:["trade"]},
+{id:"mason",title:"Stone Mason / Bricklayer",field:"Trade",fclass:"field-trade",desc:"You lay bricks, stone, and concrete to build walls, floors, and structures — it's physically intense outdoor work that creates things built to last centuries.",money:2,impact:1,harm_ok:0,outdoors:4,hours:3,hands:5,team:1,creative:1,cool:0,edge:0,I:1,E:0,S:3,N:0,T:1,F:0,J:3,P:0,tags:["trade"]},
+{id:"hvac",title:"HVAC Technician",field:"Trade",fclass:"field-trade",desc:"You install and repair heating, ventilation, and air conditioning systems — keeping homes, hospitals, and offices at a comfortable temperature year-round.",money:4,impact:1,harm_ok:0,outdoors:3,hours:2,hands:5,team:1,creative:1,cool:0,edge:1,I:1,E:0,S:3,N:0,T:2,F:0,J:2,P:1,tags:["trade"]},
+{id:"electrician",title:"Electrician",field:"Trade",fclass:"field-trade",desc:"You install and repair the electrical wiring in buildings — making sure power flows safely to every outlet, light, and appliance without starting a fire.",money:4,impact:1,harm_ok:1,outdoors:3,hours:2,hands:5,team:1,creative:1,cool:1,edge:1,I:1,E:0,S:3,N:0,T:2,F:0,J:2,P:1,tags:["trade","elec"]},
+{id:"plumber",title:"Plumber",field:"Trade",fclass:"field-trade",desc:"You install and fix the pipes that carry water and gas through buildings — from fixing a leaky faucet to installing an entire plumbing system in a new home.",money:4,impact:1,harm_ok:0,outdoors:2,hours:2,hands:5,team:1,creative:0,cool:0,edge:0,I:1,E:0,S:3,N:0,T:1,F:0,J:2,P:1,tags:["trade"]},
+{id:"ironworker",title:"Ironworker / Structural Steel",field:"Trade",fclass:"field-trade",desc:"You connect the giant steel beams that form the skeleton of skyscrapers and bridges — often working hundreds of feet in the air on narrow beams.",money:4,impact:1,harm_ok:2,outdoors:5,hours:3,hands:5,team:2,creative:0,cool:2,edge:0,I:0,E:1,S:3,N:0,T:1,F:0,J:2,P:1,tags:["trade","travel"]},
+{id:"heavy_equip",title:"Heavy Equipment Operator",field:"Trade",fclass:"field-trade",desc:"You operate giant machines — bulldozers, cranes, and excavators — to move earth, lift steel, and build the physical foundation of roads and buildings.",money:4,impact:1,harm_ok:2,outdoors:5,hours:4,hands:4,team:1,creative:0,cool:1,edge:0,I:1,E:0,S:3,N:0,T:1,F:0,J:2,P:1,tags:["trade"]},
+{id:"pipefitter",title:"Pipefitter",field:"Trade",fclass:"field-trade",desc:"You install and maintain the complex pipe systems in industrial plants and refineries — this is high-skill, high-pay work often done in remote or rugged locations.",money:4,impact:1,harm_ok:2,outdoors:4,hours:4,hands:5,team:2,creative:0,cool:0,edge:0,I:0,E:1,S:3,N:0,T:1,F:0,J:2,P:1,tags:["trade","travel"]},
+{id:"construction_mgr",title:"Construction Manager",field:"Trade",fclass:"field-trade",desc:"You run a construction site — coordinating workers, managing schedules and budgets, and solving problems to make sure a building gets done right and on time.",money:4,impact:2,harm_ok:1,outdoors:3,hours:3,hands:2,team:5,creative:2,cool:1,edge:0,I:0,E:3,S:3,N:1,T:2,F:1,J:3,P:0,tags:["trade"]},
+{id:"machinist",title:"Machinist / CNC Operator",field:"Trade",fclass:"field-trade",desc:"You use precision cutting machines to shape metal parts to exact measurements — making components for engines, aircraft, or surgical tools with zero room for error.",money:3,impact:1,harm_ok:1,outdoors:0,hours:2,hands:5,team:1,creative:2,cool:1,edge:1,I:2,E:0,S:3,N:0,T:2,F:0,J:3,P:0,tags:["trade"]},
+{id:"auto_mechanic",title:"Auto Mechanic",field:"Trade",fclass:"field-trade",desc:"You diagnose and repair car problems — from engine failures to brake jobs — using a combination of technical knowledge, specialty tools, and hands-on skill.",money:3,impact:1,harm_ok:0,outdoors:1,hours:2,hands:5,team:1,creative:1,cool:1,edge:1,I:1,E:0,S:3,N:0,T:2,F:0,J:2,P:1,tags:["trade"]},
+{id:"boilermaker",title:"Boilermaker",field:"Trade",fclass:"field-trade",desc:"You build and repair the massive tanks, boilers, and pressure vessels used in power plants and factories — it's tough, well-paid work in industrial environments.",money:4,impact:1,harm_ok:2,outdoors:3,hours:4,hands:5,team:2,creative:0,cool:1,edge:0,I:0,E:1,S:3,N:0,T:1,F:0,J:2,P:1,tags:["trade","travel"]},
+{id:"wind_tech",title:"Wind Turbine Technician",field:"Trade",fclass:"field-trade",desc:"You climb inside and on top of 300-foot wind turbines to maintain and repair them — physically demanding work with a real positive impact on clean energy.",money:3,impact:4,harm_ok:0,outdoors:5,hours:3,hands:5,team:1,creative:1,cool:2,edge:2,I:1,E:0,S:3,N:1,T:1,F:1,J:2,P:1,tags:["trade","travel"]},
+{id:"solar_installer",title:"Solar Panel Installer",field:"Trade",fclass:"field-trade",desc:"You mount and wire solar panels on rooftops and in fields, helping homes and businesses generate their own clean electricity from sunlight.",money:2,impact:4,harm_ok:0,outdoors:5,hours:2,hands:5,team:2,creative:0,cool:1,edge:2,I:0,E:1,S:3,N:0,T:1,F:1,J:2,P:1,tags:["trade"]},
+{id:"marine_tech",title:"Marine Mechanic / Technician",field:"Trade",fclass:"field-trade",desc:"You repair and maintain boat engines and marine systems — working in boatyards or aboard vessels, keeping everything running on the water.",money:3,impact:1,harm_ok:0,outdoors:4,hours:2,hands:5,team:1,creative:1,cool:2,edge:1,I:1,E:0,S:3,N:0,T:2,F:0,J:2,P:1,tags:["trade","travel"]},
+{id:"software_eng",title:"Software Engineer",field:"Computer Science",fclass:"field-cs",desc:"You write the code that runs apps, websites, and operating systems — spending most of your day at a computer thinking through complex logic problems.",money:5,impact:2,harm_ok:1,outdoors:0,hours:3,hands:0,team:2,creative:3,cool:2,edge:3,I:1,E:0,S:0,N:3,T:3,F:0,J:2,P:2,tags:["cs"]},
+{id:"web_dev",title:"Web Developer",field:"Computer Science",fclass:"field-cs",desc:"You build websites and web apps — coding the buttons, layouts, and features that users interact with whenever they open a browser.",money:4,impact:2,harm_ok:0,outdoors:0,hours:2,hands:0,team:2,creative:3,cool:1,edge:2,I:1,E:0,S:1,N:2,T:2,F:1,J:1,P:2,tags:["cs","creative"]},
+{id:"embedded_prog",title:"Embedded Systems Programmer",field:"Computer Science",fclass:"field-cs",desc:"You write the tiny, efficient programs that run inside physical devices — like the code controlling a car's brakes or a pacemaker's heartbeat — where bugs can be dangerous.",money:4,impact:2,harm_ok:1,outdoors:0,hours:3,hands:0,team:1,creative:2,cool:1,edge:1,I:3,E:0,S:1,N:2,T:4,F:0,J:2,P:1,tags:["cs","elec","embedded"]},
+{id:"systems_prog",title:"Low-Level / Systems Programmer",field:"Computer Science",fclass:"field-cs",desc:"You write software extremely close to the hardware — like operating systems or compilers — working in highly technical code that most programmers never touch.",money:4,impact:1,harm_ok:1,outdoors:0,hours:3,hands:0,team:1,creative:2,cool:1,edge:1,I:3,E:0,S:1,N:2,T:4,F:0,J:2,P:1,tags:["cs","embedded"]},
+{id:"game_dev",title:"Game Developer",field:"Computer Science",fclass:"field-cs",desc:"You build video games — coding the physics, AI, and graphics engines that make virtual worlds feel alive and fun to play in.",money:3,impact:1,harm_ok:1,outdoors:0,hours:4,hands:0,team:2,creative:5,cool:3,edge:3,I:1,E:0,S:0,N:3,T:2,F:1,J:1,P:3,tags:["cs","creative"]},
+{id:"cybersec",title:"Cybersecurity Engineer",field:"Computer Science",fclass:"field-cs",desc:"You protect computer systems from hackers — finding and patching vulnerabilities before criminals can exploit them to steal data or shut down critical services.",money:5,impact:3,harm_ok:2,outdoors:0,hours:3,hands:0,team:1,creative:3,cool:3,edge:3,I:2,E:0,S:1,N:3,T:4,F:0,J:2,P:2,tags:["cs"]},
+{id:"data_scientist",title:"Data Scientist",field:"Computer Science",fclass:"field-cs",desc:"You analyze massive datasets to find hidden patterns — helping companies understand their customers, predict the future, or make better decisions.",money:5,impact:2,harm_ok:1,outdoors:0,hours:2,hands:0,team:2,creative:3,cool:2,edge:3,I:2,E:0,S:0,N:4,T:4,F:0,J:2,P:1,tags:["cs"]},
+{id:"ai_ml",title:"AI / Machine Learning Engineer",field:"Computer Science",fclass:"field-cs",desc:"You build the systems that allow computers to learn from data and make decisions on their own — the technology behind self-driving cars, voice assistants, and medical diagnosis.",money:5,impact:3,harm_ok:1,outdoors:0,hours:3,hands:0,team:2,creative:4,cool:4,edge:5,I:2,E:0,S:0,N:4,T:4,F:0,J:2,P:2,tags:["cs"]},
+{id:"devops",title:"DevOps / Cloud Engineer",field:"Computer Science",fclass:"field-cs",desc:"You build the automated pipelines and cloud infrastructure that let software teams deploy new code reliably and keep apps running 24/7 without crashing.",money:5,impact:1,harm_ok:1,outdoors:0,hours:3,hands:0,team:2,creative:1,cool:0,edge:2,I:1,E:0,S:2,N:2,T:3,F:0,J:3,P:1,tags:["cs"]},
+{id:"mobile_dev",title:"Mobile App Developer",field:"Computer Science",fclass:"field-cs",desc:"You build apps for smartphones and tablets — creating the software people use on their phones every day, from social media to fitness trackers.",money:4,impact:2,harm_ok:0,outdoors:0,hours:2,hands:0,team:2,creative:3,cool:1,edge:2,I:1,E:0,S:1,N:2,T:2,F:1,J:1,P:2,tags:["cs","creative"]},
+{id:"circuit_design",title:"Circuit Design Engineer",field:"Electrical",fclass:"field-elec",desc:"You design the electronic circuits inside devices — planning how electricity flows through a chip or board to make a product do exactly what it's supposed to.",money:4,impact:2,harm_ok:1,outdoors:0,hours:2,hands:1,team:1,creative:3,cool:1,edge:2,I:2,E:0,S:2,N:1,T:4,F:0,J:3,P:0,tags:["elec"]},
+{id:"pcb_designer",title:"PCB Designer",field:"Electrical",fclass:"field-elec",desc:"You lay out the printed circuit boards inside every electronic device — planning exactly where each component goes so the board fits, works, and can be manufactured.",money:3,impact:1,harm_ok:0,outdoors:0,hours:2,hands:1,team:1,creative:2,cool:0,edge:1,I:2,E:0,S:3,N:1,T:3,F:0,J:3,P:0,tags:["elec"]},
+{id:"elec_product",title:"Electrical Product Designer",field:"Electrical",fclass:"field-elec",desc:"You design the whole electrical system inside a new product — from the battery to the user interface — making sure everything works together elegantly.",money:3,impact:2,harm_ok:0,outdoors:0,hours:2,hands:2,team:2,creative:4,cool:2,edge:2,I:1,E:0,S:2,N:2,T:2,F:1,J:2,P:1,tags:["elec","creative"]},
+{id:"controls_eng",title:"Controls / Automation Engineer",field:"Electrical",fclass:"field-elec",desc:"You program the systems that make machines run automatically — like the robots in a car factory or the autopilot on an airplane.",money:4,impact:2,harm_ok:1,outdoors:1,hours:3,hands:2,team:2,creative:2,cool:2,edge:2,I:1,E:0,S:2,N:2,T:3,F:0,J:3,P:0,tags:["elec","eng"]},
+{id:"power_eng",title:"Power Systems Engineer",field:"Electrical",fclass:"field-elec",desc:"You design and manage electrical grids — the massive systems that generate and distribute electricity to cities, making sure the power never goes out.",money:4,impact:3,harm_ok:2,outdoors:1,hours:3,hands:1,team:2,creative:1,cool:1,edge:1,I:1,E:0,S:2,N:2,T:3,F:1,J:2,P:1,tags:["elec","eng"]},
+{id:"rf_eng",title:"RF / Communications Engineer",field:"Electrical",fclass:"field-elec",desc:"You design the wireless communication systems that transmit signals — working on everything from cell towers and satellites to military radar.",money:4,impact:2,harm_ok:2,outdoors:0,hours:2,hands:1,team:1,creative:2,cool:2,edge:2,I:2,E:0,S:1,N:3,T:4,F:0,J:2,P:1,tags:["elec"]},
+{id:"instrumentation",title:"Instrumentation Technician",field:"Electrical",fclass:"field-elec",desc:"You install and calibrate the sensors and measuring devices in factories, power plants, and oil refineries that keep industrial processes safe and precise.",money:3,impact:2,harm_ok:1,outdoors:3,hours:3,hands:4,team:1,creative:1,cool:0,edge:1,I:1,E:0,S:3,N:0,T:2,F:0,J:2,P:1,tags:["elec","trade"]},
+{id:"mechatronics",title:"Mechatronics Engineer",field:"Electrical",fclass:"field-elec",desc:"You combine mechanical, electrical, and software engineering to build smart machines — like robotic arms, automated vehicles, or intelligent manufacturing equipment.",money:4,impact:3,harm_ok:1,outdoors:1,hours:3,hands:3,team:2,creative:4,cool:3,edge:4,I:1,E:0,S:1,N:3,T:3,F:0,J:2,P:2,tags:["elec","eng","cs"]},
+{id:"iot_dev",title:"IoT / Connected Devices Developer",field:"Electrical",fclass:"field-elec",desc:"You build the software and hardware for smart devices — like connected thermostats, smartwatches, or industrial sensors — that talk to each other over the internet.",money:4,impact:2,harm_ok:0,outdoors:1,hours:2,hands:1,team:2,creative:3,cool:2,edge:3,I:1,E:0,S:1,N:3,T:2,F:1,J:2,P:2,tags:["elec","cs","embedded"]},
+{id:"forensic_eng",title:"Forensic Engineer",field:"Engineering",fclass:"field-eng",desc:"You're a detective for broken things — investigating why bridges collapsed, planes crashed, or products failed in order to prevent the same disaster from happening again.",money:4,impact:3,harm_ok:1,outdoors:3,hours:2,hands:2,team:2,creative:3,cool:3,edge:1,I:1,E:0,S:2,N:3,T:3,F:1,J:2,P:2,tags:["eng"]},
+{id:"cryogenics_tech",title:"Cryogenics Technician",field:"Engineering",fclass:"field-eng",desc:"You work with materials cooled to nearly absolute zero (-270°C) — maintaining superconducting magnets for MRI machines, particle accelerators, and rocket fuel systems.",money:4,impact:2,harm_ok:1,outdoors:1,hours:3,hands:4,team:1,creative:2,cool:3,edge:3,I:2,E:0,S:2,N:2,T:3,F:0,J:3,P:0,tags:["eng","elec"]},
+{id:"explosives_eng",title:"Explosives Engineer / Blaster",field:"Trade",fclass:"field-trade",desc:"You plan and execute controlled explosions — demolishing buildings, clearing rock in mines, or opening tunnels — using precise math and licensed expertise to make big things go boom safely.",money:4,impact:1,harm_ok:4,outdoors:5,hours:3,hands:4,team:2,creative:2,cool:5,edge:1,I:0,E:1,S:3,N:1,T:2,F:0,J:3,P:0,tags:["trade","eng"]},
+{id:"animatronics_eng",title:"Animatronics Engineer",field:"Engineering",fclass:"field-eng",desc:"You build the mechanical creatures for movies and theme parks — combining robotics, electronics, and sculpture to make dragons, dinosaurs, and alien creatures move and breathe.",money:3,impact:2,harm_ok:0,outdoors:1,hours:3,hands:5,team:3,creative:5,cool:4,edge:3,I:1,E:1,S:2,N:3,T:2,F:2,J:2,P:2,tags:["eng","elec","creative"]},
+{id:"underwater_welder",title:"Underwater Welder / Commercial Diver",field:"Trade",fclass:"field-trade",desc:"You weld and repair metal structures underwater — like oil pipelines and ship hulls — working in one of the most physically demanding and well-paid trades in existence.",money:5,impact:1,harm_ok:4,outdoors:5,hours:4,hands:5,team:1,creative:1,cool:5,edge:0,I:1,E:0,S:3,N:0,T:1,F:0,J:2,P:1,tags:["trade","travel"]},
+{id:"subsea_cable_eng",title:"Subsea Cable Engineer",field:"Engineering",fclass:"field-eng",desc:"You design and repair the massive fiber-optic cables that run along the ocean floor, carrying most of the world's internet traffic between continents — working on specialized ships in the open ocean.",money:4,impact:3,harm_ok:1,outdoors:4,hours:3,hands:3,team:2,creative:2,cool:3,edge:2,I:1,E:0,S:2,N:2,T:2,F:1,J:2,P:1,tags:["eng","elec","travel"]},
+{id:"ndt_tech",title:"NDT Technician (Nondestructive Testing)",field:"Trade",fclass:"field-trade",desc:"You're a doctor for infrastructure — using X-rays, ultrasound, and thermal cameras to find cracks and defects inside bridges, aircraft, and nuclear reactors without ever cutting into them.",money:3,impact:3,harm_ok:1,outdoors:3,hours:2,hands:4,team:1,creative:2,cool:2,edge:2,I:1,E:0,S:3,N:1,T:2,F:1,J:2,P:1,tags:["trade","eng","elec"]},
+{id:"human_factors_eng",title:"Human Factors Engineer",field:"Engineering",fclass:"field-eng",desc:"You study how humans interact with tools and machines, then redesign cockpits, surgical equipment, and interfaces to reduce mistakes and make things feel natural to use.",money:3,impact:4,harm_ok:0,outdoors:1,hours:2,hands:2,team:3,creative:4,cool:2,edge:2,I:1,E:1,S:1,N:3,T:2,F:3,J:2,P:1,tags:["eng","creative"]},
+{id:"packaging_eng",title:"Packaging Engineer",field:"Engineering",fclass:"field-eng",desc:"You engineer the containers and boxes that protect products during shipping — making sure a delicate surgical laser arrives intact after traveling across the world, using sustainable materials.",money:3,impact:2,harm_ok:1,outdoors:1,hours:2,hands:2,team:2,creative:3,cool:0,edge:1,I:1,E:0,S:2,N:2,T:2,F:1,J:2,P:1,tags:["eng"]},
+{id:"bas_eng",title:"Building Automation Systems Engineer",field:"Electrical",fclass:"field-elec",desc:"You program the 'brain' of large buildings — making the HVAC, lighting, and security systems in skyscrapers and hospitals all talk to each other automatically to save energy.",money:3,impact:2,harm_ok:0,outdoors:1,hours:2,hands:2,team:2,creative:3,cool:1,edge:2,I:1,E:0,S:2,N:2,T:3,F:0,J:2,P:1,tags:["elec","cs","eng"]},
+{id:"elevator_mech",title:"Elevator & Escalator Mechanic",field:"Trade",fclass:"field-trade",desc:"You install and maintain the complex high-voltage mechanical and software systems inside elevators — one of the most technical and highest-paid hidden trades, with job security as long as buildings exist.",money:4,impact:1,harm_ok:1,outdoors:1,hours:2,hands:5,team:1,creative:1,cool:1,edge:1,I:1,E:0,S:3,N:1,T:2,F:0,J:2,P:1,tags:["trade","elec"]},
+{id:"geotech_eng",title:"Geotechnical Engineer",field:"Engineering",fclass:"field-eng",desc:"You study soil and rock behavior to make sure massive structures don't sink or collapse — if a civil engineer designs the bridge, you design the relationship between the bridge and the ground.",money:3,impact:3,harm_ok:1,outdoors:3,hours:2,hands:2,team:2,creative:2,cool:1,edge:1,I:1,E:0,S:2,N:2,T:3,F:1,J:2,P:1,tags:["eng"]},
+{id:"avionics_tech",title:"Avionics Technician",field:"Electrical",fclass:"field-elec",desc:"You install and repair the navigation, radar, and communication electronics inside aircraft — in 2025, this includes the high-tech systems for autonomous drones and electric air taxis.",money:4,impact:2,harm_ok:1,outdoors:2,hours:2,hands:5,team:1,creative:2,cool:3,edge:3,I:1,E:0,S:3,N:1,T:2,F:0,J:2,P:1,tags:["elec","trade","aero"]},
+{id:"nuclear_operator",title:"Nuclear Reactor Operator",field:"Trade",fclass:"field-trade",desc:"You monitor and control the nuclear fission process inside a power plant — a trade-school career that requires years of simulation training and earns a six-figure salary without a four-year degree.",money:5,impact:2,harm_ok:3,outdoors:0,hours:3,hands:3,team:2,creative:1,cool:4,edge:1,I:1,E:0,S:3,N:1,T:2,F:0,J:3,P:0,tags:["trade","eng"]},
+{id:"flavor_eng",title:"Flavor & Fragrance Engineer",field:"Engineering",fclass:"field-eng",desc:"You design the industrial systems that create consistent tastes and smells at massive scale — understanding the chemistry of scents and the engineering of giant chemical reactors to make food and perfume.",money:3,impact:1,harm_ok:1,outdoors:0,hours:2,hands:2,team:2,creative:4,cool:2,edge:2,I:1,E:0,S:2,N:2,T:2,F:1,J:2,P:2,tags:["eng"]},
+{id:"auto_security_eng",title:"Automotive Security Engineer",field:"Computer Science",fclass:"field-cs",desc:"You hack cars for a living — legally testing whether someone could remotely disable a vehicle's brakes, unlock its doors, or spoof its GPS through the software running inside modern vehicles.",money:4,impact:3,harm_ok:1,outdoors:0,hours:3,hands:1,team:2,creative:4,cool:4,edge:4,I:2,E:0,S:1,N:3,T:4,F:0,J:2,P:2,tags:["cs","elec","embedded"]},
+{id:"ics_scada_sec",title:"ICS/SCADA Security Engineer",field:"Computer Science",fclass:"field-cs",desc:"You protect the computer systems that control power grids, water plants, and gas pipelines — if a hacker attacked these systems, cities could go dark or water could be poisoned.",money:5,impact:4,harm_ok:1,outdoors:0,hours:3,hands:0,team:2,creative:3,cool:3,edge:3,I:2,E:0,S:1,N:3,T:4,F:1,J:2,P:2,tags:["cs","elec"]},
+{id:"pentest_physical",title:"Physical Penetration Tester",field:"Computer Science",fclass:"field-cs",desc:"Companies hire you to break into their own buildings — using lock picks, disguises, and social engineering to test whether their physical security can actually keep bad guys out.",money:4,impact:3,harm_ok:2,outdoors:3,hours:3,hands:3,team:2,creative:4,cool:5,edge:3,I:1,E:2,S:2,N:3,T:2,F:1,J:1,P:3,tags:["cs"]},
+{id:"medical_device_sec",title:"Medical Device Security Specialist",field:"Computer Science",fclass:"field-cs",desc:"You hack pacemakers and insulin pumps — legally — to find security flaws before criminals do, protecting patients from attackers who could interfere with life-saving equipment wirelessly.",money:4,impact:5,harm_ok:0,outdoors:0,hours:3,hands:1,team:2,creative:3,cool:4,edge:4,I:2,E:0,S:1,N:3,T:3,F:2,J:2,P:2,tags:["cs","elec"]},
+{id:"firmware_reverse",title:"Firmware Reverse Engineer",field:"Computer Science",fclass:"field-cs",desc:"You take apart the permanent code burned into hardware — routers, smart fridges, military equipment — to find hidden backdoors and vulnerabilities that normal software security would never find.",money:5,impact:3,harm_ok:2,outdoors:0,hours:3,hands:1,team:1,creative:4,cool:3,edge:3,I:3,E:0,S:1,N:3,T:4,F:0,J:2,P:2,tags:["cs","elec","embedded"]},
+{id:"satellite_sec",title:"Satellite & Aerospace Security Engineer",field:"Computer Science",fclass:"field-cs",desc:"You simulate attacks on satellites and the ground stations that control them — finding ways an attacker might hijack a spacecraft's orbit or intercept its high-frequency data transmissions.",money:5,impact:3,harm_ok:2,outdoors:0,hours:3,hands:0,team:2,creative:4,cool:5,edge:4,I:2,E:0,S:0,N:4,T:4,F:0,J:2,P:2,tags:["cs","elec","aero"]},
+{id:"social_eng_redteam",title:"Red Team Social Engineer",field:"Computer Science",fclass:"field-cs",desc:"You use psychology instead of code — calling employees and tricking them into revealing passwords, or leaving fake infected USB drives in parking lots, to test whether a company's people are its weakest security link.",money:4,impact:2,harm_ok:2,outdoors:2,hours:3,hands:1,team:2,creative:4,cool:4,edge:2,I:0,E:3,S:2,N:3,T:2,F:2,J:1,P:3,tags:["cs"]},
+{id:"hardware_trojan",title:"Hardware Trojan Hunter",field:"Computer Science",fclass:"field-cs",desc:"You use electron microscopes and X-rays to inspect microchips at the microscopic level, searching for tiny malicious circuits secretly inserted during manufacturing that could compromise military or government hardware.",money:4,impact:4,harm_ok:1,outdoors:0,hours:3,hands:2,team:1,creative:3,cool:4,edge:4,I:2,E:0,S:2,N:3,T:4,F:1,J:3,P:1,tags:["cs","elec"]},
+{id:"bug_bounty",title:"Bug Bounty Hunter",field:"Computer Science",fclass:"field-cs",desc:"You legally hack companies like Apple, Google, and Tesla in your own time — if you find a real vulnerability before criminals do, the company pays you a 'bounty' that can range from $500 to $100,000.",money:4,impact:3,harm_ok:1,outdoors:0,hours:3,hands:0,team:1,creative:4,cool:4,edge:3,I:2,E:0,S:0,N:4,T:4,F:0,J:1,P:4,tags:["cs"]},
+{id:"drone_swarm",title:"Drone Swarm Coordinator",field:"Engineering",fclass:"field-eng",desc:"You control hundreds of drones simultaneously using AI software — assigning group goals while the drones communicate with each other to avoid collisions and complete missions autonomously.",money:4,impact:2,harm_ok:3,outdoors:3,hours:3,hands:2,team:2,creative:4,cool:5,edge:5,I:1,E:1,S:1,N:4,T:3,F:0,J:2,P:2,tags:["eng","cs","aero"]},
+{id:"cuas_eng",title:"Counter-UAS Systems Engineer",field:"Engineering",fclass:"field-eng",desc:"You design systems that detect, track, and disable enemy drones — combining radar, thermal imaging, and electronic warfare jamming technology to protect airspace from drone threats.",money:4,impact:3,harm_ok:3,outdoors:2,hours:3,hands:2,team:2,creative:3,cool:5,edge:5,I:1,E:0,S:2,N:3,T:3,F:0,J:2,P:2,tags:["eng","elec","aero"]},
+{id:"loitering_munitions",title:"Loitering Munitions Technician",field:"Trade",fclass:"field-trade",desc:"You maintain 'kamikaze drones' — one-way weapons that fly to a target and detonate — calibrating the explosive payloads and optical systems that allow the drone to autonomously recognize its target.",money:4,impact:1,harm_ok:5,outdoors:3,hours:3,hands:4,team:2,creative:2,cool:5,edge:5,I:1,E:0,S:3,N:2,T:2,F:0,J:3,P:0,tags:["trade","eng","aero"]},
+{id:"directed_energy",title:"Directed Energy (Laser) Weapons Specialist",field:"Engineering",fclass:"field-eng",desc:"You work on high-energy laser systems that shoot down missiles and drones at the speed of light — managing the extreme physics, thermal systems, and precision optics of actual working laser weapons.",money:5,impact:2,harm_ok:4,outdoors:2,hours:3,hands:2,team:2,creative:3,cool:5,edge:5,I:1,E:0,S:2,N:3,T:3,F:0,J:2,P:1,tags:["eng","elec"]},
+{id:"bvlos_supervisor",title:"BVLOS Operations Supervisor",field:"Engineering",fclass:"field-eng",desc:"You manage drone missions that happen hundreds of miles away from the operator — overseeing the satellite links, data relays, and regulatory compliance required to keep a drone connected over the horizon.",money:4,impact:2,harm_ok:2,outdoors:2,hours:3,hands:2,team:3,creative:2,cool:3,edge:4,I:1,E:1,S:2,N:2,T:2,F:1,J:3,P:1,tags:["eng","aero","cs"]},
+{id:"ew_scenario_writer",title:"Electronic Warfare Scenario Writer",field:"Computer Science",fclass:"field-cs",desc:"You design realistic simulations of enemy GPS jamming and radio spoofing attacks — writing the 'playbooks' that train AI pilots to recognize when their signals are being manipulated.",money:4,impact:2,harm_ok:3,outdoors:0,hours:3,hands:0,team:2,creative:5,cool:4,edge:5,I:2,E:1,S:1,N:4,T:3,F:0,J:2,P:2,tags:["cs","elec","aero"]},
+{id:"bio_inspired_robotics",title:"Bio-Inspired Robotics Engineer",field:"Engineering",fclass:"field-eng",desc:"You build drones and robots that mimic nature — flapping-wing drones that fly like birds, or spider-like robots that crawl through rubble — using biomimicry to create machines that avoid detection.",money:4,impact:3,harm_ok:2,outdoors:2,hours:3,hands:3,team:2,creative:5,cool:5,edge:5,I:1,E:0,S:1,N:4,T:3,F:1,J:2,P:2,tags:["eng","cs","elec"]},
+{id:"exoskeleton_tech",title:"Exoskeleton Integration Technician",field:"Engineering",fclass:"field-eng",desc:"You maintain the wearable robotic suits that help soldiers carry heavier loads — calibrating the hydraulics, sensors, and battery systems so the machine moves perfectly in sync with the human body.",money:4,impact:3,harm_ok:2,outdoors:2,hours:3,hands:4,team:2,creative:2,cool:5,edge:5,I:1,E:0,S:2,N:2,T:2,F:1,J:2,P:1,tags:["eng","elec"]},
+{id:"uas_data_scientist",title:"UAS Data Scientist (Sensor Fusion)",field:"Computer Science",fclass:"field-cs",desc:"You build the AI brain that merges LiDAR, thermal, and camera data from drones into a single 3D map — giving commanders the ability to see through walls or smoke in real-time.",money:4,impact:2,harm_ok:3,outdoors:1,hours:3,hands:0,team:2,creative:4,cool:4,edge:5,I:2,E:0,S:0,N:4,T:4,F:0,J:2,P:2,tags:["cs","aero","eng"]},
+{id:"asv_pilot",title:"Autonomous Surface Vessel (ASV) Pilot",field:"Engineering",fclass:"field-eng",desc:"You operate unmanned sea drones that patrol for underwater mines and track enemy ships — combining traditional maritime navigation skills with cutting-edge autonomous robotics.",money:4,impact:2,harm_ok:3,outdoors:4,hours:3,hands:3,team:2,creative:2,cool:4,edge:5,I:1,E:1,S:2,N:3,T:2,F:0,J:2,P:2,tags:["eng","cs","travel"]},
+{id:"zk_engineer",title:"ZK-Proof Engineer (Zero-Knowledge Cryptographer)",field:"Computer Science",fclass:"field-cs",desc:"You use advanced mathematics to prove things are true without revealing any actual data — making blockchains private, fast, and secure in ways that were impossible just a few years ago.",money:5,impact:3,harm_ok:1,outdoors:0,hours:3,hands:0,team:2,creative:5,cool:3,edge:5,I:2,E:0,S:0,N:5,T:5,F:0,J:2,P:2,tags:["cs"]},
+{id:"agentic_ai_eng",title:"Agentic AI Systems Engineer",field:"Computer Science",fclass:"field-cs",desc:"You build AI systems that can plan and execute complex multi-step tasks on their own — like an AI that books a flight, makes a payment, and handles a refund without any human input.",money:5,impact:3,harm_ok:1,outdoors:0,hours:3,hands:0,team:2,creative:5,cool:4,edge:5,I:2,E:0,S:0,N:5,T:4,F:0,J:2,P:2,tags:["cs"]},
+{id:"rwa_architect",title:"Real World Asset Tokenization Architect",field:"Computer Science",fclass:"field-cs",desc:"You design systems that turn physical assets — like real estate or fine art — into digital tokens that can be traded instantly on a global blockchain, connecting Wall Street to crypto.",money:5,impact:2,harm_ok:2,outdoors:0,hours:3,hands:0,team:2,creative:4,cool:3,edge:5,I:1,E:0,S:0,N:4,T:3,F:1,J:2,P:2,tags:["cs"]},
+{id:"ai_ethics",title:"AI Ethics & Compliance Officer",field:"Computer Science",fclass:"field-cs",desc:"You make sure AI systems aren't biased, don't break privacy laws, and meet government safety standards — you're a translator between legal requirements and the engineers who build the models.",money:4,impact:4,harm_ok:0,outdoors:0,hours:2,hands:0,team:3,creative:3,cool:2,edge:4,I:1,E:1,S:1,N:3,T:2,F:3,J:2,P:1,tags:["cs"]},
+{id:"tokenomics_arch",title:"Tokenomics Architect",field:"Computer Science",fclass:"field-cs",desc:"You design the economic rules that govern how a cryptocurrency flows through an ecosystem — like a digital economist ensuring the token's value doesn't collapse and users are rewarded fairly.",money:5,impact:2,harm_ok:2,outdoors:0,hours:3,hands:0,team:2,creative:4,cool:3,edge:5,I:2,E:0,S:0,N:4,T:3,F:1,J:2,P:2,tags:["cs"]},
+{id:"ai_rack_eng",title:"AI Infrastructure Rack Engineer",field:"Engineering",fclass:"field-eng",desc:"You design the massive physical data centers and specialized server racks that house thousands of GPUs needed to train AI models — AI isn't just code, it's enormous hardware.",money:4,impact:2,harm_ok:1,outdoors:1,hours:3,hands:3,team:2,creative:2,cool:2,edge:4,I:1,E:0,S:2,N:2,T:3,F:0,J:2,P:1,tags:["eng","cs","elec"]},
+{id:"smart_contract_auditor",title:"Smart Contract Security Auditor",field:"Computer Science",fclass:"field-cs",desc:"You're a specialized hacker for crypto — finding vulnerabilities in blockchain code before it goes live, because a single bug can lead to a $100 million theft.",money:5,impact:4,harm_ok:1,outdoors:0,hours:3,hands:0,team:1,creative:4,cool:4,edge:5,I:2,E:0,S:0,N:4,T:5,F:0,J:2,P:2,tags:["cs"]},
+{id:"prompt_architect",title:"AI Prompt Architect (Agent Orchestration)",field:"Computer Science",fclass:"field-cs",desc:"You design the complex multi-step instruction chains that make different AI models work together to solve enterprise problems — far beyond just chatting with an AI.",money:4,impact:2,harm_ok:1,outdoors:0,hours:2,hands:0,team:2,creative:5,cool:3,edge:5,I:1,E:0,S:0,N:4,T:2,F:1,J:1,P:3,tags:["cs"]},
+{id:"depin_coordinator",title:"DePIN Ecosystem Coordinator",field:"Computer Science",fclass:"field-cs",desc:"You manage decentralized networks where regular people are paid in crypto to provide real-world services — like 5G hotspots, weather sensors, or mapping data — building infrastructure without a central company.",money:4,impact:3,harm_ok:1,outdoors:2,hours:2,hands:1,team:3,creative:3,cool:3,edge:5,I:0,E:2,S:1,N:4,T:2,F:2,J:2,P:2,tags:["cs"]},
+{id:"onchain_data_scientist",title:"AI-Driven On-Chain Data Scientist",field:"Computer Science",fclass:"field-cs",desc:"You use AI to scan billions of public blockchain transactions in real-time — detecting money laundering, predicting market moves, or tracking 'whale' investors before anyone else sees the pattern.",money:5,impact:3,harm_ok:2,outdoors:0,hours:3,hands:0,team:2,creative:4,cool:3,edge:5,I:2,E:0,S:0,N:5,T:4,F:0,J:2,P:2,tags:["cs"]},
+];
+
+const MBTI_NAMES={
+  INTJ:"The Architect",INTP:"The Logician",ENTJ:"The Commander",ENTP:"The Debater",
+  INFJ:"The Advocate",INFP:"The Mediator",ENFJ:"The Protagonist",ENFP:"The Campaigner",
+  ISTJ:"The Inspector",ISFJ:"The Protector",ESTJ:"The Executive",ESFJ:"The Consul",
+  ISTP:"The Virtuoso",ISFP:"The Adventurer",ESTP:"The Entrepreneur",ESFP:"The Entertainer"
+};
+
+let current=0;
+let answers=new Array(36).fill(null);
+
+function render(){
+  const q=questions[current];
+  const pct=Math.round(((current+1)/36)*100);
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('q-counter').textContent=(current+1)+' / 36';
+  const html=`
+    <span class="section-badge ${q.badge}">${q.label}</span>
+    <div class="q-num">question ${current+1}</div>
+    <div class="q-text">${q.q}</div>
+    <div class="options">
+      ${q.opts.map((o,i)=>`<button class="opt${answers[current]===i?' selected':''}" onclick="pick(${i})">${o}</button>`).join('')}
+    </div>
+  `;
+  document.getElementById('q-container').innerHTML=html;
+  document.getElementById('back-btn').disabled=current===0;
+  document.getElementById('next-btn').disabled=answers[current]===null;
+  document.getElementById('next-btn').textContent=current===35?'see my results \u2192':'next \u2192';
+}
+
+function pick(i){
+  answers[current]=i;
+  render();
+}
+
+function goNext(){
+  if(answers[current]===null)return;
+  if(current===35){showResults();return;}
+  current++;
+  render();
+}
+
+function goBack(){
+  if(current===0)return;
+  current--;
+  render();
+}
+
+function calcScores(){
+  const s={E:0,I:0,S:0,N:0,T:0,F:0,J:0,P:0,money:0,impact:0,harm_ok:0,outdoors:0,hours:0,hands:0,team:0,creative:0,cool:0,edge:0,eng:0,cs:0,trade:0,elec:0,aero:0,mat:0,embedded:0,travel:0};
+  questions.forEach((q,qi)=>{
+    const chosen=answers[qi];
+    if(chosen===null)return;
+    const sc=q.scores[chosen];
+    Object.keys(sc).forEach(k=>{s[k]=(s[k]||0)+sc[k];});
+  });
+  return s;
+}
+
+function getMBTI(s){
+  return (s.E>=s.I?'E':'I')+(s.S>=s.N?'S':'N')+(s.T>=s.F?'T':'F')+(s.J>=s.P?'J':'P');
+}
+
+function scoreJob(job,s,mbti){
+  let score=0;
+
+  function norm(val){ return Math.min((val||0)/4, 5); }
+
+  const softDims=[
+    {d:'money',   w:1.0},
+    {d:'impact',  w:2.0},
+    {d:'creative',w:2.0},
+    {d:'team',    w:1.0},
+    {d:'cool',    w:1.0},
+    {d:'edge',    w:1.0},
+  ];
+  softDims.forEach(({d,w})=>{
+    const uv=norm(s[d]);
+    const diff=Math.abs(uv-job[d]);
+    score+=Math.max(-2*w, (4-diff*1.2)*w);
+  });
+
+  const hardDims=[
+    {d:'outdoors', weight:3.0},
+    {d:'hands',    weight:3.0},
+    {d:'hours',    weight:1.5},
+    {d:'harm_ok',  weight:2.0},
+  ];
+  hardDims.forEach(({d,weight})=>{
+    const uv=norm(s[d]);
+    const diff=uv-job[d];
+    score+=Math.max(-6, (4-Math.abs(diff)*weight));
+  });
+
+  const mbtiDims=['I','E','S','N','T','F','J','P'];
+  mbtiDims.forEach(d=>{
+    if(mbti.includes(d)) score+=(job[d]||0)*0.6;
+  });
+
+  const tagBoosts={eng:s.eng,cs:s.cs,trade:s.trade,elec:s.elec,aero:s.aero,embedded:s.embedded};
+  job.tags.forEach(t=>{if(tagBoosts[t])score+=tagBoosts[t]*0.25;});
+
+  return score;
+}
+
+function maxPossibleScore(){
+  // Theoretical max: all soft dims at w*4, all hard dims at 4, no MBTI, no tags
+  const softMax=(1+2+2+1+1+1)*4; // =32
+  const hardMax=(3+3+1.5+2)*4;   // =38
+  return softMax+hardMax;         // =70
+}
+
+function whyJob(job,s,mbti){
+  const reasons=[];
+  if(s.money>=10&&job.money>=4)reasons.push("strong earning potential aligns with your priority on pay");
+  if(s.impact>=8&&job.impact>=3)reasons.push("meaningful positive impact matches what you said matters to you");
+  if(s.harm_ok<=2&&job.harm_ok<=1)reasons.push("low ethical concerns match your values");
+  if(s.harm_ok>=8&&job.harm_ok>=3)reasons.push("you indicated comfort with ethically complex work, which this field involves");
+  if(s.outdoors>=8&&job.outdoors>=3)reasons.push("physical and outdoor work matches your preference");
+  if(s.outdoors<=2&&job.outdoors<=1)reasons.push("minimal outdoor/field requirements suit your preference for controlled environments");
+  if(s.hours>=8&&job.hours>=3)reasons.push("you're comfortable with demanding hours, which is common in this role");
+  if(s.hands>=8&&job.hands>=3)reasons.push("strong hands-on, physical component matches your working style");
+  if(s.hands<=2&&job.hands<=1)reasons.push("abstract, non-physical work suits your style");
+  if(s.creative>=8&&job.creative>=4)reasons.push("high need for novelty and original thinking matches this role's creative demands");
+  if(s.creative<=2&&job.creative<=1)reasons.push("you prefer executing proven methods over inventing new ones — this role rewards exactly that");
+  if(s.cool>=6&&job.cool>=4)reasons.push("this is a job that genuinely impresses people — matches your preference for work others find cool");
+  if(s.cool<=1&&job.cool<=1)reasons.push("this role doesn't rely on impressiveness to attract people — suits your indifference to status");
+  if(s.edge>=6&&job.edge>=4)reasons.push("this field is at the absolute frontier of technology — matches your desire to work on what's newest");
+  if(s.edge<=-2&&job.edge<=1)reasons.push("this field uses well-established, stable technology — matches your preference for proven methods");
+  if(s.team<=2&&job.team<=1)reasons.push("largely independent work suits your preference for solo work");
+  if(mbti.includes('N')&&job.N>=2)reasons.push("MBTI intuitive type aligns well with the big-picture, systems thinking this role requires");
+  if(mbti.includes('S')&&job.S>=2)reasons.push("MBTI sensing type aligns with this role's focus on practical, concrete details");
+  if(mbti.includes('T')&&job.T>=2)reasons.push("MBTI thinking type suits this technically rigorous field");
+  if(mbti.includes('I')&&job.I>=1)reasons.push("introverted MBTI type fits the independent, focused work style this role rewards");
+  if(mbti.includes('E')&&job.E>=1)reasons.push("extroverted MBTI type fits the client-facing and team-heavy nature of this role");
+  if(s.eng>=4&&job.tags.includes('eng'))reasons.push("your interest in engineering content lines up with this field");
+  if(s.cs>=4&&job.tags.includes('cs'))reasons.push("your interest in computers and coding points here");
+  if(s.trade>=4&&job.tags.includes('trade'))reasons.push("your hands-on, trades-oriented interest is a strong fit");
+  if(s.elec>=4&&job.tags.includes('elec'))reasons.push("your interest in electronics and circuits matches this role");
+  if(s.aero>=4&&job.tags.includes('aero'))reasons.push("you showed strong interest in aerospace");
+  if(s.embedded>=4&&job.tags.includes('embedded'))reasons.push("you expressed interest in low-level / embedded programming");
+  if(reasons.length===0)reasons.push("overall profile similarity across lifestyle and interest dimensions");
+  return reasons.slice(0,3).join("; ")+"."
+}
+
+function barChart(s){
+  function norm(val,max){return Math.max(0,Math.min(100,Math.round((val||0)/max*100)));}
+  const dims=[
+    {key:'outdoors', label:'outdoor work',  color:'#1D9E75', max:20, desc:'office ← → outside'},
+    {key:'hands',    label:'hands-on',       color:'#3C3489', max:20, desc:'screen ← → physical'},
+    {key:'creative', label:'creativity',     color:'#D85A30', max:20, desc:'procedure ← → invention'},
+    {key:'impact',   label:'impact',         color:'#185FA5', max:20, desc:"neutral ← → change the world"},
+    {key:'cool',     label:'coolness',       color:'#993356', max:16, desc:'invisible job ← → impressive to others'},
+    {key:'edge',     label:'cutting edge',   color:'#0F6E56', max:16, desc:'proven field ← → bleeding edge tech'},
+    {key:'money',    label:'status / money', color:'#BA7517', max:16, desc:'not important ← → very important'},
+  ];
+  return `<div class="bar-chart">`+dims.map(d=>{
+    const pct=norm(s[d.key],d.max);
+    return `<div>
+      <div class="bar-row">
+        <span class="bar-label">${d.label}</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:${pct}%;background:${d.color}"></div>
+        </div>
+        <span class="bar-pct">${pct}%</span>
+      </div>
+      <div style="font-size:10px;color:#aaa;font-style:italic;text-align:center;margin-top:1px;padding-left:120px">${d.desc}</div>
+    </div>`;
+  }).join('')+`</div>`;
+}
+
+function showResults(){
+  const s=calcScores();
+  const mbti=getMBTI(s);
+  const maxScore=maxPossibleScore();
+  const ranked=JOBS.map(j=>({...j,score:scoreJob(j,s,mbti)})).sort((a,b)=>b.score-a.score);
+  const top10=ranked.slice(0,10);
+  // Normalize % match relative to the best score so #1 is always 100%
+  const best=top10[0].score;
+  document.getElementById('quiz-section').style.display='none';
+  const res=document.getElementById('results');
+  res.style.display='block';
+  res.innerHTML=`
+    <h1>your results</h1>
+    <p class="sub" style="margin-bottom:1.5rem">here's what your answers suggest — use these as starting points to explore, not final answers</p>
+    <div class="mbti-box">
+      <div class="mbti-type">${mbti}</div>
+      <div>
+        <div class="mbti-label">your personality type</div>
+        <div class="mbti-name">${MBTI_NAMES[mbti]||''}</div>
+      </div>
+    </div>
+    <p style="font-size:12px;font-style:italic;color:var(--color-text-tertiary);margin-bottom:0.8rem">what matters to you</p>
+    ${barChart(s)}
+    <div class="divider"></div>
+    <p style="font-size:13px;font-weight:400;color:var(--color-text-secondary);margin-bottom:1rem;font-style:italic">your top 10 career matches</p>
+    ${top10.map((j,i)=>{
+      const pct=Math.round((j.score/best)*100);
+      const rankLabel=i===0?'#1 — best match':`#${i+1}`;
+      return `
+      <div class="result-card">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px">
+          <div class="job-rank">${rankLabel}</div>
+          <div style="font-size:13px;font-weight:500;color:#534AB7;font-family:Georgia,serif">${pct}% match</div>
+        </div>
+        <div class="job-title">${j.title}</div>
+        <span class="job-field ${j.fclass}">${j.field}</span>
+        <div style="height:4px;background:#f0eefc;border-radius:2px;margin:6px 0 10px;overflow:hidden"><div style="height:100%;width:${pct}%;background:#534AB7;border-radius:2px"></div></div>
+        <div class="job-desc">${j.desc}</div>
+        <div class="job-why">Why this fits you: ${whyJob(j,s,mbti)}</div>
+      </div>`;
+    }).join('')}
+    <div class="divider"></div>
+    <button class="btn" onclick="restart()">&#8592; start over</button>
+  `;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function restart(){
+  current=0;
+  answers=new Array(36).fill(null);
+  document.getElementById('quiz-section').style.display='block';
+  document.getElementById('results').style.display='none';
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+render();
+</script>
+</body>
+</html>
