@@ -139,6 +139,29 @@ function goBack() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+//  DEV SHORTCUT — press X five times to auto-fill random answers and show results
+// ─────────────────────────────────────────────────────────────────────────────
+(function() {
+  let xCount = 0, xTimer = null;
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'x' && e.key !== 'X') return;
+    xCount++;
+    clearTimeout(xTimer);
+    xTimer = setTimeout(() => { xCount = 0; }, 1500);
+    if (xCount >= 5) {
+      xCount = 0;
+      clearTimeout(xTimer);
+      // Fill every question with a random answer
+      answers = QUESTIONS.map(q => Math.floor(Math.random() * q.responses.length));
+      // Jump straight to results, skipping to end
+      current = QUESTIONS.length - 1;
+      showResults();
+      showToast('🎲 random answers applied!');
+    }
+  });
+})();
+
+// ─────────────────────────────────────────────────────────────────────────────
 //  SCORING — accumulate dimension scores from all answered questions
 // ─────────────────────────────────────────────────────────────────────────────
 function calcScores() {
