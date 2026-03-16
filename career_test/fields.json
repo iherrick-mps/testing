@@ -1,0 +1,262 @@
+[
+  {
+    "key": "outdoors",
+    "label": "Outdoor Work",
+    "type": "hard",
+    "weight": 3.0,
+    "signed": false,
+    "desc": "How much the student wants to work outside or on physical job sites rather than at a desk.",
+    "bar_label": "outdoor work",
+    "display_range": "office \u2190 \u2192 outside & physical",
+    "color": "#1D9E75",
+    "bar_max": 24
+  },
+  {
+    "key": "hands",
+    "label": "Hands-On",
+    "type": "hard",
+    "weight": 3.0,
+    "signed": false,
+    "desc": "How much the student wants to physically manipulate objects in the real world vs. work behind a screen.",
+    "bar_label": "hands-on",
+    "display_range": "screen-only \u2190 \u2192 never use a screen",
+    "color": "#3C3489",
+    "bar_max": 24
+  },
+  {
+    "key": "risk",
+    "label": "Risk / Edge",
+    "type": "hard",
+    "weight": 3.0,
+    "signed": true,
+    "desc": "Combined dimension: how much the student wants cutting-edge technology AND/OR physically dangerous high-stakes work. Negative = stable and safe.",
+    "bar_label": "risk / edge",
+    "display_range": "stable & safe \u2190 \u2192 dangerous & cutting-edge",
+    "color": "#993356",
+    "bar_range": 20
+  },
+  {
+    "key": "school",
+    "label": "Schooling",
+    "type": "hard",
+    "weight": 3.0,
+    "signed": true,
+    "desc": "How much formal education the student wants. Negative = trade school or right out of high school. Positive = bachelor's through PhD+.",
+    "bar_label": "schooling",
+    "display_range": "trade school \u2190 \u2192 PhD+",
+    "color": "#185FA5",
+    "bar_range": 20
+  },
+  {
+    "key": "harm_ok",
+    "label": "Ethical Comfort",
+    "type": "hard",
+    "weight": 2.0,
+    "signed": false,
+    "desc": "How comfortable the student is working in industries that may cause indirect harm (defense, oil, finance, etc.).",
+    "bar_label": "ethical comfort",
+    "display_range": "strongly opposed \u2190 \u2192 fully comfortable",
+    "color": "#888780",
+    "bar_max": 20
+  },
+  {
+    "key": "hours",
+    "label": "Work Hours",
+    "type": "hard",
+    "weight": 1.5,
+    "signed": false,
+    "desc": "Tolerance for long, irregular, or unpredictable work schedules.",
+    "bar_label": "work hours",
+    "display_range": "strict work-life balance \u2190 \u2192 long hours fine",
+    "color": "#639922",
+    "bar_max": 16
+  },
+  {
+    "key": "impact",
+    "label": "Impact",
+    "type": "soft",
+    "weight": 2.0,
+    "signed": false,
+    "desc": "How important it is to the student that their work visibly improves the world.",
+    "bar_label": "impact",
+    "display_range": "neutral \u2190 \u2192 change the world",
+    "color": "#0F6E56",
+    "bar_max": 24
+  },
+  {
+    "key": "creative",
+    "label": "Creativity",
+    "type": "soft",
+    "weight": 2.0,
+    "signed": false,
+    "desc": "How much the student wants to invent and create novel solutions vs. execute proven, well-defined procedures.",
+    "bar_label": "creativity",
+    "display_range": "procedure \u2190 \u2192 invention",
+    "color": "#D85A30",
+    "bar_max": 24
+  },
+  {
+    "key": "money",
+    "label": "Status / Money",
+    "type": "soft",
+    "weight": 1.0,
+    "signed": false,
+    "desc": "How important high salary and the social status that comes with income is to the student.",
+    "bar_label": "status / money",
+    "display_range": "not important \u2190 \u2192 very important",
+    "color": "#BA7517",
+    "bar_max": 16
+  },
+  {
+    "key": "cool",
+    "label": "Coolness",
+    "type": "soft",
+    "weight": 1.0,
+    "signed": false,
+    "desc": "How important it is that strangers find the student's job impressive or exciting.",
+    "bar_label": "coolness",
+    "display_range": "invisible job \u2190 \u2192 impressive to others",
+    "color": "#D4537E",
+    "bar_max": 16
+  },
+  {
+    "key": "team",
+    "label": "Teamwork",
+    "type": "soft",
+    "weight": 1.0,
+    "signed": false,
+    "desc": "Preference for collaborative team environments vs. independent solo work.",
+    "bar_label": "teamwork",
+    "display_range": "solo \u2190 \u2192 collaborative",
+    "color": "#5DCAA5",
+    "bar_max": 20
+  },
+  {
+    "key": "E",
+    "label": "Extroversion",
+    "type": "mbti",
+    "weight": 0.6,
+    "signed": false,
+    "desc": "MBTI E/I axis \u2014 extroversion side"
+  },
+  {
+    "key": "I",
+    "label": "Introversion",
+    "type": "mbti",
+    "weight": 0.6,
+    "signed": false,
+    "desc": "MBTI E/I axis \u2014 introversion side"
+  },
+  {
+    "key": "S",
+    "label": "Sensing",
+    "type": "mbti",
+    "weight": 0.6,
+    "signed": false,
+    "desc": "MBTI S/N axis \u2014 sensing side (concrete, practical)"
+  },
+  {
+    "key": "N",
+    "label": "Intuition",
+    "type": "mbti",
+    "weight": 0.6,
+    "signed": false,
+    "desc": "MBTI S/N axis \u2014 intuition side (big picture, abstract)"
+  },
+  {
+    "key": "T",
+    "label": "Thinking",
+    "type": "mbti",
+    "weight": 0.6,
+    "signed": false,
+    "desc": "MBTI T/F axis \u2014 thinking side (logic-driven)"
+  },
+  {
+    "key": "F",
+    "label": "Feeling",
+    "type": "mbti",
+    "weight": 0.6,
+    "signed": false,
+    "desc": "MBTI T/F axis \u2014 feeling side (values-driven)"
+  },
+  {
+    "key": "J",
+    "label": "Judging",
+    "type": "mbti",
+    "weight": 0.6,
+    "signed": false,
+    "desc": "MBTI J/P axis \u2014 judging side (structured, decisive)"
+  },
+  {
+    "key": "P",
+    "label": "Perceiving",
+    "type": "mbti",
+    "weight": 0.6,
+    "signed": false,
+    "desc": "MBTI J/P axis \u2014 perceiving side (flexible, open)"
+  },
+  {
+    "key": "eng",
+    "label": "Engineering Interest",
+    "type": "tag",
+    "weight": 0.25,
+    "signed": false,
+    "desc": "Expressed interest in physical engineering fields (mechanical, civil, aerospace, etc.)"
+  },
+  {
+    "key": "cs",
+    "label": "CS Interest",
+    "type": "tag",
+    "weight": 0.25,
+    "signed": false,
+    "desc": "Expressed interest in software and computer science fields"
+  },
+  {
+    "key": "trade",
+    "label": "Trades Interest",
+    "type": "tag",
+    "weight": 0.25,
+    "signed": false,
+    "desc": "Expressed interest in skilled trades (welding, carpentry, electrical, plumbing, etc.)"
+  },
+  {
+    "key": "elec",
+    "label": "Electronics Interest",
+    "type": "tag",
+    "weight": 0.25,
+    "signed": false,
+    "desc": "Expressed interest in electronics, circuits, and embedded systems"
+  },
+  {
+    "key": "aero",
+    "label": "Aerospace Interest",
+    "type": "tag",
+    "weight": 0.25,
+    "signed": false,
+    "desc": "Expressed interest in aerospace, aviation, and rocketry"
+  },
+  {
+    "key": "embedded",
+    "label": "Embedded Systems Interest",
+    "type": "tag",
+    "weight": 0.25,
+    "signed": false,
+    "desc": "Expressed interest in low-level programming and firmware"
+  },
+  {
+    "key": "travel",
+    "label": "Travel Willingness",
+    "type": "tag",
+    "weight": 0.0,
+    "signed": false,
+    "desc": "Willingness to travel or work at remote locations \u2014 informational tag only, not directly scored"
+  },
+  {
+    "key": "mat",
+    "label": "Materials Interest",
+    "type": "tag",
+    "weight": 0.0,
+    "signed": false,
+    "desc": "Expressed interest in materials science \u2014 informational tag only"
+  }
+]

@@ -1,0 +1,317 @@
+/* ─────────────────────────────────────────────
+   Career Compass — styles.css
+   Edit this file to change the visual design.
+   All color tokens are CSS custom properties
+   so you can retheme by editing :root only.
+───────────────────────────────────────────── */
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --color-bg:#ffffff;
+  --color-bg-secondary:#f5f4f0;
+  --color-text-primary:#1a1a1a;
+  --color-text-secondary:#6b6b6b;
+  --color-text-tertiary:#9a9a9a;
+  --color-border-light:rgba(0,0,0,0.1);
+  --color-border-med:rgba(0,0,0,0.18);
+  --color-accent:#534AB7;
+  --color-accent-dark:#3C3489;
+  --color-accent-bg:#EEEDFE;
+  --color-accent-text:#26215C;
+  --radius-md:8px;
+  --radius-lg:12px;
+}
+
+/* ── Layout ───────────────────────────────── */
+
+body{
+  font-family:'Georgia',serif;
+  background:#f9f8f4;
+  color:var(--color-text-primary);
+  min-height:100vh;
+  padding:2rem 1rem 4rem;
+}
+
+#app{max-width:700px;margin:0 auto}
+
+/* ── Header ───────────────────────────────── */
+
+.header{
+  margin-bottom:2rem;
+  padding-bottom:1.5rem;
+  border-bottom:0.5px solid var(--color-border-light);
+}
+
+h1{
+  font-size:28px;
+  font-weight:400;
+  font-style:italic;
+  color:var(--color-text-primary);
+  margin-bottom:6px;
+  letter-spacing:-0.02em;
+}
+
+.sub{
+  font-size:14px;
+  color:var(--color-text-secondary);
+  font-family:'Georgia',serif;
+  font-style:normal;
+}
+
+/* ── Progress bar ─────────────────────────── */
+
+.progress-bar{
+  height:3px;
+  background:var(--color-border-light);
+  border-radius:4px;
+  margin-bottom:1.8rem;
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  background:var(--color-accent);
+  border-radius:4px;
+  transition:width 0.4s ease;
+}
+
+/* ── Question section badges ──────────────── */
+
+.section-badge{
+  display:inline-block;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:3px 10px;
+  border-radius:20px;
+  margin-bottom:10px;
+  font-family:'Georgia',serif;
+  font-style:normal;
+}
+
+.badge-mbti     {background:#EEEDFE;color:#3C3489}
+.badge-lifestyle{background:#E1F5EE;color:#085041}
+.badge-content  {background:#FAEEDA;color:#633806}
+
+/* ── Question text ────────────────────────── */
+
+.q-num{
+  font-size:11px;
+  color:var(--color-text-tertiary);
+  margin-bottom:5px;
+  font-family:'Georgia',serif;
+  letter-spacing:0.08em;
+  font-style:normal;
+}
+
+.q-text{
+  font-size:18px;
+  font-weight:400;
+  color:var(--color-text-primary);
+  margin-bottom:1.4rem;
+  line-height:1.55;
+  font-style:italic;
+}
+
+/* ── Answer options ───────────────────────── */
+
+.options{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:1.8rem;
+}
+
+.opt{
+  padding:13px 18px;
+  border:0.5px solid var(--color-border-light);
+  border-radius:var(--radius-md);
+  cursor:pointer;
+  font-size:14px;
+  color:var(--color-text-primary);
+  background:#fff;
+  transition:border-color 0.15s,background 0.15s;
+  text-align:left;
+  line-height:1.5;
+  font-family:'Georgia',serif;
+}
+
+.opt:hover   {border-color:var(--color-border-med);background:#fafaf7}
+.opt.selected{border-color:var(--color-accent);background:var(--color-accent-bg);color:var(--color-accent-text)}
+
+/* ── Navigation buttons ───────────────────── */
+
+.nav{display:flex;gap:10px;align-items:center}
+
+.btn{
+  padding:10px 22px;
+  border-radius:var(--radius-md);
+  border:0.5px solid var(--color-border-med);
+  background:#fff;
+  color:var(--color-text-primary);
+  font-size:14px;
+  cursor:pointer;
+  font-family:'Georgia',serif;
+  font-style:italic;
+}
+
+.btn:hover         {background:var(--color-bg-secondary)}
+.btn.primary       {background:var(--color-accent);border-color:var(--color-accent);color:#fff;font-style:normal;font-weight:700;letter-spacing:0.02em}
+.btn.primary:hover {background:var(--color-accent-dark)}
+.btn:disabled      {opacity:0.35;cursor:not-allowed}
+
+.q-counter-text{
+  font-size:13px;
+  color:var(--color-text-tertiary);
+  margin-left:auto;
+  font-family:'Georgia',serif;
+  font-style:italic;
+}
+
+/* ── Results page ─────────────────────────── */
+
+#results{display:none}
+
+.result-card{
+  background:#fff;
+  border:0.5px solid var(--color-border-light);
+  border-radius:var(--radius-lg);
+  padding:1.4rem 1.5rem;
+  margin-bottom:12px;
+}
+
+.job-rank{
+  font-size:11px;
+  font-weight:700;
+  color:var(--color-text-tertiary);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:4px;
+  font-family:'Georgia',serif;
+}
+
+.job-title{
+  font-size:20px;
+  font-weight:400;
+  font-style:italic;
+  color:var(--color-text-primary);
+  margin-bottom:6px;
+}
+
+.job-field{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  padding:3px 9px;
+  border-radius:10px;
+  display:inline-block;
+  margin-bottom:10px;
+}
+
+/* Field badge colours — add a new .field-xxx here when adding a new field */
+.field-eng  {background:#E6F1FB;color:#0C447C}
+.field-trade{background:#FAEEDA;color:#633806}
+.field-cs   {background:#EAF3DE;color:#27500A}
+.field-elec {background:#EEEDFE;color:#3C3489}
+
+.job-desc{
+  font-size:13px;
+  color:var(--color-text-secondary);
+  line-height:1.6;
+  font-family:'Georgia',serif;
+  font-style:italic;
+  margin-bottom:8px;
+  border-left:2px solid var(--color-border-light);
+  padding-left:10px;
+}
+
+.job-why{
+  font-size:13px;
+  color:var(--color-text-secondary);
+  line-height:1.7;
+  font-family:'Georgia',serif;
+}
+
+/* ── MBTI result box ──────────────────────── */
+
+.mbti-box{
+  background:#fff;
+  border:0.5px solid var(--color-border-light);
+  border-radius:var(--radius-lg);
+  padding:1.2rem 1.5rem;
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  gap:1.5rem;
+}
+
+.mbti-type {font-size:42px;font-weight:400;font-style:italic;color:var(--color-accent);letter-spacing:0.06em}
+.mbti-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-tertiary);margin-bottom:2px}
+.mbti-name {font-size:16px;font-style:italic;color:var(--color-text-secondary)}
+
+/* ── Divider ──────────────────────────────── */
+
+.divider{height:0.5px;background:var(--color-border-light);margin:1.5rem 0}
+
+/* ── Profile bar chart ────────────────────── */
+
+.score-row {margin-bottom:1.2rem}
+
+.bar-chart{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:1rem;
+}
+
+.bar-row{
+  display:grid;
+  grid-template-columns:110px 1fr 48px;
+  align-items:center;
+  gap:10px;
+}
+
+.bar-label{
+  font-size:12px;
+  color:var(--color-text-secondary);
+  font-family:'Georgia',serif;
+  font-style:italic;
+  text-align:right;
+}
+
+.bar-track{
+  height:14px;
+  background:var(--color-bg-secondary);
+  border-radius:7px;
+  overflow:hidden;
+  position:relative;
+}
+
+.bar-fill{
+  height:100%;
+  border-radius:7px;
+  transition:width 0.6s ease;
+}
+
+.bar-pct{
+  font-size:12px;
+  color:var(--color-text-tertiary);
+  font-family:'Georgia',serif;
+  font-style:italic;
+  min-width:36px;
+}
+
+/* ── Misc ─────────────────────────────────── */
+
+.section-intro{
+  font-size:12px;
+  color:var(--color-text-tertiary);
+  font-style:italic;
+  margin-bottom:1rem;
+  padding:8px 12px;
+  border-left:2px solid var(--color-border-light);
+  line-height:1.5;
+}
