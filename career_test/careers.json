@@ -4,7 +4,7 @@
     "title": "Aerospace Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design planes, rockets, and satellites \u2014 figuring out how to make machines fly fast, high, and safely through the sky or even into space.",
+    "desc": "You design planes, rockets, and satellites — figuring out how to make machines fly fast, high, and safely through the sky or even into space.",
     "money": 4,
     "impact": 2,
     "harm_ok": 2,
@@ -34,7 +34,7 @@
     "title": "Mechanical Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design and build the physical parts of machines \u2014 engines, gears, pumps \u2014 making sure they work efficiently and don't break down.",
+    "desc": "You design and build the physical parts of machines — engines, gears, pumps — making sure they work efficiently and don't break down.",
     "money": 3,
     "impact": 2,
     "harm_ok": 2,
@@ -92,7 +92,7 @@
     "title": "Automotive Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design and improve cars \u2014 from the engine and brakes to the software that makes them run \u2014 making vehicles safer, faster, and more efficient.",
+    "desc": "You design and improve cars — from the engine and brakes to the software that makes them run — making vehicles safer, faster, and more efficient.",
     "money": 3,
     "impact": 2,
     "harm_ok": 2,
@@ -121,7 +121,7 @@
     "title": "Materials Scientist",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You study and invent new materials \u2014 like stronger metals, lighter plastics, or heat-resistant ceramics \u2014 that other engineers use to build better products.",
+    "desc": "You study and invent new materials — like stronger metals, lighter plastics, or heat-resistant ceramics — that other engineers use to build better products.",
     "money": 3,
     "impact": 2,
     "harm_ok": 2,
@@ -181,7 +181,7 @@
     "title": "Military / Defense Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design weapons, vehicles, and systems for the military \u2014 like armor, radar, or drones \u2014 knowing your work will be used in real-world conflicts.",
+    "desc": "You design weapons, vehicles, and systems for the military — like armor, radar, or drones — knowing your work will be used in real-world conflicts.",
     "money": 4,
     "impact": 1,
     "harm_ok": 4,
@@ -210,7 +210,7 @@
     "title": "Civil / Structural Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design bridges, roads, dams, and buildings \u2014 making sure the structures people rely on every day are safe and built to last.",
+    "desc": "You design bridges, roads, dams, and buildings — making sure the structures people rely on every day are safe and built to last.",
     "money": 3,
     "impact": 3,
     "harm_ok": 1,
@@ -239,7 +239,7 @@
     "title": "Biomedical Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design medical devices \u2014 like prosthetic limbs, MRI machines, or pacemakers \u2014 that help doctors treat patients and save lives.",
+    "desc": "You design medical devices — like prosthetic limbs, MRI machines, or pacemakers — that help doctors treat patients and save lives.",
     "money": 3,
     "impact": 5,
     "harm_ok": 0,
@@ -268,7 +268,7 @@
     "title": "Environmental Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design systems that clean up pollution, treat drinking water, and protect ecosystems \u2014 making sure human activity doesn't permanently damage the planet.",
+    "desc": "You design systems that clean up pollution, treat drinking water, and protect ecosystems — making sure human activity doesn't permanently damage the planet.",
     "money": 2,
     "impact": 5,
     "harm_ok": 0,
@@ -297,7 +297,7 @@
     "title": "Chemical Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design the large industrial processes that turn raw chemicals into useful products \u2014 like fuel, medicine, or food \u2014 on a massive scale.",
+    "desc": "You design the large industrial processes that turn raw chemicals into useful products — like fuel, medicine, or food — on a massive scale.",
     "money": 4,
     "impact": 2,
     "harm_ok": 3,
@@ -326,7 +326,7 @@
     "title": "Toy / Consumer Product Designer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You invent and design the toys, gadgets, and everyday products that end up on store shelves \u2014 blending creativity with engineering to make things people love.",
+    "desc": "You invent and design the toys, gadgets, and everyday products that end up on store shelves — blending creativity with engineering to make things people love.",
     "money": 2,
     "impact": 1,
     "harm_ok": 0,
@@ -356,7 +356,7 @@
     "title": "Industrial Designer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design how manufactured products look and feel \u2014 chairs, phones, appliances \u2014 making sure they're both beautiful and actually comfortable to use.",
+    "desc": "You design how manufactured products look and feel — chairs, phones, appliances — making sure they're both beautiful and actually comfortable to use.",
     "money": 3,
     "impact": 2,
     "harm_ok": 1,
@@ -386,7 +386,7 @@
     "title": "Robotics Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You build robots \u2014 programming their movements, designing their bodies, and connecting their sensors \u2014 for use in factories, hospitals, or even on Mars.",
+    "desc": "You build robots — programming their movements, designing their bodies, and connecting their sensors — for use in factories, hospitals, or even on Mars.",
     "money": 4,
     "impact": 3,
     "harm_ok": 2,
@@ -417,7 +417,7 @@
     "title": "Manufacturing Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design the factory floor \u2014 figuring out the fastest, safest, and cheapest way to build products at large scale using machines and assembly lines.",
+    "desc": "You design the factory floor — figuring out the fastest, safest, and cheapest way to build products at large scale using machines and assembly lines.",
     "money": 3,
     "impact": 2,
     "harm_ok": 2,
@@ -446,7 +446,7 @@
     "title": "Architect",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design buildings \u2014 homes, schools, skyscrapers \u2014 deciding how they look, how space is used inside, and making sure they're safe and beautiful.",
+    "desc": "You design buildings — homes, schools, skyscrapers — deciding how they look, how space is used inside, and making sure they're safe and beautiful.",
     "money": 3,
     "impact": 3,
     "harm_ok": 0,
@@ -476,7 +476,7 @@
     "title": "Urban Planner",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design entire cities and neighborhoods \u2014 deciding where parks, roads, and buildings should go to make communities livable, fair, and efficient.",
+    "desc": "You design entire cities and neighborhoods — deciding where parks, roads, and buildings should go to make communities livable, fair, and efficient.",
     "money": 2,
     "impact": 4,
     "harm_ok": 0,
@@ -505,7 +505,7 @@
     "title": "Drone / UAV Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design and build unmanned flying vehicles \u2014 from delivery drones to military surveillance aircraft \u2014 combining aeronautics, electronics, and software.",
+    "desc": "You design and build unmanned flying vehicles — from delivery drones to military surveillance aircraft — combining aeronautics, electronics, and software.",
     "money": 3,
     "impact": 2,
     "harm_ok": 3,
@@ -536,7 +536,7 @@
     "title": "Field Service Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You travel to customer locations to install, maintain, and repair complex equipment \u2014 like industrial machines or medical devices \u2014 wherever they're needed.",
+    "desc": "You travel to customer locations to install, maintain, and repair complex equipment — like industrial machines or medical devices — wherever they're needed.",
     "money": 3,
     "impact": 2,
     "harm_ok": 1,
@@ -566,7 +566,7 @@
     "title": "Acoustic Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You control how sound behaves \u2014 designing concert halls so music sounds perfect, or making submarines quieter so they can't be detected by sonar.",
+    "desc": "You control how sound behaves — designing concert halls so music sounds perfect, or making submarines quieter so they can't be detected by sonar.",
     "money": 3,
     "impact": 2,
     "harm_ok": 0,
@@ -595,7 +595,7 @@
     "title": "Welder",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You use extreme heat to fuse metal pieces together, building everything from skyscraper frames to ship hulls \u2014 it's skilled physical work that pays well.",
+    "desc": "You use extreme heat to fuse metal pieces together, building everything from skyscraper frames to ship hulls — it's skilled physical work that pays well.",
     "money": 3,
     "impact": 1,
     "harm_ok": 2,
@@ -624,7 +624,7 @@
     "title": "Carpenter / Woodworker",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You cut, shape, and build things from wood \u2014 from house frames and cabinets to custom furniture \u2014 using both hand tools and power tools.",
+    "desc": "You cut, shape, and build things from wood — from house frames and cabinets to custom furniture — using both hand tools and power tools.",
     "money": 2,
     "impact": 1,
     "harm_ok": 0,
@@ -653,7 +653,7 @@
     "title": "Stone Mason / Bricklayer",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You lay bricks, stone, and concrete to build walls, floors, and structures \u2014 it's physically intense outdoor work that creates things built to last centuries.",
+    "desc": "You lay bricks, stone, and concrete to build walls, floors, and structures — it's physically intense outdoor work that creates things built to last centuries.",
     "money": 2,
     "impact": 1,
     "harm_ok": 0,
@@ -682,7 +682,7 @@
     "title": "HVAC Technician",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You install and repair heating, ventilation, and air conditioning systems \u2014 keeping homes, hospitals, and offices at a comfortable temperature year-round.",
+    "desc": "You install and repair heating, ventilation, and air conditioning systems — keeping homes, hospitals, and offices at a comfortable temperature year-round.",
     "money": 4,
     "impact": 1,
     "harm_ok": 0,
@@ -711,7 +711,7 @@
     "title": "Electrician",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You install and repair the electrical wiring in buildings \u2014 making sure power flows safely to every outlet, light, and appliance without starting a fire.",
+    "desc": "You install and repair the electrical wiring in buildings — making sure power flows safely to every outlet, light, and appliance without starting a fire.",
     "money": 4,
     "impact": 1,
     "harm_ok": 1,
@@ -741,7 +741,7 @@
     "title": "Plumber",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You install and fix the pipes that carry water and gas through buildings \u2014 from fixing a leaky faucet to installing an entire plumbing system in a new home.",
+    "desc": "You install and fix the pipes that carry water and gas through buildings — from fixing a leaky faucet to installing an entire plumbing system in a new home.",
     "money": 4,
     "impact": 1,
     "harm_ok": 0,
@@ -770,7 +770,7 @@
     "title": "Ironworker / Structural Steel",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You connect the giant steel beams that form the skeleton of skyscrapers and bridges \u2014 often working hundreds of feet in the air on narrow beams.",
+    "desc": "You connect the giant steel beams that form the skeleton of skyscrapers and bridges — often working hundreds of feet in the air on narrow beams.",
     "money": 4,
     "impact": 1,
     "harm_ok": 2,
@@ -800,7 +800,7 @@
     "title": "Heavy Equipment Operator",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You operate giant machines \u2014 bulldozers, cranes, and excavators \u2014 to move earth, lift steel, and build the physical foundation of roads and buildings.",
+    "desc": "You operate giant machines — bulldozers, cranes, and excavators — to move earth, lift steel, and build the physical foundation of roads and buildings.",
     "money": 4,
     "impact": 1,
     "harm_ok": 2,
@@ -829,7 +829,7 @@
     "title": "Pipefitter",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You install and maintain the complex pipe systems in industrial plants and refineries \u2014 this is high-skill, high-pay work often done in remote or rugged locations.",
+    "desc": "You install and maintain the complex pipe systems in industrial plants and refineries — this is high-skill, high-pay work often done in remote or rugged locations.",
     "money": 4,
     "impact": 1,
     "harm_ok": 2,
@@ -859,7 +859,7 @@
     "title": "Construction Manager",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You run a construction site \u2014 coordinating workers, managing schedules and budgets, and solving problems to make sure a building gets done right and on time.",
+    "desc": "You run a construction site — coordinating workers, managing schedules and budgets, and solving problems to make sure a building gets done right and on time.",
     "money": 4,
     "impact": 2,
     "harm_ok": 1,
@@ -888,7 +888,7 @@
     "title": "Machinist / CNC Operator",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You use precision cutting machines to shape metal parts to exact measurements \u2014 making components for engines, aircraft, or surgical tools with zero room for error.",
+    "desc": "You use precision cutting machines to shape metal parts to exact measurements — making components for engines, aircraft, or surgical tools with zero room for error.",
     "money": 3,
     "impact": 1,
     "harm_ok": 1,
@@ -917,7 +917,7 @@
     "title": "Auto Mechanic",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You diagnose and repair car problems \u2014 from engine failures to brake jobs \u2014 using a combination of technical knowledge, specialty tools, and hands-on skill.",
+    "desc": "You diagnose and repair car problems — from engine failures to brake jobs — using a combination of technical knowledge, specialty tools, and hands-on skill.",
     "money": 3,
     "impact": 1,
     "harm_ok": 0,
@@ -946,7 +946,7 @@
     "title": "Boilermaker",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You build and repair the massive tanks, boilers, and pressure vessels used in power plants and factories \u2014 it's tough, well-paid work in industrial environments.",
+    "desc": "You build and repair the massive tanks, boilers, and pressure vessels used in power plants and factories — it's tough, well-paid work in industrial environments.",
     "money": 4,
     "impact": 1,
     "harm_ok": 2,
@@ -976,7 +976,7 @@
     "title": "Wind Turbine Technician",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You climb inside and on top of 300-foot wind turbines to maintain and repair them \u2014 physically demanding work with a real positive impact on clean energy.",
+    "desc": "You climb inside and on top of 300-foot wind turbines to maintain and repair them — physically demanding work with a real positive impact on clean energy.",
     "money": 3,
     "impact": 4,
     "harm_ok": 0,
@@ -1035,7 +1035,7 @@
     "title": "Marine Mechanic / Technician",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You repair and maintain boat engines and marine systems \u2014 working in boatyards or aboard vessels, keeping everything running on the water.",
+    "desc": "You repair and maintain boat engines and marine systems — working in boatyards or aboard vessels, keeping everything running on the water.",
     "money": 3,
     "impact": 1,
     "harm_ok": 0,
@@ -1065,7 +1065,7 @@
     "title": "Software Engineer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You write the code that runs apps, websites, and operating systems \u2014 spending most of your day at a computer thinking through complex logic problems.",
+    "desc": "You write the code that runs apps, websites, and operating systems — spending most of your day at a computer thinking through complex logic problems.",
     "money": 5,
     "impact": 2,
     "harm_ok": 1,
@@ -1094,7 +1094,7 @@
     "title": "Web Developer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You build websites and web apps \u2014 coding the buttons, layouts, and features that users interact with whenever they open a browser.",
+    "desc": "You build websites and web apps — coding the buttons, layouts, and features that users interact with whenever they open a browser.",
     "money": 4,
     "impact": 2,
     "harm_ok": 0,
@@ -1124,7 +1124,7 @@
     "title": "Embedded Systems Programmer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You write the tiny, efficient programs that run inside physical devices \u2014 like the code controlling a car's brakes or a pacemaker's heartbeat \u2014 where bugs can be dangerous.",
+    "desc": "You write the tiny, efficient programs that run inside physical devices — like the code controlling a car's brakes or a pacemaker's heartbeat — where bugs can be dangerous.",
     "money": 4,
     "impact": 2,
     "harm_ok": 1,
@@ -1155,7 +1155,7 @@
     "title": "Low-Level / Systems Programmer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You write software extremely close to the hardware \u2014 like operating systems or compilers \u2014 working in highly technical code that most programmers never touch.",
+    "desc": "You write software extremely close to the hardware — like operating systems or compilers — working in highly technical code that most programmers never touch.",
     "money": 4,
     "impact": 1,
     "harm_ok": 1,
@@ -1185,7 +1185,7 @@
     "title": "Game Developer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You build video games \u2014 coding the physics, AI, and graphics engines that make virtual worlds feel alive and fun to play in.",
+    "desc": "You build video games — coding the physics, AI, and graphics engines that make virtual worlds feel alive and fun to play in.",
     "money": 3,
     "impact": 1,
     "harm_ok": 1,
@@ -1215,7 +1215,7 @@
     "title": "Cybersecurity Engineer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You protect computer systems from hackers \u2014 finding and patching vulnerabilities before criminals can exploit them to steal data or shut down critical services.",
+    "desc": "You protect computer systems from hackers — finding and patching vulnerabilities before criminals can exploit them to steal data or shut down critical services.",
     "money": 5,
     "impact": 3,
     "harm_ok": 2,
@@ -1244,7 +1244,7 @@
     "title": "Data Scientist",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You analyze massive datasets to find hidden patterns \u2014 helping companies understand their customers, predict the future, or make better decisions.",
+    "desc": "You analyze massive datasets to find hidden patterns — helping companies understand their customers, predict the future, or make better decisions.",
     "money": 5,
     "impact": 2,
     "harm_ok": 1,
@@ -1273,7 +1273,7 @@
     "title": "AI / Machine Learning Engineer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You build the systems that allow computers to learn from data and make decisions on their own \u2014 the technology behind self-driving cars, voice assistants, and medical diagnosis.",
+    "desc": "You build the systems that allow computers to learn from data and make decisions on their own — the technology behind self-driving cars, voice assistants, and medical diagnosis.",
     "money": 5,
     "impact": 3,
     "harm_ok": 1,
@@ -1331,7 +1331,7 @@
     "title": "Mobile App Developer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You build apps for smartphones and tablets \u2014 creating the software people use on their phones every day, from social media to fitness trackers.",
+    "desc": "You build apps for smartphones and tablets — creating the software people use on their phones every day, from social media to fitness trackers.",
     "money": 4,
     "impact": 2,
     "harm_ok": 0,
@@ -1361,7 +1361,7 @@
     "title": "Circuit Design Engineer",
     "field": "Electrical",
     "fclass": "field-elec",
-    "desc": "You design the electronic circuits inside devices \u2014 planning how electricity flows through a chip or board to make a product do exactly what it's supposed to.",
+    "desc": "You design the electronic circuits inside devices — planning how electricity flows through a chip or board to make a product do exactly what it's supposed to.",
     "money": 4,
     "impact": 2,
     "harm_ok": 1,
@@ -1390,7 +1390,7 @@
     "title": "PCB Designer",
     "field": "Electrical",
     "fclass": "field-elec",
-    "desc": "You lay out the printed circuit boards inside every electronic device \u2014 planning exactly where each component goes so the board fits, works, and can be manufactured.",
+    "desc": "You lay out the printed circuit boards inside every electronic device — planning exactly where each component goes so the board fits, works, and can be manufactured.",
     "money": 3,
     "impact": 1,
     "harm_ok": 0,
@@ -1419,7 +1419,7 @@
     "title": "Electrical Product Designer",
     "field": "Electrical",
     "fclass": "field-elec",
-    "desc": "You design the whole electrical system inside a new product \u2014 from the battery to the user interface \u2014 making sure everything works together elegantly.",
+    "desc": "You design the whole electrical system inside a new product — from the battery to the user interface — making sure everything works together elegantly.",
     "money": 3,
     "impact": 2,
     "harm_ok": 0,
@@ -1449,7 +1449,7 @@
     "title": "Controls / Automation Engineer",
     "field": "Electrical",
     "fclass": "field-elec",
-    "desc": "You program the systems that make machines run automatically \u2014 like the robots in a car factory or the autopilot on an airplane.",
+    "desc": "You program the systems that make machines run automatically — like the robots in a car factory or the autopilot on an airplane.",
     "money": 4,
     "impact": 2,
     "harm_ok": 1,
@@ -1479,7 +1479,7 @@
     "title": "Power Systems Engineer",
     "field": "Electrical",
     "fclass": "field-elec",
-    "desc": "You design and manage electrical grids \u2014 the massive systems that generate and distribute electricity to cities, making sure the power never goes out.",
+    "desc": "You design and manage electrical grids — the massive systems that generate and distribute electricity to cities, making sure the power never goes out.",
     "money": 4,
     "impact": 3,
     "harm_ok": 2,
@@ -1509,7 +1509,7 @@
     "title": "RF / Communications Engineer",
     "field": "Electrical",
     "fclass": "field-elec",
-    "desc": "You design the wireless communication systems that transmit signals \u2014 working on everything from cell towers and satellites to military radar.",
+    "desc": "You design the wireless communication systems that transmit signals — working on everything from cell towers and satellites to military radar.",
     "money": 4,
     "impact": 2,
     "harm_ok": 2,
@@ -1568,7 +1568,7 @@
     "title": "Mechatronics Engineer",
     "field": "Electrical",
     "fclass": "field-elec",
-    "desc": "You combine mechanical, electrical, and software engineering to build smart machines \u2014 like robotic arms, automated vehicles, or intelligent manufacturing equipment.",
+    "desc": "You combine mechanical, electrical, and software engineering to build smart machines — like robotic arms, automated vehicles, or intelligent manufacturing equipment.",
     "money": 4,
     "impact": 3,
     "harm_ok": 1,
@@ -1599,7 +1599,7 @@
     "title": "IoT / Connected Devices Developer",
     "field": "Electrical",
     "fclass": "field-elec",
-    "desc": "You build the software and hardware for smart devices \u2014 like connected thermostats, smartwatches, or industrial sensors \u2014 that talk to each other over the internet.",
+    "desc": "You build the software and hardware for smart devices — like connected thermostats, smartwatches, or industrial sensors — that talk to each other over the internet.",
     "money": 4,
     "impact": 2,
     "harm_ok": 0,
@@ -1630,7 +1630,7 @@
     "title": "Forensic Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You're a detective for broken things \u2014 investigating why bridges collapsed, planes crashed, or products failed in order to prevent the same disaster from happening again.",
+    "desc": "You're a detective for broken things — investigating why bridges collapsed, planes crashed, or products failed in order to prevent the same disaster from happening again.",
     "money": 4,
     "impact": 3,
     "harm_ok": 1,
@@ -1659,7 +1659,7 @@
     "title": "Cryogenics Technician",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You work with materials cooled to nearly absolute zero (-270\u00b0C) \u2014 maintaining superconducting magnets for MRI machines, particle accelerators, and rocket fuel systems.",
+    "desc": "You work with materials cooled to nearly absolute zero (-270°C) — maintaining superconducting magnets for MRI machines, particle accelerators, and rocket fuel systems.",
     "money": 4,
     "impact": 2,
     "harm_ok": 1,
@@ -1689,7 +1689,7 @@
     "title": "Explosives Engineer / Blaster",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You plan and execute controlled explosions \u2014 demolishing buildings, clearing rock in mines, or opening tunnels \u2014 using precise math and licensed expertise to make big things go boom safely.",
+    "desc": "You plan and execute controlled explosions — demolishing buildings, clearing rock in mines, or opening tunnels — using precise math and licensed expertise to make big things go boom safely.",
     "money": 4,
     "impact": 1,
     "harm_ok": 4,
@@ -1719,7 +1719,7 @@
     "title": "Animatronics Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You build the mechanical creatures for movies and theme parks \u2014 combining robotics, electronics, and sculpture to make dragons, dinosaurs, and alien creatures move and breathe.",
+    "desc": "You build the mechanical creatures for movies and theme parks — combining robotics, electronics, and sculpture to make dragons, dinosaurs, and alien creatures move and breathe.",
     "money": 3,
     "impact": 2,
     "harm_ok": 0,
@@ -1750,7 +1750,7 @@
     "title": "Underwater Welder / Commercial Diver",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You weld and repair metal structures underwater \u2014 like oil pipelines and ship hulls \u2014 working in one of the most physically demanding and well-paid trades in existence.",
+    "desc": "You weld and repair metal structures underwater — like oil pipelines and ship hulls — working in one of the most physically demanding and well-paid trades in existence.",
     "money": 5,
     "impact": 1,
     "harm_ok": 4,
@@ -1780,7 +1780,7 @@
     "title": "Subsea Cable Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design and repair the massive fiber-optic cables that run along the ocean floor, carrying most of the world's internet traffic between continents \u2014 working on specialized ships in the open ocean.",
+    "desc": "You design and repair the massive fiber-optic cables that run along the ocean floor, carrying most of the world's internet traffic between continents — working on specialized ships in the open ocean.",
     "money": 4,
     "impact": 3,
     "harm_ok": 1,
@@ -1811,7 +1811,7 @@
     "title": "NDT Technician (Nondestructive Testing)",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You're a doctor for infrastructure \u2014 using X-rays, ultrasound, and thermal cameras to find cracks and defects inside bridges, aircraft, and nuclear reactors without ever cutting into them.",
+    "desc": "You're a doctor for infrastructure — using X-rays, ultrasound, and thermal cameras to find cracks and defects inside bridges, aircraft, and nuclear reactors without ever cutting into them.",
     "money": 3,
     "impact": 3,
     "harm_ok": 1,
@@ -1872,7 +1872,7 @@
     "title": "Packaging Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You engineer the containers and boxes that protect products during shipping \u2014 making sure a delicate surgical laser arrives intact after traveling across the world, using sustainable materials.",
+    "desc": "You engineer the containers and boxes that protect products during shipping — making sure a delicate surgical laser arrives intact after traveling across the world, using sustainable materials.",
     "money": 3,
     "impact": 2,
     "harm_ok": 1,
@@ -1901,7 +1901,7 @@
     "title": "Building Automation Systems Engineer",
     "field": "Electrical",
     "fclass": "field-elec",
-    "desc": "You program the 'brain' of large buildings \u2014 making the HVAC, lighting, and security systems in skyscrapers and hospitals all talk to each other automatically to save energy.",
+    "desc": "You program the 'brain' of large buildings — making the HVAC, lighting, and security systems in skyscrapers and hospitals all talk to each other automatically to save energy.",
     "money": 3,
     "impact": 2,
     "harm_ok": 0,
@@ -1932,7 +1932,7 @@
     "title": "Elevator & Escalator Mechanic",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You install and maintain the complex high-voltage mechanical and software systems inside elevators \u2014 one of the most technical and highest-paid hidden trades, with job security as long as buildings exist.",
+    "desc": "You install and maintain the complex high-voltage mechanical and software systems inside elevators — one of the most technical and highest-paid hidden trades, with job security as long as buildings exist.",
     "money": 4,
     "impact": 1,
     "harm_ok": 1,
@@ -1962,7 +1962,7 @@
     "title": "Geotechnical Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You study soil and rock behavior to make sure massive structures don't sink or collapse \u2014 if a civil engineer designs the bridge, you design the relationship between the bridge and the ground.",
+    "desc": "You study soil and rock behavior to make sure massive structures don't sink or collapse — if a civil engineer designs the bridge, you design the relationship between the bridge and the ground.",
     "money": 3,
     "impact": 3,
     "harm_ok": 1,
@@ -1991,7 +1991,7 @@
     "title": "Avionics Technician",
     "field": "Electrical",
     "fclass": "field-elec",
-    "desc": "You install and repair the navigation, radar, and communication electronics inside aircraft \u2014 in 2025, this includes the high-tech systems for autonomous drones and electric air taxis.",
+    "desc": "You install and repair the navigation, radar, and communication electronics inside aircraft — in 2025, this includes the high-tech systems for autonomous drones and electric air taxis.",
     "money": 4,
     "impact": 2,
     "harm_ok": 1,
@@ -2022,7 +2022,7 @@
     "title": "Nuclear Reactor Operator",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You monitor and control the nuclear fission process inside a power plant \u2014 a trade-school career that requires years of simulation training and earns a six-figure salary without a four-year degree.",
+    "desc": "You monitor and control the nuclear fission process inside a power plant — a trade-school career that requires years of simulation training and earns a six-figure salary without a four-year degree.",
     "money": 5,
     "impact": 2,
     "harm_ok": 3,
@@ -2052,7 +2052,7 @@
     "title": "Flavor & Fragrance Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design the industrial systems that create consistent tastes and smells at massive scale \u2014 understanding the chemistry of scents and the engineering of giant chemical reactors to make food and perfume.",
+    "desc": "You design the industrial systems that create consistent tastes and smells at massive scale — understanding the chemistry of scents and the engineering of giant chemical reactors to make food and perfume.",
     "money": 3,
     "impact": 1,
     "harm_ok": 1,
@@ -2081,7 +2081,7 @@
     "title": "Automotive Security Engineer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You hack cars for a living \u2014 legally testing whether someone could remotely disable a vehicle's brakes, unlock its doors, or spoof its GPS through the software running inside modern vehicles.",
+    "desc": "You hack cars for a living — legally testing whether someone could remotely disable a vehicle's brakes, unlock its doors, or spoof its GPS through the software running inside modern vehicles.",
     "money": 4,
     "impact": 3,
     "harm_ok": 1,
@@ -2112,7 +2112,7 @@
     "title": "ICS/SCADA Security Engineer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You protect the computer systems that control power grids, water plants, and gas pipelines \u2014 if a hacker attacked these systems, cities could go dark or water could be poisoned.",
+    "desc": "You protect the computer systems that control power grids, water plants, and gas pipelines — if a hacker attacked these systems, cities could go dark or water could be poisoned.",
     "money": 5,
     "impact": 4,
     "harm_ok": 1,
@@ -2142,7 +2142,7 @@
     "title": "Physical Penetration Tester",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "Companies hire you to break into their own buildings \u2014 using lock picks, disguises, and social engineering to test whether their physical security can actually keep bad guys out.",
+    "desc": "Companies hire you to break into their own buildings — using lock picks, disguises, and social engineering to test whether their physical security can actually keep bad guys out.",
     "money": 4,
     "impact": 3,
     "harm_ok": 2,
@@ -2171,7 +2171,7 @@
     "title": "Medical Device Security Specialist",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You hack pacemakers and insulin pumps \u2014 legally \u2014 to find security flaws before criminals do, protecting patients from attackers who could interfere with life-saving equipment wirelessly.",
+    "desc": "You hack pacemakers and insulin pumps — legally — to find security flaws before criminals do, protecting patients from attackers who could interfere with life-saving equipment wirelessly.",
     "money": 4,
     "impact": 5,
     "harm_ok": 0,
@@ -2201,7 +2201,7 @@
     "title": "Firmware Reverse Engineer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You take apart the permanent code burned into hardware \u2014 routers, smart fridges, military equipment \u2014 to find hidden backdoors and vulnerabilities that normal software security would never find.",
+    "desc": "You take apart the permanent code burned into hardware — routers, smart fridges, military equipment — to find hidden backdoors and vulnerabilities that normal software security would never find.",
     "money": 5,
     "impact": 3,
     "harm_ok": 2,
@@ -2232,7 +2232,7 @@
     "title": "Satellite & Aerospace Security Engineer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You simulate attacks on satellites and the ground stations that control them \u2014 finding ways an attacker might hijack a spacecraft's orbit or intercept its high-frequency data transmissions.",
+    "desc": "You simulate attacks on satellites and the ground stations that control them — finding ways an attacker might hijack a spacecraft's orbit or intercept its high-frequency data transmissions.",
     "money": 5,
     "impact": 3,
     "harm_ok": 2,
@@ -2263,7 +2263,7 @@
     "title": "Red Team Social Engineer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You use psychology instead of code \u2014 calling employees and tricking them into revealing passwords, or leaving fake infected USB drives in parking lots, to test whether a company's people are its weakest security link.",
+    "desc": "You use psychology instead of code — calling employees and tricking them into revealing passwords, or leaving fake infected USB drives in parking lots, to test whether a company's people are its weakest security link.",
     "money": 4,
     "impact": 2,
     "harm_ok": 2,
@@ -2322,7 +2322,7 @@
     "title": "Bug Bounty Hunter",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You legally hack companies like Apple, Google, and Tesla in your own time \u2014 if you find a real vulnerability before criminals do, the company pays you a 'bounty' that can range from $500 to $100,000.",
+    "desc": "You legally hack companies like Apple, Google, and Tesla in your own time — if you find a real vulnerability before criminals do, the company pays you a 'bounty' that can range from $500 to $100,000.",
     "money": 4,
     "impact": 3,
     "harm_ok": 1,
@@ -2351,7 +2351,7 @@
     "title": "Drone Swarm Coordinator",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You control hundreds of drones simultaneously using AI software \u2014 assigning group goals while the drones communicate with each other to avoid collisions and complete missions autonomously.",
+    "desc": "You control hundreds of drones simultaneously using AI software — assigning group goals while the drones communicate with each other to avoid collisions and complete missions autonomously.",
     "money": 4,
     "impact": 2,
     "harm_ok": 3,
@@ -2382,7 +2382,7 @@
     "title": "Counter-UAS Systems Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design systems that detect, track, and disable enemy drones \u2014 combining radar, thermal imaging, and electronic warfare jamming technology to protect airspace from drone threats.",
+    "desc": "You design systems that detect, track, and disable enemy drones — combining radar, thermal imaging, and electronic warfare jamming technology to protect airspace from drone threats.",
     "money": 4,
     "impact": 3,
     "harm_ok": 3,
@@ -2413,7 +2413,7 @@
     "title": "Loitering Munitions Technician",
     "field": "Trade",
     "fclass": "field-trade",
-    "desc": "You maintain 'kamikaze drones' \u2014 one-way weapons that fly to a target and detonate \u2014 calibrating the explosive payloads and optical systems that allow the drone to autonomously recognize its target.",
+    "desc": "You maintain 'kamikaze drones' — one-way weapons that fly to a target and detonate — calibrating the explosive payloads and optical systems that allow the drone to autonomously recognize its target.",
     "money": 4,
     "impact": 1,
     "harm_ok": 5,
@@ -2444,7 +2444,7 @@
     "title": "Directed Energy (Laser) Weapons Specialist",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You work on high-energy laser systems that shoot down missiles and drones at the speed of light \u2014 managing the extreme physics, thermal systems, and precision optics of actual working laser weapons.",
+    "desc": "You work on high-energy laser systems that shoot down missiles and drones at the speed of light — managing the extreme physics, thermal systems, and precision optics of actual working laser weapons.",
     "money": 5,
     "impact": 2,
     "harm_ok": 4,
@@ -2474,7 +2474,7 @@
     "title": "BVLOS Operations Supervisor",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You manage drone missions that happen hundreds of miles away from the operator \u2014 overseeing the satellite links, data relays, and regulatory compliance required to keep a drone connected over the horizon.",
+    "desc": "You manage drone missions that happen hundreds of miles away from the operator — overseeing the satellite links, data relays, and regulatory compliance required to keep a drone connected over the horizon.",
     "money": 4,
     "impact": 2,
     "harm_ok": 2,
@@ -2505,7 +2505,7 @@
     "title": "Electronic Warfare Scenario Writer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You design realistic simulations of enemy GPS jamming and radio spoofing attacks \u2014 writing the 'playbooks' that train AI pilots to recognize when their signals are being manipulated.",
+    "desc": "You design realistic simulations of enemy GPS jamming and radio spoofing attacks — writing the 'playbooks' that train AI pilots to recognize when their signals are being manipulated.",
     "money": 4,
     "impact": 2,
     "harm_ok": 3,
@@ -2536,7 +2536,7 @@
     "title": "Bio-Inspired Robotics Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You build drones and robots that mimic nature \u2014 flapping-wing drones that fly like birds, or spider-like robots that crawl through rubble \u2014 using biomimicry to create machines that avoid detection.",
+    "desc": "You build drones and robots that mimic nature — flapping-wing drones that fly like birds, or spider-like robots that crawl through rubble — using biomimicry to create machines that avoid detection.",
     "money": 4,
     "impact": 3,
     "harm_ok": 2,
@@ -2567,7 +2567,7 @@
     "title": "Exoskeleton Integration Technician",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You maintain the wearable robotic suits that help soldiers carry heavier loads \u2014 calibrating the hydraulics, sensors, and battery systems so the machine moves perfectly in sync with the human body.",
+    "desc": "You maintain the wearable robotic suits that help soldiers carry heavier loads — calibrating the hydraulics, sensors, and battery systems so the machine moves perfectly in sync with the human body.",
     "money": 4,
     "impact": 3,
     "harm_ok": 2,
@@ -2597,7 +2597,7 @@
     "title": "UAS Data Scientist (Sensor Fusion)",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You build the AI brain that merges LiDAR, thermal, and camera data from drones into a single 3D map \u2014 giving commanders the ability to see through walls or smoke in real-time.",
+    "desc": "You build the AI brain that merges LiDAR, thermal, and camera data from drones into a single 3D map — giving commanders the ability to see through walls or smoke in real-time.",
     "money": 4,
     "impact": 2,
     "harm_ok": 3,
@@ -2628,7 +2628,7 @@
     "title": "Autonomous Surface Vessel (ASV) Pilot",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You operate unmanned sea drones that patrol for underwater mines and track enemy ships \u2014 combining traditional maritime navigation skills with cutting-edge autonomous robotics.",
+    "desc": "You operate unmanned sea drones that patrol for underwater mines and track enemy ships — combining traditional maritime navigation skills with cutting-edge autonomous robotics.",
     "money": 4,
     "impact": 2,
     "harm_ok": 3,
@@ -2659,7 +2659,7 @@
     "title": "ZK-Proof Engineer (Zero-Knowledge Cryptographer)",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You use advanced mathematics to prove things are true without revealing any actual data \u2014 making blockchains private, fast, and secure in ways that were impossible just a few years ago.",
+    "desc": "You use advanced mathematics to prove things are true without revealing any actual data — making blockchains private, fast, and secure in ways that were impossible just a few years ago.",
     "money": 5,
     "impact": 3,
     "harm_ok": 1,
@@ -2688,7 +2688,7 @@
     "title": "Agentic AI Systems Engineer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You build AI systems that can plan and execute complex multi-step tasks on their own \u2014 like an AI that books a flight, makes a payment, and handles a refund without any human input.",
+    "desc": "You build AI systems that can plan and execute complex multi-step tasks on their own — like an AI that books a flight, makes a payment, and handles a refund without any human input.",
     "money": 5,
     "impact": 3,
     "harm_ok": 1,
@@ -2717,7 +2717,7 @@
     "title": "Real World Asset Tokenization Architect",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You design systems that turn physical assets \u2014 like real estate or fine art \u2014 into digital tokens that can be traded instantly on a global blockchain, connecting Wall Street to crypto.",
+    "desc": "You design systems that turn physical assets — like real estate or fine art — into digital tokens that can be traded instantly on a global blockchain, connecting Wall Street to crypto.",
     "money": 5,
     "impact": 2,
     "harm_ok": 2,
@@ -2746,7 +2746,7 @@
     "title": "AI Ethics & Compliance Officer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You make sure AI systems aren't biased, don't break privacy laws, and meet government safety standards \u2014 you're a translator between legal requirements and the engineers who build the models.",
+    "desc": "You make sure AI systems aren't biased, don't break privacy laws, and meet government safety standards — you're a translator between legal requirements and the engineers who build the models.",
     "money": 4,
     "impact": 4,
     "harm_ok": 0,
@@ -2775,7 +2775,7 @@
     "title": "Tokenomics Architect",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You design the economic rules that govern how a cryptocurrency flows through an ecosystem \u2014 like a digital economist ensuring the token's value doesn't collapse and users are rewarded fairly.",
+    "desc": "You design the economic rules that govern how a cryptocurrency flows through an ecosystem — like a digital economist ensuring the token's value doesn't collapse and users are rewarded fairly.",
     "money": 5,
     "impact": 2,
     "harm_ok": 2,
@@ -2804,7 +2804,7 @@
     "title": "AI Infrastructure Rack Engineer",
     "field": "Engineering",
     "fclass": "field-eng",
-    "desc": "You design the massive physical data centers and specialized server racks that house thousands of GPUs needed to train AI models \u2014 AI isn't just code, it's enormous hardware.",
+    "desc": "You design the massive physical data centers and specialized server racks that house thousands of GPUs needed to train AI models — AI isn't just code, it's enormous hardware.",
     "money": 4,
     "impact": 2,
     "harm_ok": 1,
@@ -2835,7 +2835,7 @@
     "title": "Smart Contract Security Auditor",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You're a specialized hacker for crypto \u2014 finding vulnerabilities in blockchain code before it goes live, because a single bug can lead to a $100 million theft.",
+    "desc": "You're a specialized hacker for crypto — finding vulnerabilities in blockchain code before it goes live, because a single bug can lead to a $100 million theft.",
     "money": 5,
     "impact": 4,
     "harm_ok": 1,
@@ -2864,7 +2864,7 @@
     "title": "AI Prompt Architect (Agent Orchestration)",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You design the complex multi-step instruction chains that make different AI models work together to solve enterprise problems \u2014 far beyond just chatting with an AI.",
+    "desc": "You design the complex multi-step instruction chains that make different AI models work together to solve enterprise problems — far beyond just chatting with an AI.",
     "money": 4,
     "impact": 2,
     "harm_ok": 1,
@@ -2893,7 +2893,7 @@
     "title": "DePIN Ecosystem Coordinator",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You manage decentralized networks where regular people are paid in crypto to provide real-world services \u2014 like 5G hotspots, weather sensors, or mapping data \u2014 building infrastructure without a central company.",
+    "desc": "You manage decentralized networks where regular people are paid in crypto to provide real-world services — like 5G hotspots, weather sensors, or mapping data — building infrastructure without a central company.",
     "money": 4,
     "impact": 3,
     "harm_ok": 1,
@@ -2922,7 +2922,7 @@
     "title": "AI-Driven On-Chain Data Scientist",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You use AI to scan billions of public blockchain transactions in real-time \u2014 detecting money laundering, predicting market moves, or tracking 'whale' investors before anyone else sees the pattern.",
+    "desc": "You use AI to scan billions of public blockchain transactions in real-time — detecting money laundering, predicting market moves, or tracking 'whale' investors before anyone else sees the pattern.",
     "money": 5,
     "impact": 3,
     "harm_ok": 2,
@@ -2971,7 +2971,10 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["cs", "eng"]
+    "tags": [
+      "cs",
+      "eng"
+    ]
   },
   {
     "id": "cfd_artist_eng",
@@ -2998,7 +3001,10 @@
     "J": 2,
     "P": 2,
     "school": 4,
-    "tags": ["cs", "eng"]
+    "tags": [
+      "cs",
+      "eng"
+    ]
   },
   {
     "id": "sustainable_concrete",
@@ -3025,7 +3031,10 @@
     "J": 2,
     "P": 2,
     "school": 4,
-    "tags": ["eng", "mat"]
+    "tags": [
+      "eng",
+      "mat"
+    ]
   },
   {
     "id": "color_scientist",
@@ -3052,7 +3061,10 @@
     "J": 2,
     "P": 2,
     "school": 4,
-    "tags": ["eng", "mat"]
+    "tags": [
+      "eng",
+      "mat"
+    ]
   },
   {
     "id": "procedural_world_architect",
@@ -3079,7 +3091,9 @@
     "J": 1,
     "P": 3,
     "school": 2,
-    "tags": ["cs"]
+    "tags": [
+      "cs"
+    ]
   },
   {
     "id": "cosmetic_chemist",
@@ -3106,7 +3120,10 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["eng", "mat"]
+    "tags": [
+      "eng",
+      "mat"
+    ]
   },
   {
     "id": "simulation_realism_eng",
@@ -3133,7 +3150,10 @@
     "J": 2,
     "P": 2,
     "school": 4,
-    "tags": ["cs", "eng"]
+    "tags": [
+      "cs",
+      "eng"
+    ]
   },
   {
     "id": "additive_mfg_designer",
@@ -3160,7 +3180,10 @@
     "J": 2,
     "P": 2,
     "school": 4,
-    "tags": ["eng", "mat"]
+    "tags": [
+      "eng",
+      "mat"
+    ]
   },
   {
     "id": "thermal_design_eng",
@@ -3187,7 +3210,10 @@
     "J": 2,
     "P": 1,
     "school": 3,
-    "tags": ["eng", "elec"]
+    "tags": [
+      "eng",
+      "elec"
+    ]
   },
   {
     "id": "haptic_eng",
@@ -3214,7 +3240,11 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["elec", "cs", "eng"]
+    "tags": [
+      "elec",
+      "cs",
+      "eng"
+    ]
   },
   {
     "id": "ar_beauty_dev",
@@ -3241,7 +3271,9 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["cs"]
+    "tags": [
+      "cs"
+    ]
   },
   {
     "id": "beauty_robotics_eng",
@@ -3268,7 +3300,10 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["cs", "eng"]
+    "tags": [
+      "cs",
+      "eng"
+    ]
   },
   {
     "id": "computational_fashion",
@@ -3295,7 +3330,10 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["cs", "creative"]
+    "tags": [
+      "cs",
+      "creative"
+    ]
   },
   {
     "id": "digital_pattern_eng",
@@ -3322,7 +3360,10 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["eng", "cs"]
+    "tags": [
+      "eng",
+      "cs"
+    ]
   },
   {
     "id": "wearable_biomedical_eng",
@@ -3349,7 +3390,11 @@
     "J": 2,
     "P": 2,
     "school": 4,
-    "tags": ["eng", "elec", "cs"]
+    "tags": [
+      "eng",
+      "elec",
+      "cs"
+    ]
   },
   {
     "id": "sustainable_textile",
@@ -3376,7 +3421,10 @@
     "J": 2,
     "P": 2,
     "school": 5,
-    "tags": ["eng", "mat"]
+    "tags": [
+      "eng",
+      "mat"
+    ]
   },
   {
     "id": "ai_trend_forecaster",
@@ -3403,7 +3451,9 @@
     "J": 2,
     "P": 2,
     "school": 4,
-    "tags": ["cs"]
+    "tags": [
+      "cs"
+    ]
   },
   {
     "id": "smart_packaging_eng",
@@ -3430,7 +3480,11 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["elec", "cs", "eng"]
+    "tags": [
+      "elec",
+      "cs",
+      "eng"
+    ]
   },
   {
     "id": "virtual_fitting_architect",
@@ -3457,7 +3511,9 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["cs"]
+    "tags": [
+      "cs"
+    ]
   },
   {
     "id": "cosmetic_pigment_eng",
@@ -3484,7 +3540,10 @@
     "J": 2,
     "P": 1,
     "school": 3,
-    "tags": ["eng", "mat"]
+    "tags": [
+      "eng",
+      "mat"
+    ]
   },
   {
     "id": "footwear_innovation_eng",
@@ -3511,7 +3570,10 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["eng", "mat"]
+    "tags": [
+      "eng",
+      "mat"
+    ]
   },
   {
     "id": "sportswear_aerodynamicist",
@@ -3538,7 +3600,10 @@
     "J": 2,
     "P": 2,
     "school": 4,
-    "tags": ["eng", "aero"]
+    "tags": [
+      "eng",
+      "aero"
+    ]
   },
   {
     "id": "human_performance_researcher",
@@ -3565,7 +3630,9 @@
     "J": 2,
     "P": 2,
     "school": 4,
-    "tags": ["eng"]
+    "tags": [
+      "eng"
+    ]
   },
   {
     "id": "computational_footwear_dev",
@@ -3592,7 +3659,11 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["eng", "cs", "mat"]
+    "tags": [
+      "eng",
+      "cs",
+      "mat"
+    ]
   },
   {
     "id": "smart_apparel_firmware",
@@ -3619,7 +3690,11 @@
     "J": 2,
     "P": 1,
     "school": 3,
-    "tags": ["elec", "cs", "embedded"]
+    "tags": [
+      "elec",
+      "cs",
+      "embedded"
+    ]
   },
   {
     "id": "last_engineer",
@@ -3646,7 +3721,9 @@
     "J": 2,
     "P": 1,
     "school": 2,
-    "tags": ["eng"]
+    "tags": [
+      "eng"
+    ]
   },
   {
     "id": "ai_instructional_strategist",
@@ -3673,7 +3750,9 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["cs"]
+    "tags": [
+      "cs"
+    ]
   },
   {
     "id": "vr_edu_designer",
@@ -3700,7 +3779,10 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["cs", "creative"]
+    "tags": [
+      "cs",
+      "creative"
+    ]
   },
   {
     "id": "edu_data_analyst",
@@ -3727,7 +3809,9 @@
     "J": 2,
     "P": 1,
     "school": 3,
-    "tags": ["cs"]
+    "tags": [
+      "cs"
+    ]
   },
   {
     "id": "lxd_designer",
@@ -3754,7 +3838,10 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["cs", "creative"]
+    "tags": [
+      "cs",
+      "creative"
+    ]
   },
   {
     "id": "edu_robotics_dev",
@@ -3781,7 +3868,12 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["eng", "elec", "trade", "cs"]
+    "tags": [
+      "eng",
+      "elec",
+      "trade",
+      "cs"
+    ]
   },
   {
     "id": "campus_cto",
@@ -3808,7 +3900,9 @@
     "J": 3,
     "P": 1,
     "school": 4,
-    "tags": ["cs"]
+    "tags": [
+      "cs"
+    ]
   },
   {
     "id": "lms_architect",
@@ -3835,7 +3929,10 @@
     "J": 3,
     "P": 1,
     "school": 3,
-    "tags": ["cs", "embedded"]
+    "tags": [
+      "cs",
+      "embedded"
+    ]
   },
   {
     "id": "edu_simulation_dev",
@@ -3862,7 +3959,10 @@
     "J": 1,
     "P": 3,
     "school": 3,
-    "tags": ["cs", "creative"]
+    "tags": [
+      "cs",
+      "creative"
+    ]
   },
   {
     "id": "tech_integration_specialist",
@@ -3889,7 +3989,9 @@
     "J": 2,
     "P": 2,
     "school": 2,
-    "tags": ["cs"]
+    "tags": [
+      "cs"
+    ]
   },
   {
     "id": "special_venue_designer",
@@ -3916,7 +4018,10 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["eng", "elec"]
+    "tags": [
+      "eng",
+      "elec"
+    ]
   },
   {
     "id": "vr_world_builder",
@@ -3943,7 +4048,10 @@
     "J": 1,
     "P": 3,
     "school": 2,
-    "tags": ["cs", "creative"]
+    "tags": [
+      "cs",
+      "creative"
+    ]
   },
   {
     "id": "medical_illustrator",
@@ -3970,7 +4078,10 @@
     "J": 2,
     "P": 2,
     "school": 4,
-    "tags": ["cs", "creative"]
+    "tags": [
+      "cs",
+      "creative"
+    ]
   },
   {
     "id": "perfumer",
@@ -3997,7 +4108,9 @@
     "J": 2,
     "P": 2,
     "school": 4,
-    "tags": ["eng"]
+    "tags": [
+      "eng"
+    ]
   },
   {
     "id": "generative_ai_creative",
@@ -4024,7 +4137,9 @@
     "J": 1,
     "P": 3,
     "school": 4,
-    "tags": ["cs"]
+    "tags": [
+      "cs"
+    ]
   },
   {
     "id": "show_set_designer",
@@ -4051,7 +4166,10 @@
     "J": 2,
     "P": 2,
     "school": 3,
-    "tags": ["eng", "elec"]
+    "tags": [
+      "eng",
+      "elec"
+    ]
   },
   {
     "id": "motion_design_eng",
@@ -4078,7 +4196,10 @@
     "J": 1,
     "P": 3,
     "school": 2,
-    "tags": ["cs", "creative"]
+    "tags": [
+      "cs",
+      "creative"
+    ]
   },
   {
     "id": "haunt_production_tech",
@@ -4105,438 +4226,307 @@
     "J": 2,
     "P": 3,
     "school": -1,
-    "tags": ["elec", "trade"]
+    "tags": [
+      "elec",
+      "trade"
+    ]
   },
   {
-    "id": "ai_behavior_architect",
-    "title": "AI Behavior Architect (Game NPC)",
+    "id": "quant_dev_hft",
+    "title": "Quant Developer (High-Frequency Trading)",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You use reinforcement learning and LLMs to create NPCs that hold unscripted conversations and remember past player interactions — replacing fixed scripts with characters that genuinely surprise you.",
-    "money": 4,
-    "impact": 2,
-    "harm_ok": 1,
+    "desc": "You write ultra-low-latency code that executes millions of trades per second — where shaving a single microsecond off your execution time can be worth millions of dollars to the firm.",
+    "money": 5,
+    "impact": 1,
+    "harm_ok": 3,
     "outdoors": 0,
-    "hours": 3,
-    "hands": 1,
-    "team": 2,
-    "creative": 5,
-    "cool": 4,
-    "risk": 5,
-    "I": 2,
-    "E": 0,
-    "S": 0,
-    "N": 5,
-    "T": 4,
-    "F": 1,
-    "J": 1,
-    "P": 3,
-    "school": 4,
-    "tags": ["cs"]
-  },
-  {
-    "id": "spatial_immersion_designer",
-    "title": "Spatial Immersion Designer (XR)",
-    "field": "Computer Science",
-    "fclass": "field-cs",
-    "desc": "You create the grammar of movement in VR, AR, and mixed reality — solving problems like how to open a door without motion sickness, or how digital objects interact with a player's real living room.",
-    "money": 4,
-    "impact": 2,
-    "harm_ok": 0,
-    "outdoors": 0,
-    "hours": 3,
-    "hands": 3,
-    "team": 2,
-    "creative": 5,
+    "hours": 4,
+    "hands": 0,
+    "team": 1,
+    "creative": 3,
     "cool": 4,
     "risk": 4,
-    "I": 1,
-    "E": 1,
+    "I": 3,
+    "E": 0,
     "S": 1,
-    "N": 4,
-    "T": 2,
-    "F": 2,
-    "J": 2,
-    "P": 3,
-    "school": 3,
-    "tags": ["cs", "elec", "creative"]
-  },
-  {
-    "id": "technical_artist",
-    "title": "Technical Artist (Pipeline Specialist)",
-    "field": "Computer Science",
-    "fclass": "field-cs",
-    "desc": "You're the bridge between art and code — building the shaders and pipeline tools that let artists make games look stunning while ensuring everything still runs smoothly on every console and phone.",
-    "money": 4,
-    "impact": 1,
-    "harm_ok": 0,
-    "outdoors": 0,
-    "hours": 3,
-    "hands": 2,
-    "team": 3,
-    "creative": 4,
-    "cool": 3,
-    "risk": 2,
-    "I": 1,
-    "E": 1,
-    "S": 2,
     "N": 3,
-    "T": 3,
-    "F": 1,
-    "J": 2,
-    "P": 2,
-    "school": 2,
-    "tags": ["cs", "creative"]
-  },
-  {
-    "id": "liveops_economy_strategist",
-    "title": "Live-Ops Economy Strategist",
-    "field": "Computer Science",
-    "fclass": "field-cs",
-    "desc": "You manage the virtual economy of live games like Fortnite or Roblox — using AI to analyze player spending and design events, battle passes, and items that keep millions of players engaged for years.",
-    "money": 4,
-    "impact": 1,
-    "harm_ok": 2,
-    "outdoors": 0,
-    "hours": 2,
-    "hands": 0,
-    "team": 3,
-    "creative": 3,
-    "cool": 2,
-    "risk": 0,
-    "I": 1,
-    "E": 1,
-    "S": 2,
-    "N": 2,
-    "T": 3,
-    "F": 1,
+    "T": 5,
+    "F": 0,
     "J": 3,
     "P": 1,
-    "school": 3,
-    "tags": ["cs"]
+    "school": 5,
+    "tags": [
+      "cs"
+    ]
   },
   {
-    "id": "adaptive_difficulty_eng",
-    "title": "Adaptive Difficulty Engineer",
+    "id": "ai_infra_architect",
+    "title": "AI Infrastructure Architect",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You design Dynamic Difficulty Adjustment systems that secretly watch how a player is performing and subtly reshape the game's challenge in real-time to keep them in a state of perfect flow.",
-    "money": 3,
-    "impact": 2,
-    "harm_ok": 0,
-    "outdoors": 0,
-    "hours": 2,
-    "hands": 1,
+    "desc": "You design the massive GPU clusters and high-speed networking that train frontier AI models — the invisible supercomputers that make modern AI possible.",
+    "money": 5,
+    "impact": 3,
+    "harm_ok": 1,
+    "outdoors": 1,
+    "hours": 3,
+    "hands": 2,
     "team": 2,
-    "creative": 4,
-    "cool": 3,
-    "risk": 2,
+    "creative": 3,
+    "cool": 4,
+    "risk": 4,
     "I": 2,
     "E": 0,
     "S": 1,
-    "N": 4,
-    "T": 3,
-    "F": 2,
-    "J": 2,
-    "P": 2,
-    "school": 3,
-    "tags": ["cs"]
+    "N": 3,
+    "T": 4,
+    "F": 0,
+    "J": 3,
+    "P": 1,
+    "school": 4,
+    "tags": [
+      "cs",
+      "eng",
+      "elec"
+    ]
   },
   {
-    "id": "interactive_narrative_designer",
-    "title": "Interactive Narrative Designer",
+    "id": "principal_swe",
+    "title": "Principal Software Engineer",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You build branching story paths and dialogue trees that react to every player decision — increasingly collaborating with AI to keep narratives coherent even when players go completely off-script.",
-    "money": 3,
-    "impact": 2,
+    "desc": "The highest individual-contributor rank at major tech firms — you don't just write code, you design the technical roadmap for products used by billions of people, with stock options that often outpace your salary.",
+    "money": 5,
+    "impact": 3,
     "harm_ok": 1,
     "outdoors": 0,
-    "hours": 2,
+    "hours": 3,
     "hands": 0,
-    "team": 2,
-    "creative": 5,
+    "team": 3,
+    "creative": 4,
     "cool": 3,
     "risk": 1,
     "I": 2,
     "E": 0,
     "S": 0,
-    "N": 5,
-    "T": 1,
-    "F": 3,
-    "J": 1,
-    "P": 4,
-    "school": 2,
-    "tags": ["cs", "creative"]
-  },
-  {
-    "id": "ux_accessibility_lead",
-    "title": "UX Accessibility Lead (Gaming)",
-    "field": "Computer Science",
-    "fclass": "field-cs",
-    "desc": "You engineer games that everyone can play — designing custom control schemes, eye-tracking navigation, and audio cues for players with visual or motor impairments, with hands-on testing of adaptive hardware.",
-    "money": 3,
-    "impact": 5,
-    "harm_ok": 0,
-    "outdoors": 0,
-    "hours": 2,
-    "hands": 3,
-    "team": 3,
-    "creative": 4,
-    "cool": 2,
-    "risk": -2,
-    "I": 1,
-    "E": 2,
-    "S": 2,
-    "N": 2,
-    "T": 2,
-    "F": 4,
+    "N": 4,
+    "T": 4,
+    "F": 1,
     "J": 2,
     "P": 2,
-    "school": 3,
-    "tags": ["cs", "elec"]
+    "school": 4,
+    "tags": [
+      "cs"
+    ]
   },
   {
-    "id": "gameplay_prototyper",
-    "title": "Gameplay Generalist (Prototyper)",
+    "id": "fpga_eng",
+    "title": "FPGA Engineer (Hardware Acceleration)",
+    "field": "Electrical",
+    "fclass": "field-elec",
+    "desc": "You reprogram chips at the hardware level — writing logic that runs directly on silicon to achieve speeds no software can match, for applications like sub-microsecond trading or real-time video processing.",
+    "money": 4,
+    "impact": 2,
+    "harm_ok": 1,
+    "outdoors": 0,
+    "hours": 3,
+    "hands": 2,
+    "team": 1,
+    "creative": 3,
+    "cool": 3,
+    "risk": 2,
+    "I": 3,
+    "E": 0,
+    "S": 1,
+    "N": 3,
+    "T": 5,
+    "F": 0,
+    "J": 3,
+    "P": 1,
+    "school": 4,
+    "tags": [
+      "elec",
+      "cs",
+      "embedded"
+    ]
+  },
+  {
+    "id": "petroleum_drilling_eng",
+    "title": "Petroleum Drilling Engineer",
+    "field": "Engineering",
+    "fclass": "field-eng",
+    "desc": "You manage the equipment and operations that drill miles beneath the ocean floor to extract oil — overseeing massive budgets, dangerous machinery, and remote offshore rig environments.",
+    "money": 4,
+    "impact": 0,
+    "harm_ok": 4,
+    "outdoors": 5,
+    "hours": 4,
+    "hands": 5,
+    "team": 2,
+    "creative": 1,
+    "cool": 3,
+    "risk": 4,
+    "I": 0,
+    "E": 1,
+    "S": 3,
+    "N": 1,
+    "T": 3,
+    "F": 0,
+    "J": 3,
+    "P": 0,
+    "school": 3,
+    "tags": [
+      "eng",
+      "travel"
+    ]
+  },
+  {
+    "id": "zero_day_researcher",
+    "title": "Cybersecurity Zero-Day Researcher",
     "field": "Computer Science",
     "fclass": "field-cs",
-    "desc": "You're the Swiss Army knife of a game studio — rapidly building the very first 'grey box' versions of a game to test whether jumping or shooting actually feels fun before any expensive art is ever made.",
-    "money": 3,
-    "impact": 1,
+    "desc": "You hunt for vulnerabilities in software that nobody else knows exist — flaws in iOS, Windows, or industrial systems that can be worth hundreds of thousands to millions of dollars to the right buyer.",
+    "money": 5,
+    "impact": 3,
+    "harm_ok": 3,
+    "outdoors": 0,
+    "hours": 3,
+    "hands": 1,
+    "team": 1,
+    "creative": 5,
+    "cool": 5,
+    "risk": 5,
+    "I": 3,
+    "E": 0,
+    "S": 0,
+    "N": 4,
+    "T": 5,
+    "F": 0,
+    "J": 2,
+    "P": 3,
+    "school": 3,
+    "tags": [
+      "cs"
+    ]
+  },
+  {
+    "id": "cloud_solutions_architect",
+    "title": "Cloud Solutions Architect",
+    "field": "Computer Science",
+    "fclass": "field-cs",
+    "desc": "You design how global banks and governments migrate their entire operations to cloud platforms like AWS or Azure — requiring mastery of networking, security, and international data law.",
+    "money": 4,
+    "impact": 2,
+    "harm_ok": 0,
+    "outdoors": 0,
+    "hours": 3,
+    "hands": 0,
+    "team": 3,
+    "creative": 2,
+    "cool": 1,
+    "risk": 0,
+    "I": 1,
+    "E": 1,
+    "S": 1,
+    "N": 3,
+    "T": 3,
+    "F": 1,
+    "J": 3,
+    "P": 1,
+    "school": 3,
+    "tags": [
+      "cs"
+    ]
+  },
+  {
+    "id": "soc_architect",
+    "title": "Silicon Design Engineer (SoC Architect)",
+    "field": "Electrical",
+    "fclass": "field-elec",
+    "desc": "You design the Systems-on-a-Chip that power iPhones and MacBooks — squeezing more performance out of 2-nanometer transistors in a global chip war that makes these skills among the most sought-after on Earth.",
+    "money": 5,
+    "impact": 2,
     "harm_ok": 1,
     "outdoors": 0,
     "hours": 3,
     "hands": 1,
     "team": 2,
-    "creative": 5,
-    "cool": 3,
-    "risk": 3,
-    "I": 1,
-    "E": 1,
+    "creative": 4,
+    "cool": 4,
+    "risk": 2,
+    "I": 2,
+    "E": 0,
     "S": 1,
-    "N": 4,
-    "T": 3,
-    "F": 1,
-    "J": 1,
-    "P": 4,
-    "school": 2,
-    "tags": ["cs", "creative"]
-  },
-  {
-    "id": "saturation_diver",
-    "title": "Saturation Diver",
-    "field": "Trade",
-    "fclass": "field-trade",
-    "desc": "You live in a pressurized chamber for weeks at a time to repair oil rigs and pipelines at depths of up to 1,000 feet — one of the most physiologically dangerous and highest-paid trades on Earth.",
-    "money": 5,
-    "impact": 1,
-    "harm_ok": 4,
-    "outdoors": 5,
-    "hours": 4,
-    "hands": 5,
-    "team": 2,
-    "creative": 1,
-    "cool": 5,
-    "risk": 5,
-    "I": 1,
-    "E": 0,
-    "S": 3,
-    "N": 0,
-    "T": 2,
+    "N": 3,
+    "T": 5,
     "F": 0,
-    "J": 3,
-    "P": 0,
-    "school": -3,
-    "tags": ["trade", "travel"]
-  },
-  {
-    "id": "helicopter_lineman",
-    "title": "Helicopter Transmission Lineman",
-    "field": "Trade",
-    "fclass": "field-trade",
-    "desc": "You repair live high-voltage power lines from a helicopter platform, electrically bonding yourself to wires carrying hundreds of thousands of volts — becoming part of the circuit while dangling hundreds of feet in the air.",
-    "money": 5,
-    "impact": 2,
-    "harm_ok": 2,
-    "outdoors": 5,
-    "hours": 3,
-    "hands": 5,
-    "team": 2,
-    "creative": 1,
-    "cool": 5,
-    "risk": 5,
-    "I": 1,
-    "E": 0,
-    "S": 3,
-    "N": 0,
-    "T": 2,
-    "F": 0,
-    "J": 3,
-    "P": 0,
-    "school": -3,
-    "tags": ["trade", "elec", "travel"]
-  },
-  {
-    "id": "eod_tech",
-    "title": "EOD Technician (Explosive Ordnance Disposal)",
-    "field": "Trade",
-    "fclass": "field-trade",
-    "desc": "You disarm IEDs, unexploded vintage bombs, and improvised devices — combining robotics, specialized tools, and sometimes a direct one-on-one confrontation with a live explosive device.",
-    "money": 4,
-    "impact": 4,
-    "harm_ok": 3,
-    "outdoors": 3,
-    "hours": 3,
-    "hands": 4,
-    "team": 2,
-    "creative": 2,
-    "cool": 5,
-    "risk": 5,
-    "I": 1,
-    "E": 0,
-    "S": 3,
-    "N": 1,
-    "T": 3,
-    "F": 1,
     "J": 3,
     "P": 1,
-    "school": -1,
-    "tags": ["trade", "elec", "eng"]
+    "school": 5,
+    "tags": [
+      "elec",
+      "cs",
+      "embedded"
+    ]
   },
   {
-    "id": "smokejumper",
-    "title": "Smokejumper (Elite Wildland Firefighter)",
-    "field": "Trade",
-    "fclass": "field-trade",
-    "desc": "You parachute into remote wilderness to stop forest fires before they spread — carrying all your own gear, surviving deep in the backcountry, and fighting intense heat and unpredictable wind-driven flames.",
-    "money": 3,
-    "impact": 4,
-    "harm_ok": 1,
-    "outdoors": 5,
-    "hours": 4,
-    "hands": 5,
-    "team": 3,
-    "creative": 1,
-    "cool": 5,
-    "risk": 5,
-    "I": 0,
-    "E": 1,
-    "S": 3,
-    "N": 1,
-    "T": 2,
-    "F": 2,
-    "J": 2,
-    "P": 2,
-    "school": -2,
-    "tags": ["trade", "travel"]
-  },
-  {
-    "id": "nuclear_decommission_tech",
-    "title": "Nuclear Decommissioning Technician",
-    "field": "Trade",
-    "fclass": "field-trade",
-    "desc": "You enter high-radiation zones to dismantle retired nuclear reactors — wearing lead-lined suits, strictly monitoring your radiation dose, and handling unstable heavy machinery in some of the most regulated environments on Earth.",
+    "id": "blockchain_protocol_eng",
+    "title": "Blockchain Protocol Engineer",
+    "field": "Computer Science",
+    "fclass": "field-cs",
+    "desc": "You build the mathematical foundations of blockchains like Ethereum — writing the core cryptographic protocols that manage billions of dollars of automated value, where a single bug can be catastrophic.",
     "money": 5,
     "impact": 3,
     "harm_ok": 2,
     "outdoors": 0,
     "hours": 3,
+    "hands": 0,
+    "team": 1,
+    "creative": 4,
+    "cool": 4,
+    "risk": 5,
+    "I": 2,
+    "E": 0,
+    "S": 0,
+    "N": 5,
+    "T": 5,
+    "F": 0,
+    "J": 2,
+    "P": 2,
+    "school": 5,
+    "tags": [
+      "cs"
+    ]
+  },
+  {
+    "id": "datacenter_power_eng",
+    "title": "Data Center Power Systems Engineer",
+    "field": "Electrical",
+    "fclass": "field-elec",
+    "desc": "You design the high-voltage electrical systems that keep 100,000-server AI data centers running without melting the grid — a mix of utility-scale power engineering and the relentless uptime demands of Big Tech.",
+    "money": 4,
+    "impact": 2,
+    "harm_ok": 1,
+    "outdoors": 2,
+    "hours": 3,
     "hands": 4,
     "team": 2,
-    "creative": 1,
-    "cool": 3,
-    "risk": 4,
-    "I": 1,
-    "E": 0,
-    "S": 3,
-    "N": 1,
-    "T": 2,
-    "F": 1,
-    "J": 3,
-    "P": 0,
-    "school": -2,
-    "tags": ["trade", "eng"]
-  },
-  {
-    "id": "oil_rig_roughneck",
-    "title": "Oil Rig Roughneck",
-    "field": "Trade",
-    "fclass": "field-trade",
-    "desc": "You work the drill floor of an offshore rig — moving massive pipes, managing high-pressure mud systems, and operating in one of the world's most physically dangerous and isolated work environments.",
-    "money": 4,
-    "impact": 0,
-    "harm_ok": 4,
-    "outdoors": 5,
-    "hours": 5,
-    "hands": 5,
-    "team": 2,
-    "creative": 0,
+    "creative": 2,
     "cool": 2,
-    "risk": 4,
-    "I": 0,
-    "E": 1,
-    "S": 3,
-    "N": 0,
-    "T": 1,
-    "F": 0,
-    "J": 2,
-    "P": 1,
-    "school": -4,
-    "tags": ["trade", "travel"]
-  },
-  {
-    "id": "tower_climber",
-    "title": "Tower Climber (Telecommunications)",
-    "field": "Trade",
-    "fclass": "field-trade",
-    "desc": "You climb 1,000 to 2,000-foot telecommunications towers to replace equipment and upgrade antennas — facing extreme wind, freezing temperatures, and the ever-present risk of structural failure or falls.",
-    "money": 3,
-    "impact": 2,
-    "harm_ok": 2,
-    "outdoors": 5,
-    "hours": 3,
-    "hands": 5,
-    "team": 2,
-    "creative": 1,
-    "cool": 3,
-    "risk": 4,
+    "risk": 3,
     "I": 1,
     "E": 0,
-    "S": 3,
-    "N": 0,
-    "T": 2,
+    "S": 2,
+    "N": 2,
+    "T": 4,
     "F": 0,
-    "J": 2,
-    "P": 1,
-    "school": -4,
-    "tags": ["trade", "elec", "travel"]
-  },
-  {
-    "id": "hazmat_diver",
-    "title": "Hazmat Diver",
-    "field": "Trade",
-    "fclass": "field-trade",
-    "desc": "You dive into raw sewage, chemical spills, and toxic runoff to fix pumps and clear blockages in zero visibility — where a single suit breach means direct exposure to biological or chemical hazards.",
-    "money": 4,
-    "impact": 3,
-    "harm_ok": 3,
-    "outdoors": 4,
-    "hours": 3,
-    "hands": 5,
-    "team": 2,
-    "creative": 1,
-    "cool": 3,
-    "risk": 4,
-    "I": 1,
-    "E": 0,
-    "S": 3,
-    "N": 0,
-    "T": 2,
-    "F": 1,
     "J": 3,
-    "P": 0,
-    "school": -3,
-    "tags": ["trade", "travel"]
+    "P": 1,
+    "school": 3,
+    "tags": [
+      "elec",
+      "eng"
+    ]
   }
 ]
