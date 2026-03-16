@@ -618,48 +618,116 @@ async function exportImage(mode) {
   function normU(v,max)   { return Math.max(0,Math.min(1,(v||0)/max)); }
   function normS(v,range) { return Math.max(0,Math.min(1,((v||0)+range)/(range*2))); }
 
-  const W=800, PAD=40, barH=36, barGap=10;
+  // ── Helper: wrap text and return lines ──
+  function wrapText(ctx, text, maxWidth) {
+    const words = text.split(', ');
+    const lines = [];
+    let line = '';
+    words.forEach(word => {
+      const test = line ? line + ', ' + word : word;
+      if (ctx.measureText(test).width > maxWidth && line) {
+        lines.push(line);
+        line = word;
+      } else {
+        line = test;
+      }
+    });
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  const W=800, PAD=40, barH=36, barGap=10, SCALE=2;
   const numBars = BAR_ORDER.filter(k=>FIELDS[k]&&FIELDS[k].bar_label).length;
   const careerH = 108;
-  const H = 60 + 104 + 24 + numBars*(barH+barGap) + 24 + 3*careerH + 40;
 
-  const canvas  = document.createElement('canvas');
-  canvas.width  = W*2; canvas.height = H*2;
-  const ctx     = canvas.getContext('2d');
-  ctx.scale(2,2);
+  // Pre-measure the "also consider" wrapped text so we know the canvas height
+  const restTitles = ranked.slice(3,30).map(j=>j.title).join(', ');
+  const measureCanvas = document.createElement('canvas');
+  const mctx = measureCanvas.getContext('2d');
+  mctx.font = '11px Georgia,serif';
+  const restLines = wrapText(mctx, restTitles, W - PAD*2);
+  const restBlockH = restLines.length > 0 ? 22 + restLines.length * 16 + 16 : 0;
 
-  // BG
+  const H = 56          // header
+           + 16         // gap
+           + 100        // mbti card
+           + 20         // gap
+           + 14         // bar section label
+           + numBars*(barH+barGap)
+           + 16         // gap
+           + 14         // careers section label
+           + 3*careerH  // top 3 cards
+           + 24         // gap before also-consider
+           + restBlockH // wrapped career list
+           + 36;        // footer
+
+  const canvas = document.createElement('canvas');
+  canvas.width  = W*SCALE;
+  canvas.height = H*SCALE;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(SCALE,SCALE);
+
+  // ── Background ──
   ctx.fillStyle='#f4f3ff'; ctx.fillRect(0,0,W,H);
 
-  // Header
+  // ── Header ──
   ctx.fillStyle='#534AB7'; ctx.fillRect(0,0,W,56);
-  ctx.fillStyle='#fff'; ctx.font='bold 20px Georgia,serif'; ctx.fillText('career compass',PAD,35);
-  ctx.font='12px Georgia,serif'; ctx.fillStyle='rgba(255,255,255,0.65)'; ctx.fillText('your results',PAD,50);
+  ctx.fillStyle='#fff';
+  ctx.font='bold 18px Georgia,serif'; ctx.textAlign='left';
+  ctx.fillText('career compass', PAD, 33);
+  ctx.font='11px Georgia,serif';
+  ctx.fillStyle='rgba(255,255,255,0.6)';
+  ctx.fillText('your personalized results', PAD, 49);
 
-  let y=72;
+  let y = 72;
 
-  // MBTI card
-  ctx.fillStyle='#fff'; roundRect(ctx,PAD,y,W-PAD*2,88,12); ctx.fill();
-  ctx.fillStyle='#f0eefc'; roundRect(ctx,PAD+12,y+12,64,64,10); ctx.fill();
-  ctx.fillStyle='#534AB7'; ctx.font='bold 26px Georgia,serif'; ctx.textAlign='center';
-  ctx.fillText(mbti,PAD+44,y+52); ctx.textAlign='left';
-  ctx.fillStyle='#999'; ctx.font='11px Georgia,serif'; ctx.fillText('personality type',PAD+88,y+34);
-  ctx.fillStyle='#2d2b55'; ctx.font='bold 16px Georgia,serif'; ctx.fillText(MBTI_NAMES[mbti]||'',PAD+88,y+56);
-  y+=88+20;
+  // ── MBTI card — full-width, horizontal layout ──
+  ctx.fillStyle='#fff'; roundRect(ctx,PAD,y,W-PAD*2,100,14); ctx.fill();
 
-  // Bar section label
-  ctx.fillStyle='#aaa'; ctx.font='10px Georgia,serif'; ctx.fillText('WHAT MATTERS TO YOU',PAD,y); y+=14;
+  // Left accent bar
+  ctx.fillStyle='#534AB7'; roundRect(ctx,PAD,y,6,100,{tl:14,bl:14,tr:0,br:0}); ctx.fill();
 
-  // Bars
+  // MBTI letters — large, left side
+  ctx.fillStyle='#534AB7';
+  ctx.font='bold 42px Georgia,serif'; ctx.textAlign='left';
+  ctx.fillText(mbti, PAD+24, y+66);
+
+  // Vertical divider
+  ctx.fillStyle='#e8e5fa';
+  ctx.fillRect(PAD+110, y+16, 1, 68);
+
+  // Right side: label + name stacked
+  ctx.fillStyle='#aaa';
+  ctx.font='10px Georgia,serif'; ctx.textAlign='left';
+  ctx.fillText('PERSONALITY TYPE', PAD+124, y+38);
+  ctx.fillStyle='#2d2b55';
+  ctx.font='bold 20px Georgia,serif';
+  ctx.fillText(MBTI_NAMES[mbti]||'', PAD+124, y+66);
+
+  // Small "your results" tag top-right
+  ctx.fillStyle='#f0eefc';
+  roundRect(ctx, W-PAD-90, y+16, 78, 20, 6); ctx.fill();
+  ctx.fillStyle='#7c6fe0'; ctx.font='bold 9px Georgia,serif'; ctx.textAlign='center';
+  ctx.fillText('CAREER COMPASS', W-PAD-51, y+30);
+  ctx.textAlign='left';
+
+  y += 100+20;
+
+  // ── Bar section label ──
+  ctx.fillStyle='#aaa'; ctx.font='10px Georgia,serif';
+  ctx.fillText('WHAT MATTERS TO YOU', PAD, y); y+=14;
+
+  // ── Bars ──
   BAR_ORDER.forEach(key=>{
     const f=FIELDS[key]; if(!f||!f.bar_label) return;
     const pct=f.signed?normS(s[key],f.bar_range||20):normU(s[key],f.bar_max||20);
     const [lbl,rbl]=ENDPOINT_LABELS[key]||['',''];
     const tw=W-PAD*2;
-    ctx.fillStyle='#555'; ctx.font='bold 10px Georgia,serif'; ctx.fillText(f.bar_label.toUpperCase(),PAD,y+10);
+    ctx.fillStyle='#555'; ctx.font='bold 10px Georgia,serif'; ctx.textAlign='left';
+    ctx.fillText(f.bar_label.toUpperCase(),PAD,y+10);
     ctx.fillStyle='#e8e5fa'; roundRect(ctx,PAD,y+14,tw,10,5); ctx.fill();
     if(f.signed){ctx.fillStyle='rgba(0,0,0,0.12)'; ctx.fillRect(PAD+tw/2,y+14,1,10);}
-    ctx.fillStyle=f.color||'#534AB7'; roundRect(ctx,PAD,y+14,tw*pct,10,5); ctx.fill();
+    ctx.fillStyle=f.color||'#534AB7'; roundRect(ctx,PAD,y+14,Math.max(tw*pct,0),10,5); ctx.fill();
     ctx.fillStyle='#aaa'; ctx.font='9px Georgia,serif';
     ctx.textAlign='left';  ctx.fillText(lbl,PAD,y+36);
     ctx.textAlign='right'; ctx.fillText(rbl,W-PAD,y+36);
@@ -670,29 +738,61 @@ async function exportImage(mode) {
 
   y+=8;
 
-  // Careers section label
-  ctx.fillStyle='#aaa'; ctx.font='10px Georgia,serif'; ctx.fillText('TOP 3 CAREER MATCHES',PAD,y); y+=14;
+  // ── Top 3 careers label ──
+  ctx.fillStyle='#aaa'; ctx.font='10px Georgia,serif';
+  ctx.fillText('TOP 3 CAREER MATCHES', PAD, y); y+=14;
 
-  // Top 3
+  // ── Top 3 cards ──
   ranked.slice(0,3).forEach((j,i)=>{
     const pct=Math.round((j.score/globalBest)*100);
     ctx.fillStyle='#fff'; roundRect(ctx,PAD,y,W-PAD*2,careerH-6,10); ctx.fill();
-    ctx.fillStyle='#999'; ctx.font='10px Georgia,serif'; ctx.fillText(i===0?'#1 — best match':`#${i+1}`,PAD+12,y+18);
+
+    // Rank badge
+    ctx.fillStyle= i===0 ? '#534AB7' : '#e8e5fa';
+    roundRect(ctx,PAD+12,y+12,i===0?90:52,18,5); ctx.fill();
+    ctx.fillStyle= i===0 ? '#fff' : '#7c6fe0';
+    ctx.font='bold 9px Georgia,serif'; ctx.textAlign='left';
+    ctx.fillText(i===0?'#1 — best match':`#${i+1}`,PAD+18,y+25);
+
     ctx.fillStyle='#534AB7'; ctx.font='bold 11px Georgia,serif'; ctx.textAlign='right';
-    ctx.fillText(pct+'% match',W-PAD-12,y+18); ctx.textAlign='left';
-    ctx.fillStyle='#2d2b55'; ctx.font='bold 15px Georgia,serif'; ctx.fillText(j.title,PAD+12,y+36);
-    ctx.fillStyle='#7c6fe0'; ctx.font='10px Georgia,serif'; ctx.fillText(j.field||'',PAD+12,y+52);
+    ctx.fillText(pct+'% match',W-PAD-12,y+25); ctx.textAlign='left';
+
+    ctx.fillStyle='#2d2b55'; ctx.font='bold 15px Georgia,serif';
+    ctx.fillText(j.title,PAD+12,y+48);
+    ctx.fillStyle='#7c6fe0'; ctx.font='10px Georgia,serif';
+    ctx.fillText(j.field||'',PAD+12,y+62);
+
     const bw=W-PAD*2-24;
-    ctx.fillStyle='#f0eefc'; roundRect(ctx,PAD+12,y+58,bw,5,3); ctx.fill();
-    ctx.fillStyle='#534AB7'; roundRect(ctx,PAD+12,y+58,bw*(pct/100),5,3); ctx.fill();
-    const desc=(j.desc||'').length>95?j.desc.slice(0,92)+'…':(j.desc||'');
-    ctx.fillStyle='#777'; ctx.font='10px Georgia,serif'; ctx.fillText(desc,PAD+12,y+80);
+    ctx.fillStyle='#f0eefc'; roundRect(ctx,PAD+12,y+68,bw,5,3); ctx.fill();
+    ctx.fillStyle='#534AB7'; roundRect(ctx,PAD+12,y+68,bw*(pct/100),5,3); ctx.fill();
+
+    const desc=(j.desc||'').length>100?j.desc.slice(0,97)+'…':(j.desc||'');
+    ctx.fillStyle='#777'; ctx.font='10px Georgia,serif';
+    ctx.fillText(desc,PAD+12,y+90);
     y+=careerH;
   });
 
-  // Footer
+  y+=16;
+
+  // ── Also consider — remaining 27 as wrapped comma list ──
+  if (restLines.length > 0) {
+    // Section divider line
+    ctx.fillStyle='#e0dcfb'; ctx.fillRect(PAD,y,W-PAD*2,1); y+=14;
+
+    ctx.fillStyle='#aaa'; ctx.font='10px Georgia,serif'; ctx.textAlign='left';
+    ctx.fillText('ALSO CONSIDER', PAD, y); y+=16;
+
+    ctx.fillStyle='#555'; ctx.font='11px Georgia,serif';
+    restLines.forEach(line=>{
+      ctx.fillText(line, PAD, y); y+=16;
+    });
+    y+=8;
+  }
+
+  // ── Footer ──
+  ctx.fillStyle='#c0bcf0'; ctx.fillRect(PAD,y,W-PAD*2,1); y+=14;
   ctx.fillStyle='#bbb'; ctx.font='italic 10px Georgia,serif'; ctx.textAlign='center';
-  ctx.fillText('use these as starting points to explore, not final answers.',W/2,y+14);
+  ctx.fillText('use these as starting points to explore, not final answers.', W/2, y);
 
   // ── Export ──
   if(mode==='download'){
