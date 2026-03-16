@@ -215,11 +215,15 @@ function scoreJob(job, s, mbti) {
     if (mbti.includes(f.key)) score += (job[f.key] || 0) * f.weight;
   });
 
-  // Interest tag boosts
+  // Interest tag boosts — capped so a single dominant tag can't flood results with one field
   const tagKeys = Object.values(FIELDS).filter(f => f.type === 'tag' && f.weight > 0);
+  let tagBoostTotal = 0;
   tagKeys.forEach(f => {
-    if ((job.tags || []).includes(f.key)) score += (s[f.key] || 0) * f.weight;
+    if ((job.tags || []).includes(f.key)) {
+      tagBoostTotal += Math.min((s[f.key] || 0) * f.weight, 4);
+    }
   });
+  score += Math.min(tagBoostTotal, 8); // total tag contribution capped at 8 pts
 
   return score;
 }
@@ -274,6 +278,17 @@ function barChart(s) {
   function normUnsigned(val, max)  { return Math.max(0, Math.min(100, Math.round((val || 0) / max * 100))); }
   function normSigned(val, range)  { return Math.max(0, Math.min(100, Math.round(((val || 0) + range) / (range * 2) * 100))); }
 
+  // Endpoint labels for each bar: [left meaning, right meaning]
+  const ENDPOINT_LABELS = {
+    outdoors: ['indoors / office', 'outdoors / field'],
+    hands:    ['abstract / desk work', 'physical / hands-on'],
+    school:   ['skip school, start now', 'long academic path'],
+    risk:     ['stable & proven', 'cutting-edge & high-stakes'],
+    creative: ['execute proven methods', 'invent & create'],
+    impact:   ['not a priority', 'making a difference'],
+    money:    ['not a priority', 'maximize earnings'],
+  };
+
   const rows = BAR_ORDER.map(key => {
     const f = FIELDS[key];
     if (!f || !f.bar_label) return '';
@@ -281,20 +296,24 @@ function barChart(s) {
       ? normSigned(s[key], f.bar_range || 20)
       : normUnsigned(s[key], f.bar_max || 20);
     const midline = f.signed
-      ? `<div style="position:absolute;left:50%;top:0;width:1px;height:100%;background:rgba(0,0,0,0.15)"></div>`
+      ? `<div style="position:absolute;left:50%;top:0;width:100%;height:100%;pointer-events:none">
+           <div style="position:absolute;left:50%;top:0;width:1px;height:100%;background:rgba(0,0,0,0.15)"></div>
+         </div>`
       : '';
+    const [leftLabel, rightLabel] = ENDPOINT_LABELS[key] || ['', ''];
     return `
-      <div>
-        <div class="bar-row">
-          <span class="bar-label">${f.bar_label}</span>
-          <div class="bar-track" style="position:relative">
-            ${midline}
-            <div class="bar-fill" style="width:${pct}%;background:${f.color}"></div>
-          </div>
-          <span class="bar-pct">${pct}%</span>
+      <div style="margin-bottom:1.1rem">
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:4px">
+          ${f.bar_label}
         </div>
-        <div style="font-size:10px;color:#aaa;font-style:italic;text-align:center;margin-top:1px;padding-left:120px">
-          ${f.display_range || ''}
+        <div class="bar-track" style="position:relative">
+          ${midline}
+          <div class="bar-fill" style="width:${pct}%;background:${f.color}"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:3px">
+          <span style="font-size:10px;color:#aaa;font-style:italic;max-width:38%;line-height:1.3">${leftLabel}</span>
+          <span style="font-size:11px;font-weight:600;color:${f.color}">${pct}%</span>
+          <span style="font-size:10px;color:#aaa;font-style:italic;max-width:38%;text-align:right;line-height:1.3">${rightLabel}</span>
         </div>
       </div>`;
   }).join('');
@@ -306,13 +325,26 @@ function barChart(s) {
 //  RESULTS PAGE
 // ─────────────────────────────────────────────────────────────────────────────
 function showResults() {
-  const s     = calcScores();
-  const mbti  = getMBTI(s);
+  const s      = calcScores();
+  const mbti   = getMBTI(s);
   const ranked = JOBS
     .map(j => ({ ...j, score: scoreJob(j, s, mbti) }))
     .sort((a, b) => b.score - a.score);
-  const top10 = ranked.slice(0, 10);
-  const best  = top10[0].score;
+
+  // Global best score — used as the denominator for ALL % match values
+  const globalBest = ranked[0].score;
+
+  // Group jobs by field, keeping each field sorted by score desc
+  const byField = {};
+  ranked.forEach(j => {
+    const key = j.field || 'Other';
+    if (!byField[key]) byField[key] = { fclass: j.fclass, jobs: [] };
+    byField[key].jobs.push(j);
+  });
+
+  // Sort fields by their top job's score (highest-match field first)
+  const sortedFields = Object.entries(byField)
+    .sort((a, b) => b[1].jobs[0].score - a[1].jobs[0].score);
 
   document.getElementById('quiz-section').style.display = 'none';
   const res = document.getElementById('results');
@@ -339,25 +371,36 @@ function showResults() {
 
     <div class="divider"></div>
     <p style="font-size:13px;font-weight:400;color:var(--color-text-secondary);margin-bottom:1rem;font-style:italic">
-      your top 10 career matches out of ${JOBS.length}
+      your career matches across all ${sortedFields.length} fields — sorted by best fit
     </p>
 
-    ${top10.map((j, i) => {
-      const pct = Math.round((j.score / best) * 100);
-      const rankLabel = i === 0 ? '#1 — best match' : `#${i + 1}`;
+    ${sortedFields.map(([fieldName, { fclass, jobs: fieldJobs }]) => {
+      const fieldTopPct = Math.round((fieldJobs[0].score / globalBest) * 100);
       return `
-      <div class="result-card">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px">
-          <div class="job-rank">${rankLabel}</div>
-          <div style="font-size:13px;font-weight:500;color:#534AB7;font-family:Georgia,serif">${pct}% match</div>
+      <div style="margin-bottom:2rem">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.6rem">
+          <span class="job-field ${fclass}" style="font-size:13px">${fieldName}</span>
+          <span style="font-size:12px;color:var(--color-text-tertiary);font-style:italic">
+            best match in field: ${fieldTopPct}%
+          </span>
         </div>
-        <div class="job-title">${j.title}</div>
-        <span class="job-field ${j.fclass}">${j.field}</span>
-        <div style="height:4px;background:#f0eefc;border-radius:2px;margin:6px 0 10px;overflow:hidden">
-          <div style="height:100%;width:${pct}%;background:#534AB7;border-radius:2px"></div>
-        </div>
-        <div class="job-desc">${j.desc}</div>
-        <div class="job-why">Why this fits you: ${whyJob(j, s, mbti)}</div>
+        ${fieldJobs.map((j, i) => {
+          const pct = Math.round((j.score / globalBest) * 100);
+          const rankLabel = i === 0 ? 'top pick' : `#${i + 1} in field`;
+          return `
+          <div class="result-card" style="margin-bottom:0.6rem">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px">
+              <div class="job-rank">${rankLabel}</div>
+              <div style="font-size:13px;font-weight:500;color:#534AB7;font-family:Georgia,serif">${pct}% match</div>
+            </div>
+            <div class="job-title">${j.title}</div>
+            <div style="height:4px;background:#f0eefc;border-radius:2px;margin:6px 0 10px;overflow:hidden">
+              <div style="height:100%;width:${pct}%;background:#534AB7;border-radius:2px"></div>
+            </div>
+            <div class="job-desc">${j.desc}</div>
+            <div class="job-why">Why this fits you: ${whyJob(j, s, mbti)}</div>
+          </div>`;
+        }).join('')}
       </div>`;
     }).join('')}
 
